@@ -5,92 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Academy of Heroes — Database</title>
   <style>
-    /* full‐viewport, no outer scrollbars */
     html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
       overflow: hidden;
       display: flex;
       font-family: sans-serif;
     }
-
-    /* Left sidebar: categories */
+    /* Left sidebar */
     #sidebar {
       flex: 0 0 200px;
       background: #2c3e50;
       color: #ecf0f1;
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
       overflow-y: auto;
     }
     #sidebar button {
-      background: none;
-      border: none;
-      color: inherit;
-      text-align: left;
-      padding: 0.75rem 1rem;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1rem;
+      background: none; border: none;
+      color: inherit; text-align: left;
+      padding: 0.75rem 1rem; cursor: pointer;
+      width: 100%; font-size: 1rem;
     }
-    #sidebar button.selected {
-      background: #34495e;
-    }
+    #sidebar button.selected { background: #34495e; }
 
     /* Main column */
     #main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+      flex: 1; display: flex; flex-direction: column;
       overflow: hidden;
     }
 
-    /* Top bar: subcategories */
+    /* Top bar */
     #subcategories {
       flex: 0 0 auto;
       display: flex;
       background: #ecf0f1;
       border-bottom: 1px solid #ccc;
-      overflow-x: auto;
-      overflow-y: hidden;
       padding: 0.5rem;
+      overflow-x: auto;
     }
     .subcat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 1rem;
-      cursor: pointer;
-      padding: 0.25rem;
+      display: flex; flex-direction: column;
+      align-items: center; margin-right: 1rem;
+      cursor: pointer; padding: 0.25rem;
       border-radius: 4px;
     }
-    .subcat.selected {
-      background: #ddd;
-    }
+    .subcat.selected { background: #ddd; }
     .subcat img {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      border-radius: 4px;
+      width: 40px; height: 40px;
+      object-fit: contain; border-radius: 4px;
       margin-bottom: 0.25rem;
     }
     .subcat span {
-      font-size: 0.9rem;
-      white-space: nowrap;
+      font-size: 0.9rem; white-space: nowrap;
     }
 
-    /* Content area: 3 panels */
+    /* Content area */
     #content {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
+      flex: 1; display: flex; overflow: hidden;
     }
 
-    /* 5-column grid, fixed width, vertical scroll only */
+    /* Items grid */
     #items-grid {
-      width: calc(5 * 80px + 4 * 1rem); /* columns*avatar + gaps */
+      width: calc(5 * 80px + 4 * 1rem);
       padding: 1rem;
       display: grid;
       grid-template-columns: repeat(5, 80px);
@@ -104,16 +80,15 @@
       flex-direction: column;
       align-items: center;
       cursor: pointer;
+      align-self: start;       /* ← prevents stretching */
     }
     .item.selected {
       outline: 2px solid #2980b9;
       border-radius: 4px;
     }
     .item img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 4px;
+      width: 80px; height: 80px;
+      object-fit: cover; border-radius: 4px;
     }
     .item .name {
       margin-top: 0.5rem;
@@ -122,27 +97,33 @@
       word-break: break-word;
     }
 
-    /* Info & Image panels, flex equally, internal scroll */
-    #info-panel, #image-panel {
-      flex: 1;
-      min-width: 0;
+    /* Info panel */
+    #info-panel {
+      flex: 1; min-width: 0;
       padding: 1rem;
       overflow-y: auto;
+      overflow-x: hidden;    /* ← hide any horizontal scrollbar */
       border-left: 1px solid #ccc;
       background: #fafafa;
     }
     #info-panel p {
       white-space: pre-wrap;
+      overflow-wrap: break-word;  /* ← wrap long words */
       line-height: 1.4;
     }
+
+    /* Image panel */
     #image-panel {
-      display: flex;
-      align-items: flex-start;
+      flex: 1; min-width: 0;
+      padding: 1rem;
+      overflow-y: auto;
+      border-left: 1px solid #ccc;
+      background: #fafafa;
+      display: flex; align-items: flex-start;
       justify-content: center;
     }
     #image-panel img {
-      max-width: 100%;
-      height: auto;
+      max-width: 100%; height: auto;
     }
   </style>
 </head>
@@ -150,7 +131,6 @@
   <div id="sidebar">
     <div id="category-list"></div>
   </div>
-
   <div id="main">
     <div id="subcategories"></div>
     <div id="content">
@@ -191,7 +171,12 @@
         const btn = document.createElement('button');
         btn.textContent = cat.name;
         if (i === currentCategory) btn.classList.add('selected');
-        btn.onclick = () => { currentCategory = i; currentSubcategory = 0; currentItem = 0; updateUI(); };
+        btn.onclick = () => {
+          currentCategory = i;
+          currentSubcategory = 0;
+          currentItem = 0;
+          updateUI();
+        };
         c.appendChild(btn);
       });
     }
@@ -209,7 +194,11 @@
         const span = document.createElement('span');
         span.textContent = sub.name;
         el.appendChild(span);
-        el.onclick = () => { currentSubcategory = i; currentItem = 0; updateUI(); };
+        el.onclick = () => {
+          currentSubcategory = i;
+          currentItem = 0;
+          updateUI();
+        };
         c.appendChild(el);
       });
     }
@@ -235,7 +224,10 @@
         nm.className = 'name';
         nm.textContent = item.name;
         el.appendChild(nm);
-        el.onclick = () => { currentItem = i; updateUI(); };
+        el.onclick = () => {
+          currentItem = i;
+          updateUI();
+        };
         c.appendChild(el);
       });
     }
