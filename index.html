@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Academy of Heroes</title>
+  <style>
+    body { margin:0; font-family:sans-serif; display:flex; height:100vh; }
+    nav {
+      background:#2c3e50; color:#ecf0f1; padding:1rem;
+      width:200px; display:flex; flex-direction:column;
+    }
+    nav button {
+      margin:0.5rem 0; padding:0.5rem; background:#34495e;
+      color:#ecf0f1; border:none; cursor:pointer; border-radius:4px;
+    }
+    nav button:hover { background:#3d5a73; }
+    #content { flex:1; display:flex; }
+    /* Avatar grid */
+    #avatar-grid {
+      flex:3; padding:1rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(100px,1fr));
+      grid-gap:1rem; overflow-y:auto;
+    }
+    .avatar-card {
+      text-align:center; cursor:pointer;
+      border:1px solid #ddd; border-radius:4px; padding:0.5rem;
+    }
+    .avatar-card img {
+      width:80px; height:80px;
+      object-fit:cover; border-radius:50%;
+    }
+    /* Side panel */
+    #side-panel {
+      flex:1; border-left:1px solid #ddd;
+      padding:1rem; overflow-y:auto;
+    }
+    #side-panel.hidden { display:none; }
+    /* Mock future pages */
+    .mock-page { padding:1rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <button onclick="showPage('database')">Database</button>
+    <button onclick="showPage('stats')">Stats</button>
+    <button onclick="showPage('settings')">Settings</button>
+  </nav>
+
+  <div id="content">
+    <!-- Database page -->
+    <div id="database" class="page">
+      <div id="avatar-grid"></div>
+    </div>
+
+    <!-- Future pages -->
+    <div id="stats" class="page mock-page" style="display:none;">
+      <h2>Stats (Coming Soon)</h2>
+      <p>This page will show campaign statistics and analytics.</p>
+    </div>
+    <div id="settings" class="page mock-page" style="display:none;">
+      <h2>Settings (Coming Soon)</h2>
+      <p>Configure campaign settings here.</p>
+    </div>
+
+    <!-- Side panel for NPC info -->
+    <div id="side-panel" class="hidden">
+      <h2 id="npc-name"></h2>
+      <p id="npc-info"></p>
+    </div>
+  </div>
+
+  <script>
+    // Mock NPC data
+    const npcs = [
+      { name: 'Thalia',   avatar: 'https://via.placeholder.com/80?text=Thalia',   info: 'A brave warrior and leader of the Blade Sisters.' },
+      { name: 'Orion',    avatar: 'https://via.placeholder.com/80?text=Orion',    info: 'A skilled archer with a mysterious past.' },
+      { name: 'Calliope', avatar: 'https://via.placeholder.com/80?text=Calliope', info: 'A bard whose songs can soothe even the fiercest beasts.' },
+      // …add more mock NPCs here
+    ];
+
+    const grid       = document.getElementById('avatar-grid');
+    const sidePanel  = document.getElementById('side-panel');
+    const npcNameEl  = document.getElementById('npc-name');
+    const npcInfoEl  = document.getElementById('npc-info');
+
+    // Populate the avatar grid
+    function initGrid() {
+      npcs.forEach((npc, i) => {
+        const card = document.createElement('div');
+        card.className = 'avatar-card';
+        card.innerHTML = `
+          <img src="${npc.avatar}" alt="${npc.name}"/>
+          <div>${npc.name}</div>
+        `;
+        card.addEventListener('click', () => showNPC(i));
+        grid.appendChild(card);
+      });
+    }
+
+    // Show details in the side panel
+    function showNPC(i) {
+      const npc = npcs[i];
+      npcNameEl.textContent = npc.name;
+      npcInfoEl.textContent = npc.info;
+      sidePanel.classList.remove('hidden');
+    }
+
+    // Switch between pages
+    function showPage(page) {
+      document.querySelectorAll('.page').forEach(el => el.style.display = 'none');
+      document.getElementById(page).style.display = 'block';
+      if (page !== 'database') sidePanel.classList.add('hidden');
+    }
+
+    // Initialize on load
+    initGrid();
+  </script>
+</body>
+</html>
