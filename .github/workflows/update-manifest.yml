@@ -19,21 +19,17 @@ jobs:
         with:
           persist-credentials: true
 
-      # 2. (If your generator is Node-based) Set up Node.js
+      # 2. (Still need Node to run your script)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # 3. Install any dependencies (skip if none)
-      - name: Install dependencies
-        run: npm install
-
-      # 4. Run your manifest-generator script
+      # 3. Run your manifest-generator script directly
       - name: Generate manifest.json
         run: node scripts/generate_manifest.js
 
-      # 5. Commit and push the updated manifest
+      # 4. Commit and push the updated manifest
       - name: Commit manifest.json
         uses: EndBug/add-and-commit@v9
         with:
@@ -43,3 +39,4 @@ jobs:
           add: database/manifest.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
