@@ -3,119 +3,301 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Academy of Heroes</title>
+  <title>Academy of Heroes — Database</title>
   <style>
-    body { margin:0; font-family:sans-serif; display:flex; height:100vh; }
-    nav {
-      background:#2c3e50; color:#ecf0f1; padding:1rem;
-      width:200px; display:flex; flex-direction:column;
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      font-family: sans-serif;
     }
-    nav button {
-      margin:0.5rem 0; padding:0.5rem; background:#34495e;
-      color:#ecf0f1; border:none; cursor:pointer; border-radius:4px;
+    /* Left sidebar: categories */
+    #sidebar {
+      width: 200px;
+      background: #2c3e50;
+      color: #ecf0f1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
     }
-    nav button:hover { background:#3d5a73; }
-    #content { flex:1; display:flex; }
-    /* Avatar grid */
-    #avatar-grid {
-      flex:3; padding:1rem;
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(100px,1fr));
-      grid-gap:1rem; overflow-y:auto;
+    #sidebar button {
+      background: none;
+      border: none;
+      color: inherit;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
     }
-    .avatar-card {
-      text-align:center; cursor:pointer;
-      border:1px solid #ddd; border-radius:4px; padding:0.5rem;
+    #sidebar button.selected {
+      background: #34495e;
     }
-    .avatar-card img {
-      width:80px; height:80px;
-      object-fit:cover; border-radius:50%;
+
+    /* Main area */
+    #main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
-    /* Side panel */
-    #side-panel {
-      flex:1; border-left:1px solid #ddd;
-      padding:1rem; overflow-y:auto;
+
+    /* Top bar: subcategories */
+    #subcategories {
+      display: flex;
+      background: #ecf0f1;
+      border-bottom: 1px solid #ccc;
+      overflow-x: auto;
+      padding: 0.5rem;
     }
-    #side-panel.hidden { display:none; }
-    /* Mock future pages */
-    .mock-page { padding:1rem; }
+    .subcat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+    .subcat.selected {
+      background: #ddd;
+      border-radius: 4px;
+    }
+    .subcat img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 0.25rem;
+    }
+    .subcat span {
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    /* Content area: 3 columns */
+    #content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    #items-grid {
+      flex: 3;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(5, 80px);
+      grid-auto-rows: auto;
+      gap: 1rem;
+      overflow-y: auto;
+      justify-content: center;
+    }
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    .item.selected {
+      outline: 2px solid #2980b9;
+      border-radius: 4px;
+    }
+    .item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .item .name {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    #info-panel {
+      flex: 2;
+      padding: 1rem;
+      overflow-y: auto;
+      border-left: 1px solid #ccc;
+      background: #fafafa;
+    }
+    #info-panel p {
+      white-space: pre-wrap;
+      line-height: 1.4;
+    }
+
+    #image-panel {
+      flex: 2;
+      padding: 1rem;
+      overflow-y: auto;
+      border-left: 1px solid #ccc;
+      background: #fafafa;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    #image-panel img {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <button onclick="showPage('database')">Database</button>
-    <button onclick="showPage('stats')">Stats</button>
-    <button onclick="showPage('settings')">Settings</button>
-  </nav>
+  <div id="sidebar">
+    <div id="category-list"></div>
+  </div>
 
-  <div id="content">
-    <!-- Database page -->
-    <div id="database" class="page">
-      <div id="avatar-grid"></div>
-    </div>
-
-    <!-- Future pages -->
-    <div id="stats" class="page mock-page" style="display:none;">
-      <h2>Stats (Coming Soon)</h2>
-      <p>This page will show campaign statistics and analytics.</p>
-    </div>
-    <div id="settings" class="page mock-page" style="display:none;">
-      <h2>Settings (Coming Soon)</h2>
-      <p>Configure campaign settings here.</p>
-    </div>
-
-    <!-- Side panel for NPC info -->
-    <div id="side-panel" class="hidden">
-      <h2 id="npc-name"></h2>
-      <p id="npc-info"></p>
+  <div id="main">
+    <div id="subcategories"></div>
+    <div id="content">
+      <div id="items-grid"></div>
+      <div id="info-panel"></div>
+      <div id="image-panel"></div>
     </div>
   </div>
 
   <script>
-    // Mock NPC data
-    const npcs = [
-      { name: 'Thalia',   avatar: 'https://via.placeholder.com/80?text=Thalia',   info: 'A brave warrior and leader of the Blade Sisters.' },
-      { name: 'Orion',    avatar: 'https://via.placeholder.com/80?text=Orion',    info: 'A skilled archer with a mysterious past.' },
-      { name: 'Calliope', avatar: 'https://via.placeholder.com/80?text=Calliope', info: 'A bard whose songs can soothe even the fiercest beasts.' },
-      // …add more mock NPCs here
-    ];
+    const manifestUrl = 'database/manifest.json';
 
-    const grid       = document.getElementById('avatar-grid');
-    const sidePanel  = document.getElementById('side-panel');
-    const npcNameEl  = document.getElementById('npc-name');
-    const npcInfoEl  = document.getElementById('npc-info');
+    let manifest = null;
+    let currentCategory = 0;
+    let currentSubcategory = 0;
+    let currentItem = 0;
+    const imageCache = new Map();
 
-    // Populate the avatar grid
-    function initGrid() {
-      npcs.forEach((npc, i) => {
-        const card = document.createElement('div');
-        card.className = 'avatar-card';
-        card.innerHTML = `
-          <img src="${npc.avatar}" alt="${npc.name}"/>
-          <div>${npc.name}</div>
-        `;
-        card.addEventListener('click', () => showNPC(i));
-        grid.appendChild(card);
+    // Preload all images (thumbnails, avatars, full images)
+    async function preloadImages() {
+      const toLoad = [];
+      manifest.categories.forEach(cat => {
+        cat.subcategories.forEach(sub => {
+          if (sub.thumbnail) toLoad.push(sub.thumbnail);
+          sub.items.forEach(item => {
+            if (item.avatar) toLoad.push(item.avatar);
+            if (item.image)  toLoad.push(item.image);
+          });
+        });
+      });
+      await Promise.all(toLoad.map(src => new Promise(res => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => { imageCache.set(src, img); res(); };
+        img.onerror = () => res();
+      })));
+    }
+
+    function renderCategories() {
+      const container = document.getElementById('category-list');
+      container.innerHTML = '';
+      manifest.categories.forEach((cat, i) => {
+        const btn = document.createElement('button');
+        btn.textContent = cat.name;
+        if (i === currentCategory) btn.classList.add('selected');
+        btn.onclick = () => {
+          currentCategory = i;
+          currentSubcategory = 0;
+          currentItem = 0;
+          updateUI();
+        };
+        container.appendChild(btn);
       });
     }
 
-    // Show details in the side panel
-    function showNPC(i) {
-      const npc = npcs[i];
-      npcNameEl.textContent = npc.name;
-      npcInfoEl.textContent = npc.info;
-      sidePanel.classList.remove('hidden');
+    function renderSubcategories() {
+      const container = document.getElementById('subcategories');
+      container.innerHTML = '';
+      const subs = manifest.categories[currentCategory].subcategories;
+      subs.forEach((sub, i) => {
+        const el = document.createElement('div');
+        el.className = 'subcat' + (i === currentSubcategory ? ' selected' : '');
+        // thumbnail
+        if (sub.thumbnail && imageCache.has(sub.thumbnail)) {
+          el.appendChild(imageCache.get(sub.thumbnail).cloneNode());
+        }
+        // name
+        const name = document.createElement('span');
+        name.textContent = sub.name;
+        el.appendChild(name);
+
+        el.onclick = () => {
+          currentSubcategory = i;
+          currentItem = 0;
+          updateUI();
+        };
+        container.appendChild(el);
+      });
     }
 
-    // Switch between pages
-    function showPage(page) {
-      document.querySelectorAll('.page').forEach(el => el.style.display = 'none');
-      document.getElementById(page).style.display = 'block';
-      if (page !== 'database') sidePanel.classList.add('hidden');
+    function renderItemsGrid() {
+      const container = document.getElementById('items-grid');
+      container.innerHTML = '';
+      const items = manifest
+        .categories[currentCategory]
+        .subcategories[currentSubcategory]
+        .items;
+
+      items.forEach((item, i) => {
+        const el = document.createElement('div');
+        el.className = 'item' + (i === currentItem ? ' selected' : '');
+        // avatar or placeholder
+        if (item.avatar && imageCache.has(item.avatar)) {
+          el.appendChild(imageCache.get(item.avatar).cloneNode());
+        } else {
+          const ph = document.createElement('div');
+          ph.style.cssText = 'width:80px;height:80px;background:#ccc;';
+          el.appendChild(ph);
+        }
+        // name
+        const name = document.createElement('div');
+        name.className = 'name';
+        name.textContent = item.name;
+        el.appendChild(name);
+
+        el.onclick = () => {
+          currentItem = i;
+          updateUI();
+        };
+        container.appendChild(el);
+      });
     }
 
-    // Initialize on load
-    initGrid();
+    function renderInfoPanel() {
+      const panel = document.getElementById('info-panel');
+      panel.innerHTML = '';
+      const item = manifest
+        .categories[currentCategory]
+        .subcategories[currentSubcategory]
+        .items[currentItem];
+      if (item.info) {
+        const p = document.createElement('p');
+        p.textContent = item.info;
+        panel.appendChild(p);
+      }
+    }
+
+    function renderImagePanel() {
+      const panel = document.getElementById('image-panel');
+      panel.innerHTML = '';
+      const item = manifest
+        .categories[currentCategory]
+        .subcategories[currentSubcategory]
+        .items[currentItem];
+      if (item.image && imageCache.has(item.image)) {
+        panel.appendChild(imageCache.get(item.image).cloneNode());
+      }
+    }
+
+    function updateUI() {
+      renderCategories();
+      renderSubcategories();
+      renderItemsGrid();
+      renderInfoPanel();
+      renderImagePanel();
+    }
+
+    // initialize
+    window.addEventListener('load', async () => {
+      const resp = await fetch(manifestUrl);
+      manifest = await resp.json();
+      await preloadImages();
+      updateUI();
+    });
   </script>
 </body>
 </html>
