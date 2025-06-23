@@ -36,6 +36,10 @@ const path = require('path');
 
 async function main() {
   const rootDir    = path.resolve(process.cwd(), 'database');
+  // ensure database/ exists (Git won’t track empty dirs)
+  if (!fs.existsSync(rootDir)) {
+    await fs.promises.mkdir(rootDir, { recursive: true });
+  }
   const outPath    = path.join(rootDir, 'manifest.json');
   const manifest   = { categories: [] };
 
