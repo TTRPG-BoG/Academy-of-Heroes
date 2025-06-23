@@ -84,7 +84,7 @@ async function main() {
 
         const avatarFile = itemFiles.find(fn => /^avatar\.[^.]+$/i.test(fn)) || null;
         const imageFile  = itemFiles.find(fn => /^image\.[^.]+$/i.test(fn))  || null;
-        const infoFile   = itemFiles.find(fn => /^info\.[^.]+$/i)          || null;
+        const infoFile   = itemFiles.find(fn => /^info\.[^.]+$/i.test(fn))   || null;
 
         // read info text if present
         let info = null;
