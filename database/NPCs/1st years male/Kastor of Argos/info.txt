@@ -1,0 +1,23 @@
+Place of Origin:
+●	Argos
+
+Strengths:
++	Fortitude
++	Learning
++	Will
++	Persuasion
+
+Weaknesses:
+-	Poor
+-	Magic
+
+Behavior:
+●	Calm and thoughtful, with a strong moral compass.
+●	Studies both combat strategies and basic herbal medicine.
+●	Prefers diplomatic solutions, but will fight if necessary.
+●	Feels torn between soldiering and healing, leading to bouts of self-doubt whenever conflict arises.
+
+Family:
+●	Father Peleus (retired soldier, local hero)
+●	Mother Cydippe (healer, known for herbal remedies)
+●	Grandmother Thais (revered Argive priestess, deceased)
