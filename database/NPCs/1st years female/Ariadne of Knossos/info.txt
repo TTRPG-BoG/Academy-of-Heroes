@@ -1,23 +1,23 @@
 Place of Origin:
-●Knossos (Crete)
+●	Knossos (Crete)
 
 Strengths:
-+Agility
-+Logic
-+Persuasion
-+Presence
++	Agility
++	Logic
++	Persuasion
++	Presence
 
 Weaknesses:
--Magic
+-	Magic
 
 Behavior:
-●Skilled dancer, weaving footwork into combat style.
-●Thrives on solving puzzles, reminiscent of labyrinth traditions.
-●Generally cheerful, but can be single-minded when focused.
-●Often practices dance routines in courtyard spaces.
-●Loves sharing Minoan myths and legends.
+●	Skilled dancer, weaving footwork into combat style.
+●	Thrives on solving puzzles, reminiscent of labyrinth traditions.
+●	Generally cheerful, but can be single-minded when focused.
+●	Often practices dance routines in courtyard spaces.
+●	Loves sharing Minoan myths and legends.
 
 Family:
-●Father Icarion (labyrinth overseer)
-●Mother Arisbe (historian, loves Minoan lore)
-●Younger Sister Korinna (apprentice dancer, wants to surpass Ariadne's achievements)
+●	Father Icarion (labyrinth overseer)
+●	Mother Arisbe (historian, loves Minoan lore)
+●	Younger Sister Korinna (apprentice dancer, wants to surpass Ariadne's achievements)

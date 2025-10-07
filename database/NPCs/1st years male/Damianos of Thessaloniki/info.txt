@@ -1,29 +1,29 @@
 Place of Origin:
-●Thessaloniki (a militaristic and ambitious city-state in the north, known for its cavalry and siege warfare)
+●	Thessaloniki (a militaristic and ambitious city-state in the north, known for its cavalry and siege warfare)
 
 Magic:
-●Influence
-●Entropy
+●	Influence
+●	Entropy
 
 Strengths:
-+Wealthy
-+Logic
-+Perception
-+Will
-+Deception
-+Presence
++	Wealthy
++	Logic
++	Perception
++	Will
++	Deception
++	Presence
 
 Weaknesses:
--Physique
+-	Physique
 
 Behavior:
-●Highly intelligent and calculating, always thinking several steps ahead.
-●Polite and diplomatic in conversation, never raises his voice.
-●Studies people's reactions carefully before responding.
-●Always carries a silver coin, flipping it absentmindedly while thinking.
-●Skilled at debate and rhetoric.
+●	Highly intelligent and calculating, always thinking several steps ahead.
+●	Polite and diplomatic in conversation, never raises his voice.
+●	Studies people's reactions carefully before responding.
+●	Always carries a silver coin, flipping it absentmindedly while thinking.
+●	Skilled at debate and rhetoric.
 
 Family:
-●Father Xanthippos (high-ranking general in the Thessaloniki army)
-●Mother Lysandra (political advisor)
-●Older Brother Andronikos (disgraced former academy student, expelled in his third year)
+●	Father Xanthippos (high-ranking general in the Thessaloniki army)
+●	Mother Lysandra (political advisor)
+●	Older Brother Andronikos (disgraced former academy student, expelled in his third year)

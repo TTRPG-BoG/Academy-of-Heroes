@@ -1,26 +1,26 @@
 Place of Origin:
-●Epidaurus (renowned for its healing sanctuary)
+●	Epidaurus (renowned for its healing sanctuary)
 
 Magic:
-●Creation
-●Entropy
+●	Creation
+●	Entropy
 
 Strengths:
-+Learning
-+Will
-+Persuasion
++	Learning
++	Will
++	Persuasion
 
 Weaknesses:
--Physique
+-	Physique
 
 Behavior:
-●Polite and gentle, with great empathy for others.
-●Often volunteers in the infirmary.
-●Studies both healing and combat magic with equal dedication.
-●Keeps detailed notes on magical theory and applications.
-●Quietly confident in his abilities.
+●	Polite and gentle, with great empathy for others.
+●	Often volunteers in the infirmary.
+●	Studies both healing and combat magic with equal dedication.
+●	Keeps detailed notes on magical theory and applications.
+●	Quietly confident in his abilities.
 
 Family:
-●Father Glaucus (physician)
-●Mother Damiane (priestess of Asclepius)
-●Brother Chrysanthus (died of an incurable illness)
+●	Father Glaucus (physician)
+●	Mother Damiane (priestess of Asclepius)
+●	Brother Chrysanthus (died of an incurable illness)

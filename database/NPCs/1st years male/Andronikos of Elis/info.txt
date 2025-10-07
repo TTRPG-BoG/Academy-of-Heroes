@@ -1,23 +1,23 @@
 Place of Origin:
-●Elis (near Olympia)
+●	Elis (near Olympia)
 
 Strengths:
-+Agility
-+Might
-+Logic
++	Agility
++	Might
++	Logic
 
 Weaknesses:
--Poor
--Magic
+-	Poor
+-	Magic
 
 Behavior:
-●Driven and disciplined in athletic competitions.
-●Competitive yet helpful, encouraging classmates in training.
-●Often trains at dawn to perfect his technique.
-●Enjoys discussing strategy and tactics for athletic events.
-●Pushes himself hard but knows when to rest.
+●	Driven and disciplined in athletic competitions.
+●	Competitive yet helpful, encouraging classmates in training.
+●	Often trains at dawn to perfect his technique.
+●	Enjoys discussing strategy and tactics for athletic events.
+●	Pushes himself hard but knows when to rest.
 
 Family:
-●Father Timocreon (Olympic athlete, now a trainer)
-●Mother Myrrha (farmer)
-●Younger Sister Lysimache (aspiring athlete)
+●	Father Timocreon (Olympic athlete, now a trainer)
+●	Mother Myrrha (farmer)
+●	Younger Sister Lysimache (aspiring athlete)

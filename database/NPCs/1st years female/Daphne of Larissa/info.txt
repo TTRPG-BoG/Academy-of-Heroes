@@ -1,29 +1,29 @@
 Place of Origin:
-●Larissa (noted for strategic military importance and political tension)
+●	Larissa (noted for strategic military importance and political tension)
 
 Magic:
-●Prescience
-●Protection
+●	Prescience
+●	Protection
 
 Strengths:
-+Magic
-+Logic
-+Perception
-+Learning
-+Deception
-+Persuasion
++	Magic
++	Logic
++	Perception
++	Learning
++	Deception
++	Persuasion
 
 Weaknesses:
--Physique
+-	Physique
 
 Behavior:
-●Highly intelligent, reserved, and calculating.
-●Rarely shows genuine emotions, maintaining a disciplined composure.
-●Values strategy, logic, and results above all else.
-●Studies battle tactics and historical campaigns extensively.
-●Prefers planning and preparation over improvisation.
+●	Highly intelligent, reserved, and calculating.
+●	Rarely shows genuine emotions, maintaining a disciplined composure.
+●	Values strategy, logic, and results above all else.
+●	Studies battle tactics and historical campaigns extensively.
+●	Prefers planning and preparation over improvisation.
 
 Family:
-●Father General Leonides (exiled due to accusations of military failure)
-●Mother Callista (respected strategist and advisor)
-●Younger Brother Lysias (determined to restore the family's honor through politics)
+●	Father General Leonides (exiled due to accusations of military failure)
+●	Mother Callista (respected strategist and advisor)
+●	Younger Brother Lysias (determined to restore the family's honor through politics)

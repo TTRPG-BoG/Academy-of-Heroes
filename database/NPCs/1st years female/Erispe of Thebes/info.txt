@@ -1,23 +1,23 @@
 Place of Origin:
-●Thebes
+●	Thebes
 
 Strengths:
-+Might
-+Fortitude
-+Perception
-+Logic
++	Might
++	Fortitude
++	Perception
++	Logic
 
 Weaknesses:
--Poor
--Magic
+-	Poor
+-	Magic
 
 Behavior:
-●Resourceful, learned to make do with limited means.
-●Excellent at improvising solutions in tense situations.
-●Works harder than most to prove herself.
-●Humble and grateful for opportunities.
-●Determined to support her family through her success.
+●	Resourceful, learned to make do with limited means.
+●	Excellent at improvising solutions in tense situations.
+●	Works harder than most to prove herself.
+●	Humble and grateful for opportunities.
+●	Determined to support her family through her success.
 
 Family:
-●Father Agesilaus (stonemason, injured in a quarry collapse)
-●Mother Phoebe (servant at a noble house)
+●	Father Agesilaus (stonemason, injured in a quarry collapse)
+●	Mother Phoebe (servant at a noble house)

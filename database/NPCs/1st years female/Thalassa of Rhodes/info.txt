@@ -1,29 +1,29 @@
 Place of Origin:
-●Rhodes (prosperous naval city-state famous for its strong maritime tradition)
+●	Rhodes (prosperous naval city-state famous for its strong maritime tradition)
 
 Magic:
-●Movement
-●Energy
+●	Movement
+●	Energy
 
 Strengths:
-+Agility
-+Fortitude
-+Might
-+Perception
-+Presence
-+Persuasion
++	Agility
++	Fortitude
++	Might
++	Perception
++	Presence
++	Persuasion
 
 Weaknesses:
--Intelligence
+-	Intelligence
 
 Behavior:
-●Confident, outspoken, and rebellious.
-●Intensely independent and proud.
-●Adventurous and spirited, known for her sharp wit and quick temper.
-●Defies overly strict rules but respects those who earn it.
-●Loyal to those she respects.
+●	Confident, outspoken, and rebellious.
+●	Intensely independent and proud.
+●	Adventurous and spirited, known for her sharp wit and quick temper.
+●	Defies overly strict rules but respects those who earn it.
+●	Loyal to those she respects.
 
 Family:
-●Mother Captain Althea (legendary former pirate queen, pardoned, now privateer for Athens)
-●Father Unknown (rumored to be a foreign pirate or sailor)
-●Older Brother Dorian (first mate on Althea's ship)
+●	Mother Captain Althea (legendary former pirate queen, pardoned, now privateer for Athens)
+●	Father Unknown (rumored to be a foreign pirate or sailor)
+●	Older Brother Dorian (first mate on Althea's ship)

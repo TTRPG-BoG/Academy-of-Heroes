@@ -1,25 +1,25 @@
 Place of Origin:
-●Phocis
+●	Phocis
 
 Magic:
-●Prescience
+●	Prescience
 
 Strengths:
-+Agility
-+Perception
++	Agility
++	Perception
 
 Weaknesses:
--Poor
--Social
+-	Poor
+-	Social
 
 Behavior:
-●Confident in wilderness survival and archery.
-●Curious about omens and prophecies.
-●Questions fate versus free will in philosophical discussions.
-●Excellent tracker, often finds lost items for classmates.
-●Prefers outdoor training to indoor lectures.
+●	Confident in wilderness survival and archery.
+●	Curious about omens and prophecies.
+●	Questions fate versus free will in philosophical discussions.
+●	Excellent tracker, often finds lost items for classmates.
+●	Prefers outdoor training to indoor lectures.
 
 Family:
-●Father Xenarchus (hunter and tracker)
-●Mother Evanthia (oracle's assistant)
-●Uncle Dryas (famed tracker, disappeared in the mountains)
+●	Father Xenarchus (hunter and tracker)
+●	Mother Evanthia (oracle's assistant)
+●	Uncle Dryas (famed tracker, disappeared in the mountains)
