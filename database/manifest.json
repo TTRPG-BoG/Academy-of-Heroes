@@ -11,13 +11,13 @@
               "name": "Acantha of Phocis",
               "avatar": null,
               "image": null,
-              "info": "Place of Origin:\n●\tPhocis\n\nStrengths:\n+\tFortitude\n+\tMight\n+\tPerception\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tExcellent mountaineer, unfazed by tough terrain.\n●\tProtective of classmates who struggle physically.\n●\tStrives to keep a balance between martial and healing arts.\n●\tVengeful streak after her uncle’s death, pushing her to hunt dangerous beasts, sometimes recklessly.\n\nFamily:\n●\tFather Eryx (veteran soldier, hunts in the mountains)\n●\tMother Cilissa (herbalist)\n●\tOlder Sister Nerine (studying medicine abroad, known for her unwavering kindness)\n●\tUncle Cadmos (famous mountain ranger, killed by a monster while on patrol)."
+              "info": "Place of Origin:\n●\tPhocis\n\nMagic:\n●\tCreation\n\nStrengths:\n+\tFortitude\n+\tMight\n+\tPerception\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tExcellent mountaineer, unfazed by tough terrain.\n●\tProtective of classmates who struggle physically.\n●\tStrives to keep a balance between martial and healing arts.\n●\tVengeful streak after her uncle’s death, pushing her to hunt dangerous beasts, sometimes recklessly.\n\nFamily:\n●\tFather Eryx (veteran soldier, hunts in the mountains)\n●\tMother Cilissa (herbalist)\n●\tOlder Sister Nerine (studying medicine abroad, known for her unwavering kindness)\n●\tUncle Cadmos (famous mountain ranger, killed by a monster while on patrol)."
             },
             {
               "name": "Ariadne of Knossos",
               "avatar": null,
               "image": null,
-              "info": "Place of Origin:\n●\tKnossos (Crete)\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tSkilled dancer, weaving footwork into combat style.\n●\tThrives on solving puzzles, reminiscent of labyrinth traditions.\n●\tGenerally cheerful, but can be single-minded when focused.\n●\tOften practices dance routines in courtyard spaces.\n●\tLoves sharing Minoan myths and legends.\n\nFamily:\n●\tFather Icarion (labyrinth overseer)\n●\tMother Arisbe (historian, loves Minoan lore)\n●\tYounger Sister Korinna (apprentice dancer, wants to surpass Ariadne's achievements)"
+              "info": "Place of Origin:\n●\tKnossos (Crete)\n\nMagic:\n●\tMovement\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tSkilled dancer, weaving footwork into combat style.\n●\tThrives on solving puzzles, reminiscent of labyrinth traditions.\n●\tGenerally cheerful, but can be single-minded when focused.\n●\tOften practices dance routines in courtyard spaces.\n●\tLoves sharing Minoan myths and legends.\n\nFamily:\n●\tFather Icarion (labyrinth overseer)\n●\tMother Arisbe (historian, loves Minoan lore)\n●\tYounger Sister Korinna (apprentice dancer, wants to surpass Ariadne's achievements)"
             },
             {
               "name": "Chloe of Corinth",
@@ -29,7 +29,7 @@
               "name": "Chryseis of Thessaly",
               "avatar": null,
               "image": null,
-              "info": "Place of Origin:\n●\tThessaly (known for horse-breeding)\n\nStrengths:\n+\tMight\n+\tAgility\n+\tPerception\n\nWeaknesses:\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tConfident in riding and mounted tactics.\n●\tStrong-willed, can be stubborn in arguments.\n●\tDeep bond with animals, especially horses.\n●\tFeels pressured to live up to her grandmother’s legendary feats, resulting in occasional reckless decisions to prove herself.\n\nFamily:\n●\tFather Periphas (cavalry officer)\n●\tMother Menodice (horse trainer)\n●\tGrandmother Kleonike (former champion cavalry rider, died peacefully in her sleep, leaving behind a storied legacy)"
+              "info": "Place of Origin:\n●\tThessaly (known for horse-breeding)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tMight\n+\tAgility\n+\tPerception\n\nWeaknesses:\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tConfident in riding and mounted tactics.\n●\tStrong-willed, can be stubborn in arguments.\n●\tDeep bond with animals, especially horses.\n●\tFeels pressured to live up to her grandmother’s legendary feats, resulting in occasional reckless decisions to prove herself.\n\nFamily:\n●\tFather Periphas (cavalry officer)\n●\tMother Menodice (horse trainer)\n●\tGrandmother Kleonike (former champion cavalry rider, died peacefully in her sleep, leaving behind a storied legacy)"
             },
             {
               "name": "Damiane of Syracuse",
@@ -47,7 +47,7 @@
               "name": "Deianeira of Sparta",
               "avatar": null,
               "image": null,
-              "info": "Place of Origin:\n●\tSparta\n\nStrengths:\n+\tMight\n+\tFortitude\n+\tWill\n\nWeaknesses:\n-\tPoor\n-\tIntelligence\n-\tSocial\n\nBehavior:\n●\tFiercely competitive, especially in footraces.\n●\tCan be harsh with words, unaccustomed to gentler communication.\n●\tDeeply loyal to her few close friends.\n●\tTrains with unwavering discipline.\n●\tRespects strength and determination in others.\n\nFamily:\n●\tFather Therimachus (drill instructor)\n●\tMother Eudoxia (disciplinarian, trains young Spartan girls)"
+              "info": "Place of Origin:\n●\tSparta\n\nMagic:\n●\tProtection\n\nStrengths:\n+\tMight\n+\tFortitude\n+\tWill\n\nWeaknesses:\n-\tPoor\n-\tIntelligence\n-\tSocial\n\nBehavior:\n●\tFiercely competitive, especially in footraces.\n●\tCan be harsh with words, unaccustomed to gentler communication.\n●\tDeeply loyal to her few close friends.\n●\tTrains with unwavering discipline.\n●\tRespects strength and determination in others.\n\nFamily:\n●\tFather Therimachus (drill instructor)\n●\tMother Eudoxia (disciplinarian, trains young Spartan girls)"
             },
             {
               "name": "Elpis of Thessaloniki",
@@ -59,7 +59,7 @@
               "name": "Erispe of Thebes",
               "avatar": null,
               "image": null,
-              "info": "Place of Origin:\n●\tThebes\n\nStrengths:\n+\tMight\n+\tFortitude\n+\tPerception\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tResourceful, learned to make do with limited means.\n●\tExcellent at improvising solutions in tense situations.\n●\tWorks harder than most to prove herself.\n●\tHumble and grateful for opportunities.\n●\tDetermined to support her family through her success.\n\nFamily:\n●\tFather Agesilaus (stonemason, injured in a quarry collapse)\n●\tMother Phoebe (servant at a noble house)"
+              "info": "Place of Origin:\n●\tThebes\n\nMagic:\n●\tEnergy\n\nStrengths:\n+\tMight\n+\tFortitude\n+\tPerception\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tResourceful, learned to make do with limited means.\n●\tExcellent at improvising solutions in tense situations.\n●\tWorks harder than most to prove herself.\n●\tHumble and grateful for opportunities.\n●\tDetermined to support her family through her success.\n\nFamily:\n●\tFather Agesilaus (stonemason, injured in a quarry collapse)\n●\tMother Phoebe (servant at a noble house)"
             },
             {
               "name": "Euanthe of Aeolia",
@@ -71,7 +71,7 @@
               "name": "Evanthe of Rhodes",
               "avatar": null,
               "image": null,
-              "info": "Place of Origin:\n●\tRhodes (island known for its Colossus)\n\nStrengths:\n+\tAgility\n+\tPresence\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tIntelligence\n\nBehavior:\n●\tAdventurous, loves sea voyages.\n●\tSharp-eyed, quick reflexes in archery.\n●\tOccasionally impulsive, forging ahead without a plan.\n\nFamily:\n●\tFather Demetrios (shipwright)\n●\tMother Eunike (archer in local militia)\n●\tOlder Brother Galinos (shipwright apprentice, with a knack for sea navigation)\n●\tUncle Sophokles (legendary ship captain, perished in a storm at sea)"
+              "info": "Place of Origin:\n●\tRhodes (island known for its Colossus)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tAgility\n+\tPresence\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tIntelligence\n\nBehavior:\n●\tAdventurous, loves sea voyages.\n●\tSharp-eyed, quick reflexes in archery.\n●\tOccasionally impulsive, forging ahead without a plan.\n\nFamily:\n●\tFather Demetrios (shipwright)\n●\tMother Eunike (archer in local militia)\n●\tOlder Brother Galinos (shipwright apprentice, with a knack for sea navigation)\n●\tUncle Sophokles (legendary ship captain, perished in a storm at sea)"
             },
             {
               "name": "Galatea of Troy",
@@ -113,7 +113,7 @@
               "name": "Melantha of Argos",
               "avatar": null,
               "image": null,
-              "info": "Place of Origin:\n●\tArgos\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tHums softly to herself when nervous, a habit picked up from her mother.\n●\tKeeps a small journal where she writes poetry inspired by her experiences at the academy.\n●\tBalanced fighter, uses a mix of technique and improvisation.\n●\tHas a melancholic streak, channeling it into music when stressed.\n●\tOften hums or sings to calm herself and allies.\n\nFamily:\n●\tFather Philon (city guard)\n●\tMother Eucharis (musician)Younger sister: Theodora (talented fighter, currently 2nd year student)\n●\tGrandfather Ctesias (revered war hero, died in battle)"
+              "info": "Place of Origin:\n●\tArgos\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tHums softly to herself when nervous, a habit picked up from her mother.\n●\tKeeps a small journal where she writes poetry inspired by her experiences at the academy.\n●\tBalanced fighter, uses a mix of technique and improvisation.\n●\tHas a melancholic streak, channeling it into music when stressed.\n●\tOften hums or sings to calm herself and allies.\n\nFamily:\n●\tFather Philon (city guard)\n●\tMother Eucharis (musician)Younger sister: Theodora (talented fighter, currently 2nd year student)\n●\tGrandfather Ctesias (revered war hero, died in battle)"
             },
             {
               "name": "Myrine of Euboea",
@@ -125,7 +125,7 @@
               "name": "Pasithea of Mycenae",
               "avatar": null,
               "image": null,
-              "info": "Place of Origin:\n●\tMycenae\n\nStrengths:\n+\tMight\n+\tFortitude\n\nWeaknesses:\n-\tMagic\n-\tIntelligence\n-\tSocial\n\nBehavior:\n●\tHands-on learner, focuses on physically constructing or repairing gear.\n●\tPrefers direct action over lengthy debate.\n●\tProud of Mycenaean heritage, strongly defends its honor.\n●\tOften found in the forge, practicing metalwork techniques.\n●\tCollects interesting metal scraps and unusual alloys.\n\nFamily:\n●\tFather Astyanax (renowned blacksmith)\n●\tMother Dryope (artisan, crafts ceremonial armor)\n●\tOlder Brother Dorimachus (skilled weaponsmith, died forging a cursed blade for a warlord)"
+              "info": "Place of Origin:\n●\tMycenae\n\nMagic:\n●\tAlteration\n\nStrengths:\n+\tMight\n+\tFortitude\n\nWeaknesses:\n-\tMagic\n-\tIntelligence\n-\tSocial\n\nBehavior:\n●\tHands-on learner, focuses on physically constructing or repairing gear.\n●\tPrefers direct action over lengthy debate.\n●\tProud of Mycenaean heritage, strongly defends its honor.\n●\tOften found in the forge, practicing metalwork techniques.\n●\tCollects interesting metal scraps and unusual alloys.\n\nFamily:\n●\tFather Astyanax (renowned blacksmith)\n●\tMother Dryope (artisan, crafts ceremonial armor)\n●\tOlder Brother Dorimachus (skilled weaponsmith, died forging a cursed blade for a warlord)"
             },
             {
               "name": "Selene of Attica",
@@ -137,7 +137,7 @@
               "name": "Syntyche of Miletus",
               "avatar": null,
               "image": null,
-              "info": "Place of Origin:\n●\tMiletus (famed for thinkers and explorers)\n\nStrengths:\n+\tLearning\n+\tPerception\n+\tPersuasion\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tInquisitive, collects maps and foreign trinkets.\n●\tEager to explore, sometimes neglects formal training to gather stories.\n●\tPassionate about cultural exchange and new ideas.\n●\tKeeps a journal of interesting places and cultures.\n●\tEnjoys sharing tales of far-off lands.\n\nFamily:\n●\tFather Phanias (merchant adventurer)\n●\tMother Oenone (cartographer)\n●\tYounger Brother Phileas (inquisitive child, already tinkering with mapmaking)\n●\tAunt Olyssa (explorer, rumored to be lost overseas)"
+              "info": "Place of Origin:\n●\tMiletus (famed for thinkers and explorers)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tLearning\n+\tPerception\n+\tPersuasion\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tInquisitive, collects maps and foreign trinkets.\n●\tEager to explore, sometimes neglects formal training to gather stories.\n●\tPassionate about cultural exchange and new ideas.\n●\tKeeps a journal of interesting places and cultures.\n●\tEnjoys sharing tales of far-off lands.\n\nFamily:\n●\tFather Phanias (merchant adventurer)\n●\tMother Oenone (cartographer)\n●\tYounger Brother Phileas (inquisitive child, already tinkering with mapmaking)\n●\tAunt Olyssa (explorer, rumored to be lost overseas)"
             },
             {
               "name": "Thalassa of Rhodes",
@@ -155,13 +155,13 @@
               "name": "Adonis of Thebes",
               "avatar": "database/NPCs/1st years male/Adonis of Thebes/avatar.png",
               "image": "database/NPCs/1st years male/Adonis of Thebes/image.png",
-              "info": "Place of Origin:\n●\tThebes\n\nStrengths:\n+\tAgility\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tIntelligence\n\nBehavior:\n●\tOutgoing and charming, makes friends easily.\n●\tProne to procrastination in academic subjects.\n●\tSkilled with swords, eager to prove himself in tournaments.\n\nFamily:\n●\tFather Eriphus (former city guard member)\n●\tMother Eris (weaver, pragmatic)\n●\tCousin Philon (renowned minstrel)"
+              "info": "Place of Origin:\n●\tThebes\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tIntelligence\n\nBehavior:\n●\tOutgoing and charming, makes friends easily.\n●\tProne to procrastination in academic subjects.\n●\tSkilled with swords, eager to prove himself in tournaments.\n\nFamily:\n●\tFather Eriphus (former city guard member)\n●\tMother Eris (weaver, pragmatic)\n●\tCousin Philon (renowned minstrel)"
             },
             {
               "name": "Andronikos of Elis",
               "avatar": "database/NPCs/1st years male/Andronikos of Elis/avatar.png",
               "image": "database/NPCs/1st years male/Andronikos of Elis/image.png",
-              "info": "Place of Origin:\n●\tElis (near Olympia)\n\nStrengths:\n+\tAgility\n+\tMight\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tDriven and disciplined in athletic competitions.\n●\tCompetitive yet helpful, encouraging classmates in training.\n●\tOften trains at dawn to perfect his technique.\n●\tEnjoys discussing strategy and tactics for athletic events.\n●\tPushes himself hard but knows when to rest.\n\nFamily:\n●\tFather Timocreon (Olympic athlete, now a trainer)\n●\tMother Myrrha (farmer)\n●\tYounger Sister Lysimache (aspiring athlete)"
+              "info": "Place of Origin:\n●\tElis (near Olympia)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tAgility\n+\tMight\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tDriven and disciplined in athletic competitions.\n●\tCompetitive yet helpful, encouraging classmates in training.\n●\tOften trains at dawn to perfect his technique.\n●\tEnjoys discussing strategy and tactics for athletic events.\n●\tPushes himself hard but knows when to rest.\n\nFamily:\n●\tFather Timocreon (Olympic athlete, now a trainer)\n●\tMother Myrrha (farmer)\n●\tYounger Sister Lysimache (aspiring athlete)"
             },
             {
               "name": "Aristaios of Delphi",
@@ -179,7 +179,7 @@
               "name": "Dmetrios of Thebes",
               "avatar": "database/NPCs/1st years male/Dmetrios of Thebes/avatar.png",
               "image": "database/NPCs/1st years male/Dmetrios of Thebes/image.png",
-              "info": "Place of Origin:\n●\tThebes\n\nStrengths:\n+\tMight\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tPrefers structured schedules and methodical training.\n●\tStubborn once he decides on a goal.\n●\tSkilled in spear techniques, learned from city militia.\n●\tAlienates peers with his rigidity; struggles when forced to act outside meticulous plans.\n\nFamily:\n●\tFather Agathocles (builder)\n●\tMother Diona (scholar of Theban history)\n●\tYounger Sister Pelagia (also studies Theban lore)"
+              "info": "Place of Origin:\n●\tThebes\n\nMagic:\n●\tProtection\n\nStrengths:\n+\tMight\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tPrefers structured schedules and methodical training.\n●\tStubborn once he decides on a goal.\n●\tSkilled in spear techniques, learned from city militia.\n●\tAlienates peers with his rigidity; struggles when forced to act outside meticulous plans.\n\nFamily:\n●\tFather Agathocles (builder)\n●\tMother Diona (scholar of Theban history)\n●\tYounger Sister Pelagia (also studies Theban lore)"
             },
             {
               "name": "Heliodorus of Corinth",
@@ -197,7 +197,7 @@
               "name": "Kastor of Argos",
               "avatar": "database/NPCs/1st years male/Kastor of Argos/avatar.png",
               "image": "database/NPCs/1st years male/Kastor of Argos/image.png",
-              "info": "Place of Origin:\n●\tArgos\n\nStrengths:\n+\tFortitude\n+\tLearning\n+\tWill\n+\tPersuasion\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tCalm and thoughtful, with a strong moral compass.\n●\tStudies both combat strategies and basic herbal medicine.\n●\tPrefers diplomatic solutions, but will fight if necessary.\n●\tFeels torn between soldiering and healing, leading to bouts of self-doubt whenever conflict arises.\n\nFamily:\n●\tFather Peleus (retired soldier, local hero)\n●\tMother Cydippe (healer, known for herbal remedies)\n●\tGrandmother Thais (revered Argive priestess, deceased)"
+              "info": "Place of Origin:\n●\tArgos\n\nMagic:\n●\tCreation\n\nStrengths:\n+\tFortitude\n+\tLearning\n+\tWill\n+\tPersuasion\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tCalm and thoughtful, with a strong moral compass.\n●\tStudies both combat strategies and basic herbal medicine.\n●\tPrefers diplomatic solutions, but will fight if necessary.\n●\tFeels torn between soldiering and healing, leading to bouts of self-doubt whenever conflict arises.\n\nFamily:\n●\tFather Peleus (retired soldier, local hero)\n●\tMother Cydippe (healer, known for herbal remedies)\n●\tGrandmother Thais (revered Argive priestess, deceased)"
             },
             {
               "name": "Leandros of Mycenae",
@@ -209,7 +209,7 @@
               "name": "Lysandros of Crete",
               "avatar": "database/NPCs/1st years male/Lysandros of Crete/avatar.png",
               "image": "database/NPCs/1st years male/Lysandros of Crete/image.png",
-              "info": "Place of Origin:\n●\tCrete (legend of labyrinths)\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPerception\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tAgile in combat, weaving acrobatics into moves.\n●\tLoves riddles, labyrinths, and illusions.\n●\tKeeps a personal notebook of puzzle ideas.\n●\tOften sketches maze patterns in margins of notes.\n●\tEnjoys challenging others to puzzle-solving competitions.\n\nFamily:\n●\tFather Minos (architect rumored to design labyrinths)\n●\tMother Phoenissa (acrobat, traveling performer)\n●\tAunt Thoe (acclaimed acrobat, vanished in a labyrinth)"
+              "info": "Place of Origin:\n●\tCrete (legend of labyrinths)\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPerception\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tAgile in combat, weaving acrobatics into moves.\n●\tLoves riddles, labyrinths, and illusions.\n●\tKeeps a personal notebook of puzzle ideas.\n●\tOften sketches maze patterns in margins of notes.\n●\tEnjoys challenging others to puzzle-solving competitions.\n\nFamily:\n●\tFather Minos (architect rumored to design labyrinths)\n●\tMother Phoenissa (acrobat, traveling performer)\n●\tAunt Thoe (acclaimed acrobat, vanished in a labyrinth)"
             },
             {
               "name": "Nestor of Sparta",
@@ -221,7 +221,7 @@
               "name": "Orestes of Pylos",
               "avatar": "database/NPCs/1st years male/Orestes of Pylos/avatar.png",
               "image": "database/NPCs/1st years male/Orestes of Pylos/image.png",
-              "info": "Place of Origin:\n●\tPylos (coastal region)\n\nStrengths:\n+\tPerception\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tAdventurous, dreams of distant voyages.\n●\tPrefers using a trident in combat, reminiscent of sea gods.\n●\tFriendly, bonds quickly with anyone who loves the sea.\n●\tExcellent at reading weather patterns and navigation.\n●\tTells entertaining stories of his family's sailing adventures.\n\nFamily:\n●\tFather Strophius (ship captain)\n●\tMother Ariadne (navigator)\n●\tOlder Cousin Melanthios (naval officer, died heroically defending cargo ships from pirates)"
+              "info": "Place of Origin:\n●\tPylos (coastal region)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tPerception\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tAdventurous, dreams of distant voyages.\n●\tPrefers using a trident in combat, reminiscent of sea gods.\n●\tFriendly, bonds quickly with anyone who loves the sea.\n●\tExcellent at reading weather patterns and navigation.\n●\tTells entertaining stories of his family's sailing adventures.\n\nFamily:\n●\tFather Strophius (ship captain)\n●\tMother Ariadne (navigator)\n●\tOlder Cousin Melanthios (naval officer, died heroically defending cargo ships from pirates)"
             },
             {
               "name": "Pericles of Ephesus",
@@ -251,7 +251,7 @@
               "name": "Xanthos of Attica",
               "avatar": "database/NPCs/1st years male/Xanthos of Attica/avatar.png",
               "image": "database/NPCs/1st years male/Xanthos of Attica/image.png",
-              "info": "Place of Origin:\n●\tAttica\n\nStrengths:\n+\tMight\n+\tLearning\n+\tLogic\n+\tPersuasion\n+\tDeception\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tBookish and well-read, fond of quoting philosophers.\n●\tOccasionally pedantic, corrects classmates’ grammar.\n●\tPractices debate techniques in spare time.\n●\tOvercompensates with constant pedantry, causing social friction and bouts of anger when his knowledge is doubted.\n\nFamily:\n●\tFather Demophon (scribe)\n●\tMother Elpis (public speaker at the agora)\n●\tCousin Sostratus (celebrated poet)"
+              "info": "Place of Origin:\n●\tAttica\n\nMagic:\n●\tEnergy\n\nStrengths:\n+\tMight\n+\tLearning\n+\tLogic\n+\tPersuasion\n+\tDeception\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tBookish and well-read, fond of quoting philosophers.\n●\tOccasionally pedantic, corrects classmates’ grammar.\n●\tPractices debate techniques in spare time.\n●\tOvercompensates with constant pedantry, causing social friction and bouts of anger when his knowledge is doubted.\n\nFamily:\n●\tFather Demophon (scribe)\n●\tMother Elpis (public speaker at the agora)\n●\tCousin Sostratus (celebrated poet)"
             },
             {
               "name": "Zopyros of Miletus",
