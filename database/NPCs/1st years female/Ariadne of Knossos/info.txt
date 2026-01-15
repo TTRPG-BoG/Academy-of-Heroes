@@ -1,6 +1,10 @@
 Place of Origin:
 ●	Knossos (Crete)
 
+Magic:
+●	Movement
+●	Influence
+
 Strengths:
 +	Agility
 +	Logic

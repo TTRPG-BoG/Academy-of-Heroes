@@ -1,6 +1,9 @@
 Place of Origin:
 ●	Thebes
 
+Magic:
+●	Influence
+
 Strengths:
 +	Agility
 +	Presence

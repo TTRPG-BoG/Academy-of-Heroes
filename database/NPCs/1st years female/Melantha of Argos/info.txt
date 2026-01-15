@@ -1,6 +1,9 @@
 Place of Origin:
 ●	Argos
 
+Magic:
+●	Influence
+
 Strengths:
 +	Agility
 +	Logic

@@ -1,6 +1,9 @@
 Place of Origin:
 ●	Rhodes (island known for its Colossus)
 
+Magic:
+●	Movement
+
 Strengths:
 +	Agility
 +	Presence

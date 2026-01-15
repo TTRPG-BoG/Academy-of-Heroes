@@ -1,6 +1,9 @@
 Place of Origin:
 ●	Thebes
 
+Magic:
+●	Energy
+
 Strengths:
 +	Might
 +	Fortitude

@@ -1,6 +1,9 @@
 Place of Origin:
 ●	Pylos (coastal region)
 
+Magic:
+●	Movement
+
 Strengths:
 +	Perception
 +	Persuasion
