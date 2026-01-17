@@ -4,410 +4,410 @@
       "name": "NPCs",
       "subcategories": [
         {
-          "name": "1st years female",
-          "thumbnail": "database/NPCs/1st years female/thumbnail.png",
-          "items": [
-            {
-              "name": "Acantha of Phocis",
-              "avatar": "database/NPCs/1st years female/Acantha of Phocis/avatar.png",
-              "image": "database/NPCs/1st years female/Acantha of Phocis/image.png",
-              "info": "Place of Origin:\n●\tPhocis\n\nMagic:\n●\tCreation\n\nStrengths:\n+\tFortitude\n+\tMight\n+\tPerception\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tExcellent mountaineer, unfazed by tough terrain.\n●\tProtective of classmates who struggle physically.\n●\tStrives to keep a balance between martial and healing arts.\n●\tVengeful streak after her uncle’s death, pushing her to hunt dangerous beasts, sometimes recklessly.\n\nFamily:\n●\tFather Eryx (veteran soldier, hunts in the mountains)\n●\tMother Cilissa (herbalist)\n●\tOlder Sister Nerine (studying medicine abroad, known for her unwavering kindness)\n●\tUncle Cadmos (famous mountain ranger, killed by a monster while on patrol)."
-            },
-            {
-              "name": "Alathea of Delphi",
-              "avatar": "database/NPCs/1st years female/Alathea of Delphi/avatar.png",
-              "image": "database/NPCs/1st years female/Alathea of Delphi/image.png",
-              "info": "Place of Origin:\n●\tDelphi\n\nTODO"
-            },
-            {
-              "name": "Ariadne of Knossos",
-              "avatar": "database/NPCs/1st years female/Ariadne of Knossos/avatar.png",
-              "image": "database/NPCs/1st years female/Ariadne of Knossos/image.png",
-              "info": "Place of Origin:\n●\tKnossos (Crete)\n\nMagic:\n●\tMovement\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tSkilled dancer, weaving footwork into combat style.\n●\tThrives on solving puzzles, reminiscent of labyrinth traditions.\n●\tGenerally cheerful, but can be single-minded when focused.\n●\tOften practices dance routines in courtyard spaces.\n●\tLoves sharing Minoan myths and legends.\n\nFamily:\n●\tFather Icarion (labyrinth overseer)\n●\tMother Arisbe (historian, loves Minoan lore)\n●\tYounger Sister Korinna (apprentice dancer, wants to surpass Ariadne's achievements)"
-            },
-            {
-              "name": "Chloe of Corinth",
-              "avatar": "database/NPCs/1st years female/Chloe of Corinth/avatar.png",
-              "image": "database/NPCs/1st years female/Chloe of Corinth/image.png",
-              "info": "Place of Origin:\n●\tCorinth\n\nMagic:\n●\tAlteration\n\nStrengths:\n+\tWealthy\n+\tLearning\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tMusical talent, occasionally performs at academy gatherings.\n●\tSociable and easygoing, bridging gaps between different cliques.\n●\tPrefers enchanting audiences to real confrontation.\n●\tPractices her performances diligently.\n●\tEncourages others to explore their creative sides.\n\nFamily:\n●\tFather Timon (renowned sculptor)\n●\tMother Anastasia (gifted singer)\n●\tOlder Sister Eupheme (talented poet)"
-            },
-            {
-              "name": "Chryseis of Thessaly",
-              "avatar": "database/NPCs/1st years female/Chryseis of Thessaly/avatar.png",
-              "image": "database/NPCs/1st years female/Chryseis of Thessaly/image.png",
-              "info": "Place of Origin:\n●\tThessaly (known for horse-breeding)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tMight\n+\tAgility\n+\tPerception\n\nWeaknesses:\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tConfident in riding and mounted tactics.\n●\tStrong-willed, can be stubborn in arguments.\n●\tDeep bond with animals, especially horses.\n●\tFeels pressured to live up to her grandmother’s legendary feats, resulting in occasional reckless decisions to prove herself.\n\nFamily:\n●\tFather Periphas (cavalry officer)\n●\tMother Menodice (horse trainer)\n●\tGrandmother Kleonike (former champion cavalry rider, died peacefully in her sleep, leaving behind a storied legacy)"
-            },
-            {
-              "name": "Damiane of Syracuse",
-              "avatar": "database/NPCs/1st years female/Damiane of Syracuse/avatar.png",
-              "image": "database/NPCs/1st years female/Damiane of Syracuse/image.png",
-              "info": "Place of Origin:\n●\tSyracuse (a major Greek city on the island of Sicily)\n\nMagic:\n●\tEnergy\n●\tMovement\n●\tCreation\n\nStrengths:\n+\tMagic\n+\tLogic\n+\tLearning\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tBold and passionate, prone to emotional outbursts.\n●\tSeeks to master elemental forces responsibly.\n●\tIncredibly curious about distant lands and their magical practices.\n●\tEnthusiastic when discussing magical theory.\n●\tPractices careful control of her considerable power.\n\nFamily:\n●\tFather Ariston (philosopher and tutor)\n●\tMother Isidora (elementalist)\n●\tMaternal Aunt Theodora (famed battle-mage of Syracuse, missing since a volcanic eruption)"
-            },
-            {
-              "name": "Daphne of Larissa",
-              "avatar": "database/NPCs/1st years female/Daphne of Larissa/avatar.png",
-              "image": "database/NPCs/1st years female/Daphne of Larissa/image.png",
-              "info": "Place of Origin:\n●\tLarissa (noted for strategic military importance and political tension)\n\nMagic:\n●\tPrescience\n●\tProtection\n\nStrengths:\n+\tMagic\n+\tLogic\n+\tPerception\n+\tLearning\n+\tDeception\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tHighly intelligent, reserved, and calculating.\n●\tRarely shows genuine emotions, maintaining a disciplined composure.\n●\tValues strategy, logic, and results above all else.\n●\tStudies battle tactics and historical campaigns extensively.\n●\tPrefers planning and preparation over improvisation.\n\nFamily:\n●\tFather General Leonides (exiled due to accusations of military failure)\n●\tMother Callista (respected strategist and advisor)\n●\tYounger Brother Lysias (determined to restore the family's honor through politics)"
-            },
-            {
-              "name": "Deianeira of Sparta",
-              "avatar": "database/NPCs/1st years female/Deianeira of Sparta/avatar.png",
-              "image": "database/NPCs/1st years female/Deianeira of Sparta/image.png",
-              "info": "Place of Origin:\n●\tSparta\n\nMagic:\n●\tProtection\n\nStrengths:\n+\tMight\n+\tFortitude\n+\tWill\n\nWeaknesses:\n-\tPoor\n-\tIntelligence\n-\tSocial\n\nBehavior:\n●\tFiercely competitive, especially in footraces.\n●\tCan be harsh with words, unaccustomed to gentler communication.\n●\tDeeply loyal to her few close friends.\n●\tTrains with unwavering discipline.\n●\tRespects strength and determination in others.\n\nFamily:\n●\tFather Therimachus (drill instructor)\n●\tMother Eudoxia (disciplinarian, trains young Spartan girls)"
-            },
-            {
-              "name": "Elpis of Thessaloniki",
-              "avatar": "database/NPCs/1st years female/Elpis of Thessaloniki/avatar.png",
-              "image": "database/NPCs/1st years female/Elpis of Thessaloniki/image.png",
-              "info": "Place of Origin:\n●\tThessaloniki (powerful militaristic city-state growing increasingly critical of Athenian rule)\n\nMagic:\n●\tInfluence\n●\tPrescience\n\nStrengths:\n+\tPerception\n+\tWill\n+\tPersuasion\n+\tDeception\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tWears a pin with a hawk emblem—symbol of Thessaloniki’s rising military faction.\n●\tNever raises her voice; her calmness unnerves those expecting more emotional reactions.\n\nFamily:\n●\tFather Megakles (high-ranking Thessalonikan general, vocal critic of Athens, preparing for future independence)\n●\tMother Lysandra (former academy student, expelled for insubordination; now a respected instructor in Thessaloniki’s military school)\n●\tCousin Chariton (graduate of the Academy, currently serving in the Thessalonikan military; influential and protective of Elpis)"
-            },
-            {
-              "name": "Erispe of Thebes",
-              "avatar": "database/NPCs/1st years female/Erispe of Thebes/avatar.png",
-              "image": "database/NPCs/1st years female/Erispe of Thebes/image.png",
-              "info": "Place of Origin:\n●\tThebes\n\nMagic:\n●\tEnergy\n\nStrengths:\n+\tMight\n+\tFortitude\n+\tPerception\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tResourceful, learned to make do with limited means.\n●\tExcellent at improvising solutions in tense situations.\n●\tWorks harder than most to prove herself.\n●\tHumble and grateful for opportunities.\n●\tDetermined to support her family through her success.\n\nFamily:\n●\tFather Agesilaus (stonemason, injured in a quarry collapse)\n●\tMother Phoebe (servant at a noble house)"
-            },
-            {
-              "name": "Euanthe of Aeolia",
-              "avatar": "database/NPCs/1st years female/Euanthe of Aeolia/avatar.png",
-              "image": "database/NPCs/1st years female/Euanthe of Aeolia/image.png",
-              "info": "Place of Origin:\n●\tAeolia (an island chain famed for cultural exchange)\n\nMagic:\n●\tInfluence\n●\tAlteration\n\nStrengths:\n+\tWealthy\n+\tLearning\n+\tDeception\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tEffervescent personality, thrives in social gatherings.\n●\tSkilled at using magic to enhance her performances.\n●\tEnjoys mediating disputes—sees persuasion as an art form.\n●\tSometimes overindulges in attention, leading to jealousy or burnout when the spotlight fades.\n\nFamily:\n●\tFather Glaucus (traveling bard, musician)\n●\tMother Persephone (merchant dealing in perfumes and exotic spices)"
-            },
-            {
-              "name": "Evanthe of Rhodes",
-              "avatar": "database/NPCs/1st years female/Evanthe of Rhodes/avatar.png",
-              "image": "database/NPCs/1st years female/Evanthe of Rhodes/image.png",
-              "info": "Place of Origin:\n●\tRhodes (island known for its Colossus)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tAgility\n+\tPresence\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tIntelligence\n\nBehavior:\n●\tAdventurous, loves sea voyages.\n●\tSharp-eyed, quick reflexes in archery.\n●\tOccasionally impulsive, forging ahead without a plan.\n\nFamily:\n●\tFather Demetrios (shipwright)\n●\tMother Eunike (archer in local militia)\n●\tOlder Brother Galinos (shipwright apprentice, with a knack for sea navigation)\n●\tUncle Sophokles (legendary ship captain, perished in a storm at sea)"
-            },
-            {
-              "name": "Galatea of Troy",
-              "avatar": "database/NPCs/1st years female/Galatea of Troy/avatar.png",
-              "image": "database/NPCs/1st years female/Galatea of Troy/image.png",
-              "info": "Place of Origin:\n●\tTroy (fabled city across the sea)\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tMagic\n+\tLearning\n+\tLogic\n+\tPerception\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tRomantic view of history, often referencing heroic epics.\n●\tHas a sharp mind for strategy, gleaning lessons from Trojan War tales.\n●\tLongs to see alliances formed rather than conflicts repeated.\n●\tEnduring heartbreak over her grandfather’s downfall, fueling a desire to prevent future tragedies.\n\nFamily:\n●\tFather Anchises (trader)\n●\tMother Hecuba (storyteller, keeper of Trojan legends)\n●\tGrandfather Illus (war veteran)"
-            },
-            {
-              "name": "Ianthe of Lesbos",
-              "avatar": "database/NPCs/1st years female/Ianthe of Lesbos/avatar.png",
-              "image": "database/NPCs/1st years female/Ianthe of Lesbos/image.png",
-              "info": "Place of Origin:\n●\tLesbos (a remote, poetic island with a strong bardic and artistic tradition)\n\nMagic:\n●\tCreation\n●\tProtection\n\nStrengths:\n+\tMagic\n+\tWill\n+\tLearning\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tTalks to animals and inanimate objects when nervous, as if they’re friends.\n●\tCarries a small wooden charm made by her grandmother, which she believes brings her luck.\n●\tAlways volunteers to help—even when she has no idea how.\n\nFamily:\n●\tFather Aeschion (wandering healer and village herbalist, kind but poor)\n●\tMother Syra (died in childbirth; Ianthe was raised on stories of her magical talent)\n●\tGrandmother Myrine (village seeress who recognized Ianthe's potential and helped her apply to the Academy)"
-            },
-            {
-              "name": "Iolanthe of Athens",
-              "avatar": "database/NPCs/1st years female/Iolanthe of Athens/avatar.png",
-              "image": "database/NPCs/1st years female/Iolanthe of Athens/image.png",
-              "info": "Place of Origin:\n●\tAthens (hub of philosophy)\n\nMagic:\n●\tAlteration\n●\tInfluence\n\nStrengths:\n+\tWealthy\n+\tLogic\n+\tLearning\n+\tWill\n\nWeaknesses:\n-\tPhysique\n-\tSocial\n\nBehavior:\n●\tPassionate about logic and philosophical discourse.\n●\tMay come across as condescending if she feels others are uninformed.\n●\tEager to prove her intelligence through academic feats.\n●\tUnder chronic stress to surpass both parents and her famous uncle, occasionally leading to insomnia and anxiety attacks.\n\nFamily:\n●\tFather Praxion (statesman, loves debates)\n●\tMother Clea (mathematician, known for geometry treatises)\n●\tUncle Damophilos (renowned mathematician, Clea’s brother)"
-            },
-            {
-              "name": "Kallisto of Delos",
-              "avatar": "database/NPCs/1st years female/Kallisto of Delos/avatar.png",
-              "image": "database/NPCs/1st years female/Kallisto of Delos/image.png",
-              "info": "Place of Origin:\n●\tDelos (a sacred island, associated with art and magic)\n\nMagic:\n●\tPrescience\n●\tInfluence\n●\tCreation\n\nStrengths:\n+\tMagic\n+\tLearning\n+\tWill\n+\tPerception\n\nWeaknesses:\n-\tPhysique\n-\tSocial\n\nBehavior:\n●\tSoft-spoken and introspective, fascinated by ancient texts and magical artifacts.\n●\tOverly self-critical, but fiercely determined when goals align with passions.\n●\tReluctant to confront others, but sharp-witted if pushed.\n\nFamily:\n●\tFather Theron (renowned sculptor)\n●\tMother Eudora (priestess of Apollo)\n●\tOlder Brother Erasmus\n●\tGrandmother Thais (devout priestess of Apollo, deceased from a sudden plague)"
-            },
-            {
-              "name": "Kleio of Byzantium",
-              "avatar": "database/NPCs/1st years female/Kleio of Byzantium/avatar.png",
-              "image": "database/NPCs/1st years female/Kleio of Byzantium/image.png",
-              "info": "Place of Origin:\n●\tByzantium (powerful, wealthy naval city-state, loyal ally of Athens)\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tLogic\n+\tPerception\n+\tDeception\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tElegant, charismatic, and socially adept.\n●\tOutwardly pleasant and helpful to fellow students.\n●\tMasterful at forming connections and building influence.\n●\tHighly competitive, especially in social and academic settings.\n●\tSeeks mentorship from teachers in economics and diplomacy.\n\nFamily:\n●\tFather Alexandros (wealthy merchant-lord, deeply influential in Byzantium's political circles)\n●\tMother Eleonora (patron of the arts)\n●\tOlder Sister Helena (graduate from the Academy of Heroes, now an influential officer in the Athenian navy)"
-            },
-            {
-              "name": "Laodice of Delphi",
-              "avatar": "database/NPCs/1st years female/Laodice of Delphi/avatar.png",
-              "image": "database/NPCs/1st years female/Laodice of Delphi/image.png",
-              "info": "Place of Origin:\n●\tDelphi (site of the Oracle)\n\nMagic:\n●\tPrescience\n●\tEntropy\n\nStrengths:\n+\tMagic\n+\tPerception\n+\tWill\n\nWeaknesses:\n-\tPoor\n-\tPhysique\n-\tSocial\n\nBehavior:\n●\tSpeaks in riddles or vague statements at times.\n●\tCurious about interpretive magic, scrying, and omens.\n●\tSoft-spoken yet authoritative when visions occur.\n●\tBurdened by foreknowledge of potential disasters, she sometimes isolates herself to avoid emotional pain if she can’t prevent them.\n\nFamily:\n●\tFather Phorbas (temple guardian)\n●\tMother Myrtis (assistant to the Oracle)"
-            },
-            {
-              "name": "Livia of Lesbos",
-              "avatar": "database/NPCs/1st years female/Livia of Lesbos/avatar.png",
-              "image": "database/NPCs/1st years female/Livia of Lesbos/image.png",
-              "info": "Place of Origin:\n●\tLesbos\n\nTODO"
-            },
-            {
-              "name": "Melantha of Argos",
-              "avatar": "database/NPCs/1st years female/Melantha of Argos/avatar.png",
-              "image": "database/NPCs/1st years female/Melantha of Argos/image.png",
-              "info": "Place of Origin:\n●\tArgos\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tHums softly to herself when nervous, a habit picked up from her mother.\n●\tKeeps a small journal where she writes poetry inspired by her experiences at the academy.\n●\tBalanced fighter, uses a mix of technique and improvisation.\n●\tHas a melancholic streak, channeling it into music when stressed.\n●\tOften hums or sings to calm herself and allies.\n\nFamily:\n●\tFather Philon (city guard)\n●\tMother Eucharis (musician)Younger sister: Theodora (talented fighter, currently 2nd year student)\n●\tGrandfather Ctesias (revered war hero, died in battle)"
-            },
-            {
-              "name": "Myrine of Euboea",
-              "avatar": "database/NPCs/1st years female/Myrine of Euboea/avatar.png",
-              "image": "database/NPCs/1st years female/Myrine of Euboea/image.png",
-              "info": "Place of Origin:\n●\tEuboea (large island with varied terrain)\n\nMagic:\n●\tMovement\n●\tInfluence\n\nStrengths:\n+\tPersuasion\n+\tAgility\n+\tLearning\n\nWeaknesses:\n-\tPoor\n\nBehavior:\n●\tSkilled at improvising in new environments, quickly assessing people and places.\n●\tLoves swimming and diving, using minor spells to explore underwater.\n●\tFriendly and empathetic, often mediating disputes.\n\nFamily:\n●\tFather Polystratus (fisherman)\n●\tMother Myrto (market vendor)\n●\tOlder brother Phildias (travels with merchant caravans)\n●\tYounger sister Thais (still at home, helping in the family business)\n●\tGrandfather Aganippus (celebrated fisherman who died rescuing sailors from a storm)"
-            },
-            {
-              "name": "Pasithea of Mycenae",
-              "avatar": "database/NPCs/1st years female/Pasithea of Mycenae/avatar.png",
-              "image": "database/NPCs/1st years female/Pasithea of Mycenae/image.png",
-              "info": "Place of Origin:\n●\tMycenae\n\nMagic:\n●\tAlteration\n\nStrengths:\n+\tMight\n+\tFortitude\n\nWeaknesses:\n-\tMagic\n-\tIntelligence\n-\tSocial\n\nBehavior:\n●\tHands-on learner, focuses on physically constructing or repairing gear.\n●\tPrefers direct action over lengthy debate.\n●\tProud of Mycenaean heritage, strongly defends its honor.\n●\tOften found in the forge, practicing metalwork techniques.\n●\tCollects interesting metal scraps and unusual alloys.\n\nFamily:\n●\tFather Astyanax (renowned blacksmith)\n●\tMother Dryope (artisan, crafts ceremonial armor)\n●\tOlder Brother Dorimachus (skilled weaponsmith, died forging a cursed blade for a warlord)"
-            },
-            {
-              "name": "Selene of Attica",
-              "avatar": "database/NPCs/1st years female/Selene of Attica/avatar.png",
-              "image": "database/NPCs/1st years female/Selene of Attica/image.png",
-              "info": "Place of Origin:\n●\tAttica\n\nMagic:\n●\tPrescience\n\nStrengths:\n+\tLearning\n+\tPerception\n\nWeaknesses:\n-\tPhysique\n-\tSocial\n\nBehavior:\n●\tObserves stars at night, sometimes tired during the day.\n●\tIntroverted, but lights up when discussing astronomy.\n●\tSkilled at diagramming constellations and aligning them with magic.\n●\tKeeps detailed astronomical charts and predictions.\n●\tWorks closely with her twin brother on celestial research.\n\nFamily:\n●\tFather Epiktetos (astronomer)\n●\tMother Xanthe (scribes official decrees)\n●\tTwin Brother Perseus (studies astronomy)"
-            },
-            {
-              "name": "Syntyche of Miletus",
-              "avatar": "database/NPCs/1st years female/Syntyche of Miletus/avatar.png",
-              "image": "database/NPCs/1st years female/Syntyche of Miletus/image.png",
-              "info": "Place of Origin:\n●\tMiletus (famed for thinkers and explorers)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tLearning\n+\tPerception\n+\tPersuasion\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tInquisitive, collects maps and foreign trinkets.\n●\tEager to explore, sometimes neglects formal training to gather stories.\n●\tPassionate about cultural exchange and new ideas.\n●\tKeeps a journal of interesting places and cultures.\n●\tEnjoys sharing tales of far-off lands.\n\nFamily:\n●\tFather Phanias (merchant adventurer)\n●\tMother Oenone (cartographer)\n●\tYounger Brother Phileas (inquisitive child, already tinkering with mapmaking)\n●\tAunt Olyssa (explorer, rumored to be lost overseas)"
-            },
-            {
-              "name": "Thalassa of Rhodes",
-              "avatar": "database/NPCs/1st years female/Thalassa of Rhodes/avatar.png",
-              "image": "database/NPCs/1st years female/Thalassa of Rhodes/image.png",
-              "info": "Place of Origin:\n●\tRhodes (prosperous naval city-state famous for its strong maritime tradition)\n\nMagic:\n●\tMovement\n●\tEnergy\n\nStrengths:\n+\tAgility\n+\tFortitude\n+\tMight\n+\tPerception\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tIntelligence\n\nBehavior:\n●\tConfident, outspoken, and rebellious.\n●\tIntensely independent and proud.\n●\tAdventurous and spirited, known for her sharp wit and quick temper.\n●\tDefies overly strict rules but respects those who earn it.\n●\tLoyal to those she respects.\n\nFamily:\n●\tMother Captain Althea (legendary former pirate queen, pardoned, now privateer for Athens)\n●\tFather Unknown (rumored to be a foreign pirate or sailor)\n●\tOlder Brother Dorian (first mate on Althea's ship)"
-            }
-          ]
-        },
-        {
-          "name": "1st years male",
-          "thumbnail": "database/NPCs/1st years male/thumbnail.png",
+          "name": "1. Male 1st-years",
+          "thumbnail": "database/NPCs/1. Male 1st-years/thumbnail.png",
           "items": [
             {
               "name": "Adonis of Thebes",
-              "avatar": "database/NPCs/1st years male/Adonis of Thebes/avatar.png",
-              "image": "database/NPCs/1st years male/Adonis of Thebes/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Adonis of Thebes/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Adonis of Thebes/image.png",
               "info": "Place of Origin:\n●\tThebes\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tIntelligence\n\nBehavior:\n●\tOutgoing and charming, makes friends easily.\n●\tProne to procrastination in academic subjects.\n●\tSkilled with swords, eager to prove himself in tournaments.\n\nFamily:\n●\tFather Eriphus (former city guard member)\n●\tMother Eris (weaver, pragmatic)\n●\tCousin Philon (renowned minstrel)"
             },
             {
               "name": "Alexis of Corinth",
-              "avatar": "database/NPCs/1st years male/Alexis of Corinth/avatar.png",
-              "image": "database/NPCs/1st years male/Alexis of Corinth/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Alexis of Corinth/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Alexis of Corinth/image.png",
               "info": "Place of Origin:\n●\tCorinth\n\nTODO"
             },
             {
               "name": "Andronikos of Elis",
-              "avatar": "database/NPCs/1st years male/Andronikos of Elis/avatar.png",
-              "image": "database/NPCs/1st years male/Andronikos of Elis/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Andronikos of Elis/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Andronikos of Elis/image.png",
               "info": "Place of Origin:\n●\tElis (near Olympia)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tAgility\n+\tMight\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tDriven and disciplined in athletic competitions.\n●\tCompetitive yet helpful, encouraging classmates in training.\n●\tOften trains at dawn to perfect his technique.\n●\tEnjoys discussing strategy and tactics for athletic events.\n●\tPushes himself hard but knows when to rest.\n\nFamily:\n●\tFather Timocreon (Olympic athlete, now a trainer)\n●\tMother Myrrha (farmer)\n●\tYounger Sister Lysimache (aspiring athlete)"
             },
             {
               "name": "Aristaios of Delphi",
-              "avatar": "database/NPCs/1st years male/Aristaios of Delphi/avatar.png",
-              "image": "database/NPCs/1st years male/Aristaios of Delphi/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Aristaios of Delphi/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Aristaios of Delphi/image.png",
               "info": "Place of Origin:\n●\tDelphi (sacred site of oracles)\n\nMagic:\n●\tPrescience\n●\tInfluence\n●\tEnergy\n\nStrengths:\n+\tMagic\n+\tLearning\n+\tWill\n+\tPresence\n\nWeaknesses:\n-\tPoor\n-\tPhysique\n\nBehavior:\n●\tIntrospective and devout, prays before every major decision.\n●\tDriven to prove his skill in oracular magic.\n●\tOccasionally aloof, absorbed in cryptic visions.\n●\tRespectful of religious traditions and sacred spaces.\n●\tKeeps a journal of prophetic dreams and their outcomes.\n\nFamily:\n●\tFather Menecrates (temple official)\n●\tMother Ione (seer, interprets omens)\n●\tMaternal Grandmother Clymene (former high priestess of Delphi, now retired)"
             },
             {
               "name": "Damianos of Thessaloniki",
-              "avatar": "database/NPCs/1st years male/Damianos of Thessaloniki/avatar.png",
-              "image": "database/NPCs/1st years male/Damianos of Thessaloniki/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Damianos of Thessaloniki/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Damianos of Thessaloniki/image.png",
               "info": "Place of Origin:\n●\tThessaloniki (a militaristic and ambitious city-state in the north, known for its cavalry and siege warfare)\n\nMagic:\n●\tInfluence\n●\tEntropy\n\nStrengths:\n+\tWealthy\n+\tLogic\n+\tPerception\n+\tWill\n+\tDeception\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tHighly intelligent and calculating, always thinking several steps ahead.\n●\tPolite and diplomatic in conversation, never raises his voice.\n●\tStudies people's reactions carefully before responding.\n●\tAlways carries a silver coin, flipping it absentmindedly while thinking.\n●\tSkilled at debate and rhetoric.\n\nFamily:\n●\tFather Xanthippos (high-ranking general in the Thessaloniki army)\n●\tMother Lysandra (political advisor)\n●\tOlder Brother Andronikos (disgraced former academy student, expelled in his third year)"
             },
             {
               "name": "Dmetrios of Thebes",
-              "avatar": "database/NPCs/1st years male/Dmetrios of Thebes/avatar.png",
-              "image": "database/NPCs/1st years male/Dmetrios of Thebes/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Dmetrios of Thebes/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Dmetrios of Thebes/image.png",
               "info": "Place of Origin:\n●\tThebes\n\nMagic:\n●\tProtection\n\nStrengths:\n+\tMight\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tPrefers structured schedules and methodical training.\n●\tStubborn once he decides on a goal.\n●\tSkilled in spear techniques, learned from city militia.\n●\tAlienates peers with his rigidity; struggles when forced to act outside meticulous plans.\n\nFamily:\n●\tFather Agathocles (builder)\n●\tMother Diona (scholar of Theban history)\n●\tYounger Sister Pelagia (also studies Theban lore)"
             },
             {
               "name": "Finn of Sparta",
-              "avatar": "database/NPCs/1st years male/Finn of Sparta/avatar.png",
-              "image": "database/NPCs/1st years male/Finn of Sparta/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Finn of Sparta/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Finn of Sparta/image.png",
               "info": "Place of Origin:\n●\tSparta\n\nTODO"
             },
             {
               "name": "Heliodorus of Corinth",
-              "avatar": "database/NPCs/1st years male/Heliodorus of Corinth/avatar.png",
-              "image": "database/NPCs/1st years male/Heliodorus of Corinth/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Heliodorus of Corinth/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Heliodorus of Corinth/image.png",
               "info": "Place of Origin:\n●\tCorinth\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tWealthy\n+\tAgility\n+\tLogic\n+\tPersuasion\n+\tDeception\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tExtroverted and talkative, thrives in social settings.\n●\tAttempts to form genuine bonds beyond just wealth and influence.\n●\tTalented with a bow due to private tutors.\n●\tEnjoys hosting small gatherings for fellow students.\n●\tSometimes withdraws to practice archery alone for clarity.\n\nFamily:\n●\tFather Menelaus (wealthy shipowner)\n●\tMother Anthea (socialite, hosts lavish gatherings)\n●\tElder Sister Eudora (betrothed to a rival shipping family)"
             },
             {
               "name": "Hieronymus of Epidaurus",
-              "avatar": "database/NPCs/1st years male/Hieronymus of Epidaurus/avatar.png",
-              "image": "database/NPCs/1st years male/Hieronymus of Epidaurus/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Hieronymus of Epidaurus/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Hieronymus of Epidaurus/image.png",
               "info": "Place of Origin:\n●\tEpidaurus (renowned for its healing sanctuary)\n\nMagic:\n●\tCreation\n●\tEntropy\n\nStrengths:\n+\tLearning\n+\tWill\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tPolite and gentle, with great empathy for others.\n●\tOften volunteers in the infirmary.\n●\tStudies both healing and combat magic with equal dedication.\n●\tKeeps detailed notes on magical theory and applications.\n●\tQuietly confident in his abilities.\n\nFamily:\n●\tFather Glaucus (physician)\n●\tMother Damiane (priestess of Asclepius)\n●\tBrother Chrysanthus (died of an incurable illness)"
             },
             {
               "name": "Kallias of Delphi",
-              "avatar": "database/NPCs/1st years male/Kallias of Delphi/avatar.png",
-              "image": "database/NPCs/1st years male/Kallias of Delphi/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Kallias of Delphi/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Kallias of Delphi/image.png",
               "info": "Place of Origin:\n●\tDelphi\n\nMagic:\n●\tPrescience\n\nStrengths:\n+\tAgility\n+\tWill\n+\tPresence\n\nWeaknesses:\n-\tPhysical\n\nConnections:\n●\tFather ? (hunter?, missing)\n●\tBrother Nikolaos (hunter?, missing)\n●\tBrother Alexis (musician?)\n●\tSister Leontia (oracle)"
             },
             {
               "name": "Kastor of Argos",
-              "avatar": "database/NPCs/1st years male/Kastor of Argos/avatar.png",
-              "image": "database/NPCs/1st years male/Kastor of Argos/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Kastor of Argos/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Kastor of Argos/image.png",
               "info": "Place of Origin:\n●\tArgos\n\nMagic:\n●\tCreation\n\nStrengths:\n+\tFortitude\n+\tLearning\n+\tWill\n+\tPersuasion\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tCalm and thoughtful, with a strong moral compass.\n●\tStudies both combat strategies and basic herbal medicine.\n●\tPrefers diplomatic solutions, but will fight if necessary.\n●\tFeels torn between soldiering and healing, leading to bouts of self-doubt whenever conflict arises.\n\nFamily:\n●\tFather Peleus (retired soldier, local hero)\n●\tMother Cydippe (healer, known for herbal remedies)\n●\tGrandmother Thais (revered Argive priestess, deceased)"
             },
             {
               "name": "Lambros of Athens",
-              "avatar": "database/NPCs/1st years male/Lambros of Athens/avatar.png",
-              "image": "database/NPCs/1st years male/Lambros of Athens/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Lambros of Athens/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Lambros of Athens/image.png",
               "info": "Place of Origin:\n●\tAthens\n\nMagic:\n●\tEntropy\n\nStrengths:\n+\tMental\n\nWeaknesses:\n-\tSocial\n\nConnections:\n●\tFather Kleandros (politician)\n●\tDoctor Diokleidos (mentor)"
             },
             {
               "name": "Leandros of Mycenae",
-              "avatar": "database/NPCs/1st years male/Leandros of Mycenae/avatar.png",
-              "image": "database/NPCs/1st years male/Leandros of Mycenae/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Leandros of Mycenae/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Leandros of Mycenae/image.png",
               "info": "Place of Origin:\n●\tMycenae (known for its warriors and fortifications)\n\nMagic:\n●\tProtection\n\nStrengths:\n+\tWealthy\n+\tMight\n+\tFortitude\n+\tPresence\n\nWeaknesses:\n-\tIntelligence\n-\tMagic\n\nBehavior:\n●\tNaturally competitive and determined to prove himself in physical challenges.\n●\tStruggles with academics and magic, often deflecting his frustration with humor.\n●\tFierce loyalty to friends but quick to anger when honor is questioned.\n●\tRegularly polishes his shield before training sessions.\n●\tCan often be found helping other students with physical training.\n\nFamily:\n●\tFather Damocles (wealthy merchant) – A demanding man, focused on expanding his trade empire.\n●\tMother Cleo (former soldier, now a homemaker) – Stern but caring.\n●\tYounger sister Phaedra – Leandros adores her and feels protective of her.\n●\tUncle Timon (former Academy graduate, deceased) – Died defending Mycenae."
             },
             {
               "name": "Lysandros of Crete",
-              "avatar": "database/NPCs/1st years male/Lysandros of Crete/avatar.png",
-              "image": "database/NPCs/1st years male/Lysandros of Crete/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Lysandros of Crete/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Lysandros of Crete/image.png",
               "info": "Place of Origin:\n●\tCrete (legend of labyrinths)\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPerception\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tAgile in combat, weaving acrobatics into moves.\n●\tLoves riddles, labyrinths, and illusions.\n●\tKeeps a personal notebook of puzzle ideas.\n●\tOften sketches maze patterns in margins of notes.\n●\tEnjoys challenging others to puzzle-solving competitions.\n\nFamily:\n●\tFather Minos (architect rumored to design labyrinths)\n●\tMother Phoenissa (acrobat, traveling performer)\n●\tAunt Thoe (acclaimed acrobat, vanished in a labyrinth)"
             },
             {
               "name": "Maxmilian of Byzantium",
-              "avatar": "database/NPCs/1st years male/Maxmilian of Byzantium/avatar.png",
-              "image": "database/NPCs/1st years male/Maxmilian of Byzantium/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Maxmilian of Byzantium/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Maxmilian of Byzantium/image.png",
               "info": "Place of Origin:\n●\tByzantium\n\nTODO"
             },
             {
               "name": "Nestor of Sparta",
-              "avatar": "database/NPCs/1st years male/Nestor of Sparta/avatar.png",
-              "image": "database/NPCs/1st years male/Nestor of Sparta/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Nestor of Sparta/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Nestor of Sparta/image.png",
               "info": "Place of Origin:\n●\tSparta (a militaristic city-state)\n\nMagic:\n●\tMovement\n●\tProtection\n\nStrengths:\n+\tMight\n+\tFortitude\n+\tWill\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tSocial\n\nBehavior:\n●\tDisciplined and serious, but surprisingly empathetic toward weaker students.\n●\tReserved in social settings but opens up during training.\n●\tQuestions unjust authority and seeks to understand the purpose behind orders.\n●\tTrains earlier than everyone else, always first in the training grounds.\n\nFamily:\n●\tFather Archilochus (Spartan general)\n●\tMother Thalia (retired warrior)\n●\tGrandfather Leonidas (legendary Spartan captain, died in glorious combat)"
             },
             {
               "name": "Orestes of Pylos",
-              "avatar": "database/NPCs/1st years male/Orestes of Pylos/avatar.png",
-              "image": "database/NPCs/1st years male/Orestes of Pylos/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Orestes of Pylos/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Orestes of Pylos/image.png",
               "info": "Place of Origin:\n●\tPylos (coastal region)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tPerception\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tAdventurous, dreams of distant voyages.\n●\tPrefers using a trident in combat, reminiscent of sea gods.\n●\tFriendly, bonds quickly with anyone who loves the sea.\n●\tExcellent at reading weather patterns and navigation.\n●\tTells entertaining stories of his family's sailing adventures.\n\nFamily:\n●\tFather Strophius (ship captain)\n●\tMother Ariadne (navigator)\n●\tOlder Cousin Melanthios (naval officer, died heroically defending cargo ships from pirates)"
             },
             {
               "name": "Pericles of Ephesus",
-              "avatar": "database/NPCs/1st years male/Pericles of Ephesus/avatar.png",
-              "image": "database/NPCs/1st years male/Pericles of Ephesus/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Pericles of Ephesus/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Pericles of Ephesus/image.png",
               "info": "Place of Origin:\n●\tEphesus\n\nMagic:\n●\tProtection\n\nStrengths:\n+\tWealthy\n+\tMagic\n+\tLearning\n+\tPerception\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tPolite, diplomatic, navigates diverse social circles well.\n●\tStudious about foreign customs and languages.\n●\tKnows protective spells taught at Athena temple.\n●\tWithdrawn and grieving his grandfather; misses chances to bond with friends, regrets lost opportunities.\n\nFamily:\n●\tFather Iason (merchant dealing in exotic goods)\n●\tMother Doris (minor priestess of Athena)Maternal\n●\tGrandfather Ctesias (respected priest of Athena, recently deceased)"
             },
             {
               "name": "Philemon of Corinth",
-              "avatar": "database/NPCs/1st years male/Philemon of Corinth/avatar.png",
-              "image": "database/NPCs/1st years male/Philemon of Corinth/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Philemon of Corinth/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Philemon of Corinth/image.png",
               "info": "Place of Origin:\n●\tCorinth\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tWealthy\n+\tLogic\n+\tDeception\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tSkilled negotiator, can talk his way out of trouble.\n●\tEnjoys painting magical creatures.\n●\tSometimes overestimates his own charm.\n●\tTorn between commerce and art, doubts he’ll ever match Metrodora’s success, triggering creative blocks.\n\nFamily:\n●\tFather Orthaeus (merchant of fine textiles)\n●\tMother Thelxinoe (painter, creative and free-spirited)\n●\tCousin Metrodora (court painter for a distant king)"
             },
             {
               "name": "Phrixus of Phocis",
-              "avatar": "database/NPCs/1st years male/Phrixus of Phocis/avatar.png",
-              "image": "database/NPCs/1st years male/Phrixus of Phocis/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Phrixus of Phocis/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Phrixus of Phocis/image.png",
               "info": "Place of Origin:\n●\tPhocis\n\nMagic:\n●\tPrescience\n\nStrengths:\n+\tAgility\n+\tPerception\n\nWeaknesses:\n-\tPoor\n-\tSocial\n\nBehavior:\n●\tConfident in wilderness survival and archery.\n●\tCurious about omens and prophecies.\n●\tQuestions fate versus free will in philosophical discussions.\n●\tExcellent tracker, often finds lost items for classmates.\n●\tPrefers outdoor training to indoor lectures.\n\nFamily:\n●\tFather Xenarchus (hunter and tracker)\n●\tMother Evanthia (oracle's assistant)\n●\tUncle Dryas (famed tracker, disappeared in the mountains)"
             },
             {
               "name": "Scipion of Byzantium",
-              "avatar": "database/NPCs/1st years male/Scipion of Byzantium/avatar.png",
-              "image": "database/NPCs/1st years male/Scipion of Byzantium/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Scipion of Byzantium/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Scipion of Byzantium/image.png",
               "info": "Place of Origin:\n●\tByzantium\n\nTODO"
             },
             {
               "name": "Theron of Mytilene",
-              "avatar": "database/NPCs/1st years male/Theron of Mytilene/avatar.png",
-              "image": "database/NPCs/1st years male/Theron of Mytilene/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Theron of Mytilene/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Theron of Mytilene/image.png",
               "info": "Place of Origin:\n●\tMytilene (on the island of Lesbos)\n\nMagic:\n●\tPrescience\n●\tEnergy\n\nStrengths:\n+\tAgility\n+\tLearning\n+\tPerception\n\nWeaknesses:\n-\tPoor\n-\tSocial\n\nBehavior:\n●\tQuiet observer, absorbing knowledge before acting.\n●\tHas a passion for poetry but shares it only with close friends.\n●\tPrefers to train at dawn by the waterfront.\n●\tOften contemplative and introspective.\n●\tExcellent listener, offers thoughtful advice when asked.\n\nFamily:\n●\tFather Sosicles (fisherman)\n●\tMother Leda (poet, known for her odes)\n●\tGrandfather Eudromos (legendary fisherman, died at sea)"
             },
             {
               "name": "Xanthos of Attica",
-              "avatar": "database/NPCs/1st years male/Xanthos of Attica/avatar.png",
-              "image": "database/NPCs/1st years male/Xanthos of Attica/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Xanthos of Attica/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Xanthos of Attica/image.png",
               "info": "Place of Origin:\n●\tAttica\n\nMagic:\n●\tEnergy\n\nStrengths:\n+\tMight\n+\tLearning\n+\tLogic\n+\tPersuasion\n+\tDeception\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tBookish and well-read, fond of quoting philosophers.\n●\tOccasionally pedantic, corrects classmates’ grammar.\n●\tPractices debate techniques in spare time.\n●\tOvercompensates with constant pedantry, causing social friction and bouts of anger when his knowledge is doubted.\n\nFamily:\n●\tFather Demophon (scribe)\n●\tMother Elpis (public speaker at the agora)\n●\tCousin Sostratus (celebrated poet)"
             },
             {
               "name": "Yanis of Corinth",
-              "avatar": "database/NPCs/1st years male/Yanis of Corinth/avatar.png",
-              "image": "database/NPCs/1st years male/Yanis of Corinth/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Yanis of Corinth/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Yanis of Corinth/image.png",
               "info": "Place of Origin:\n●\tCorinth\n\nTODO"
             },
             {
               "name": "Zopyros of Miletus",
-              "avatar": "database/NPCs/1st years male/Zopyros of Miletus/avatar.png",
-              "image": "database/NPCs/1st years male/Zopyros of Miletus/image.png",
+              "avatar": "database/NPCs/1. Male 1st-years/Zopyros of Miletus/avatar.png",
+              "image": "database/NPCs/1. Male 1st-years/Zopyros of Miletus/image.png",
               "info": "Place of Origin:\n●\tMiletus (renowned for exploration and scholarship)\n\nMagic:\n●\tEnergy\n●\tAlteration\n●\tMovement\n\nStrengths:\n+\tMagic\n+\tLogic\n+\tLearning\n+\tPerception\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tAdventurous and curious, often tries to combine magic with new inventions.\n●\tSpeaks multiple languages from traveling abroad, sometimes mixing them up in conversation.\n●\tHas a bold streak, testing unproven spells with brash confidence.\n\nFamily:\n●\tFather Hephaestion (philosopher and researcher)\n●\tMother Thais (navigator, widely traveled)\n●\tOlder Brother Eurymachus (renowned cartographer, missing on an expedition)"
             }
           ]
         },
         {
-          "name": "Other",
-          "thumbnail": "database/NPCs/Other/thumbnail.png",
+          "name": "2. Female 1st-years",
+          "thumbnail": "database/NPCs/2. Female 1st-years/thumbnail.png",
           "items": [
             {
-              "name": "2nd year Theodora",
-              "avatar": "database/NPCs/Other/2nd year Theodora/avatar.png",
-              "image": "database/NPCs/Other/2nd year Theodora/image.png",
-              "info": "Place of Origin:\n●\tArgos\n\nRole:\n●\tGenius 2nd year student\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tFortitude\n+\tLearning\n+\tPerception\n\nWeaknesses:\n-\tSocial\n\nBehavior:\n●\tAppears confident and decisive, thriving in competitive and tactical settings.\n●\tProtective of those she cares about, but quick to confront perceived injustice.\n●\tTends to isolate herself emotionally, hiding her feelings behind a mask of determination.\n\nFamily:\n●\tSister Melantha (Healer of the Academy)\n"
+              "name": "Acantha of Phocis",
+              "avatar": "database/NPCs/2. Female 1st-years/Acantha of Phocis/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Acantha of Phocis/image.png",
+              "info": "Place of Origin:\n●\tPhocis\n\nMagic:\n●\tCreation\n\nStrengths:\n+\tFortitude\n+\tMight\n+\tPerception\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tExcellent mountaineer, unfazed by tough terrain.\n●\tProtective of classmates who struggle physically.\n●\tStrives to keep a balance between martial and healing arts.\n●\tVengeful streak after her uncle’s death, pushing her to hunt dangerous beasts, sometimes recklessly.\n\nFamily:\n●\tFather Eryx (veteran soldier, hunts in the mountains)\n●\tMother Cilissa (herbalist)\n●\tOlder Sister Nerine (studying medicine abroad, known for her unwavering kindness)\n●\tUncle Cadmos (famous mountain ranger, killed by a monster while on patrol)."
             },
             {
-              "name": "Apprentice Calyce",
-              "avatar": "database/NPCs/Other/Apprentice Calyce/avatar.png",
-              "image": "database/NPCs/Other/Apprentice Calyce/image.png",
-              "info": "Place of Origin:\n●\tArgos\n\nRole:\n●\tApprentice Healer\n\nMagic:\n●\tCreation\n●\tProtection\n\nStrengths:\n+\tLearning\n+\tPerception\n+\tPresence\n+\tMagic\n\nWeaknesses:\n-\tPoor\n-\tPhysique\n\nBehavior:\n●\tCurious and empathetic, always eager to learn and improve her skills.\n●\tOften overworks herself in her studies, forgetting to rest or eat when focused.\n●\tAt only 16 years old, is the youngest person living at the academy.\n\nFamily:\n●\tGrandmother Eudokia (Healer of the Academy)\n"
+              "name": "Alathea of Delphi",
+              "avatar": "database/NPCs/2. Female 1st-years/Alathea of Delphi/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Alathea of Delphi/image.png",
+              "info": "Place of Origin:\n●\tDelphi\n\nTODO"
+            },
+            {
+              "name": "Ariadne of Knossos",
+              "avatar": "database/NPCs/2. Female 1st-years/Ariadne of Knossos/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Ariadne of Knossos/image.png",
+              "info": "Place of Origin:\n●\tKnossos (Crete)\n\nMagic:\n●\tMovement\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tSkilled dancer, weaving footwork into combat style.\n●\tThrives on solving puzzles, reminiscent of labyrinth traditions.\n●\tGenerally cheerful, but can be single-minded when focused.\n●\tOften practices dance routines in courtyard spaces.\n●\tLoves sharing Minoan myths and legends.\n\nFamily:\n●\tFather Icarion (labyrinth overseer)\n●\tMother Arisbe (historian, loves Minoan lore)\n●\tYounger Sister Korinna (apprentice dancer, wants to surpass Ariadne's achievements)"
+            },
+            {
+              "name": "Chloe of Corinth",
+              "avatar": "database/NPCs/2. Female 1st-years/Chloe of Corinth/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Chloe of Corinth/image.png",
+              "info": "Place of Origin:\n●\tCorinth\n\nMagic:\n●\tAlteration\n\nStrengths:\n+\tWealthy\n+\tLearning\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tMusical talent, occasionally performs at academy gatherings.\n●\tSociable and easygoing, bridging gaps between different cliques.\n●\tPrefers enchanting audiences to real confrontation.\n●\tPractices her performances diligently.\n●\tEncourages others to explore their creative sides.\n\nFamily:\n●\tFather Timon (renowned sculptor)\n●\tMother Anastasia (gifted singer)\n●\tOlder Sister Eupheme (talented poet)"
+            },
+            {
+              "name": "Chryseis of Thessaly",
+              "avatar": "database/NPCs/2. Female 1st-years/Chryseis of Thessaly/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Chryseis of Thessaly/image.png",
+              "info": "Place of Origin:\n●\tThessaly (known for horse-breeding)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tMight\n+\tAgility\n+\tPerception\n\nWeaknesses:\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tConfident in riding and mounted tactics.\n●\tStrong-willed, can be stubborn in arguments.\n●\tDeep bond with animals, especially horses.\n●\tFeels pressured to live up to her grandmother’s legendary feats, resulting in occasional reckless decisions to prove herself.\n\nFamily:\n●\tFather Periphas (cavalry officer)\n●\tMother Menodice (horse trainer)\n●\tGrandmother Kleonike (former champion cavalry rider, died peacefully in her sleep, leaving behind a storied legacy)"
+            },
+            {
+              "name": "Damiane of Syracuse",
+              "avatar": "database/NPCs/2. Female 1st-years/Damiane of Syracuse/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Damiane of Syracuse/image.png",
+              "info": "Place of Origin:\n●\tSyracuse (a major Greek city on the island of Sicily)\n\nMagic:\n●\tEnergy\n●\tMovement\n●\tCreation\n\nStrengths:\n+\tMagic\n+\tLogic\n+\tLearning\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tBold and passionate, prone to emotional outbursts.\n●\tSeeks to master elemental forces responsibly.\n●\tIncredibly curious about distant lands and their magical practices.\n●\tEnthusiastic when discussing magical theory.\n●\tPractices careful control of her considerable power.\n\nFamily:\n●\tFather Ariston (philosopher and tutor)\n●\tMother Isidora (elementalist)\n●\tMaternal Aunt Theodora (famed battle-mage of Syracuse, missing since a volcanic eruption)"
+            },
+            {
+              "name": "Daphne of Larissa",
+              "avatar": "database/NPCs/2. Female 1st-years/Daphne of Larissa/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Daphne of Larissa/image.png",
+              "info": "Place of Origin:\n●\tLarissa (noted for strategic military importance and political tension)\n\nMagic:\n●\tPrescience\n●\tProtection\n\nStrengths:\n+\tMagic\n+\tLogic\n+\tPerception\n+\tLearning\n+\tDeception\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tHighly intelligent, reserved, and calculating.\n●\tRarely shows genuine emotions, maintaining a disciplined composure.\n●\tValues strategy, logic, and results above all else.\n●\tStudies battle tactics and historical campaigns extensively.\n●\tPrefers planning and preparation over improvisation.\n\nFamily:\n●\tFather General Leonides (exiled due to accusations of military failure)\n●\tMother Callista (respected strategist and advisor)\n●\tYounger Brother Lysias (determined to restore the family's honor through politics)"
+            },
+            {
+              "name": "Deianeira of Sparta",
+              "avatar": "database/NPCs/2. Female 1st-years/Deianeira of Sparta/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Deianeira of Sparta/image.png",
+              "info": "Place of Origin:\n●\tSparta\n\nMagic:\n●\tProtection\n\nStrengths:\n+\tMight\n+\tFortitude\n+\tWill\n\nWeaknesses:\n-\tPoor\n-\tIntelligence\n-\tSocial\n\nBehavior:\n●\tFiercely competitive, especially in footraces.\n●\tCan be harsh with words, unaccustomed to gentler communication.\n●\tDeeply loyal to her few close friends.\n●\tTrains with unwavering discipline.\n●\tRespects strength and determination in others.\n\nFamily:\n●\tFather Therimachus (drill instructor)\n●\tMother Eudoxia (disciplinarian, trains young Spartan girls)"
+            },
+            {
+              "name": "Elpis of Thessaloniki",
+              "avatar": "database/NPCs/2. Female 1st-years/Elpis of Thessaloniki/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Elpis of Thessaloniki/image.png",
+              "info": "Place of Origin:\n●\tThessaloniki (powerful militaristic city-state growing increasingly critical of Athenian rule)\n\nMagic:\n●\tInfluence\n●\tPrescience\n\nStrengths:\n+\tPerception\n+\tWill\n+\tPersuasion\n+\tDeception\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tWears a pin with a hawk emblem—symbol of Thessaloniki’s rising military faction.\n●\tNever raises her voice; her calmness unnerves those expecting more emotional reactions.\n\nFamily:\n●\tFather Megakles (high-ranking Thessalonikan general, vocal critic of Athens, preparing for future independence)\n●\tMother Lysandra (former academy student, expelled for insubordination; now a respected instructor in Thessaloniki’s military school)\n●\tCousin Chariton (graduate of the Academy, currently serving in the Thessalonikan military; influential and protective of Elpis)"
+            },
+            {
+              "name": "Erispe of Thebes",
+              "avatar": "database/NPCs/2. Female 1st-years/Erispe of Thebes/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Erispe of Thebes/image.png",
+              "info": "Place of Origin:\n●\tThebes\n\nMagic:\n●\tEnergy\n\nStrengths:\n+\tMight\n+\tFortitude\n+\tPerception\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tResourceful, learned to make do with limited means.\n●\tExcellent at improvising solutions in tense situations.\n●\tWorks harder than most to prove herself.\n●\tHumble and grateful for opportunities.\n●\tDetermined to support her family through her success.\n\nFamily:\n●\tFather Agesilaus (stonemason, injured in a quarry collapse)\n●\tMother Phoebe (servant at a noble house)"
+            },
+            {
+              "name": "Euanthe of Aeolia",
+              "avatar": "database/NPCs/2. Female 1st-years/Euanthe of Aeolia/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Euanthe of Aeolia/image.png",
+              "info": "Place of Origin:\n●\tAeolia (an island chain famed for cultural exchange)\n\nMagic:\n●\tInfluence\n●\tAlteration\n\nStrengths:\n+\tWealthy\n+\tLearning\n+\tDeception\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tEffervescent personality, thrives in social gatherings.\n●\tSkilled at using magic to enhance her performances.\n●\tEnjoys mediating disputes—sees persuasion as an art form.\n●\tSometimes overindulges in attention, leading to jealousy or burnout when the spotlight fades.\n\nFamily:\n●\tFather Glaucus (traveling bard, musician)\n●\tMother Persephone (merchant dealing in perfumes and exotic spices)"
+            },
+            {
+              "name": "Evanthe of Rhodes",
+              "avatar": "database/NPCs/2. Female 1st-years/Evanthe of Rhodes/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Evanthe of Rhodes/image.png",
+              "info": "Place of Origin:\n●\tRhodes (island known for its Colossus)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tAgility\n+\tPresence\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tIntelligence\n\nBehavior:\n●\tAdventurous, loves sea voyages.\n●\tSharp-eyed, quick reflexes in archery.\n●\tOccasionally impulsive, forging ahead without a plan.\n\nFamily:\n●\tFather Demetrios (shipwright)\n●\tMother Eunike (archer in local militia)\n●\tOlder Brother Galinos (shipwright apprentice, with a knack for sea navigation)\n●\tUncle Sophokles (legendary ship captain, perished in a storm at sea)"
+            },
+            {
+              "name": "Galatea of Troy",
+              "avatar": "database/NPCs/2. Female 1st-years/Galatea of Troy/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Galatea of Troy/image.png",
+              "info": "Place of Origin:\n●\tTroy (fabled city across the sea)\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tMagic\n+\tLearning\n+\tLogic\n+\tPerception\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tRomantic view of history, often referencing heroic epics.\n●\tHas a sharp mind for strategy, gleaning lessons from Trojan War tales.\n●\tLongs to see alliances formed rather than conflicts repeated.\n●\tEnduring heartbreak over her grandfather’s downfall, fueling a desire to prevent future tragedies.\n\nFamily:\n●\tFather Anchises (trader)\n●\tMother Hecuba (storyteller, keeper of Trojan legends)\n●\tGrandfather Illus (war veteran)"
+            },
+            {
+              "name": "Ianthe of Lesbos",
+              "avatar": "database/NPCs/2. Female 1st-years/Ianthe of Lesbos/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Ianthe of Lesbos/image.png",
+              "info": "Place of Origin:\n●\tLesbos (a remote, poetic island with a strong bardic and artistic tradition)\n\nMagic:\n●\tCreation\n●\tProtection\n\nStrengths:\n+\tMagic\n+\tWill\n+\tLearning\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tTalks to animals and inanimate objects when nervous, as if they’re friends.\n●\tCarries a small wooden charm made by her grandmother, which she believes brings her luck.\n●\tAlways volunteers to help—even when she has no idea how.\n\nFamily:\n●\tFather Aeschion (wandering healer and village herbalist, kind but poor)\n●\tMother Syra (died in childbirth; Ianthe was raised on stories of her magical talent)\n●\tGrandmother Myrine (village seeress who recognized Ianthe's potential and helped her apply to the Academy)"
+            },
+            {
+              "name": "Iolanthe of Athens",
+              "avatar": "database/NPCs/2. Female 1st-years/Iolanthe of Athens/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Iolanthe of Athens/image.png",
+              "info": "Place of Origin:\n●\tAthens (hub of philosophy)\n\nMagic:\n●\tAlteration\n●\tInfluence\n\nStrengths:\n+\tWealthy\n+\tLogic\n+\tLearning\n+\tWill\n\nWeaknesses:\n-\tPhysique\n-\tSocial\n\nBehavior:\n●\tPassionate about logic and philosophical discourse.\n●\tMay come across as condescending if she feels others are uninformed.\n●\tEager to prove her intelligence through academic feats.\n●\tUnder chronic stress to surpass both parents and her famous uncle, occasionally leading to insomnia and anxiety attacks.\n\nFamily:\n●\tFather Praxion (statesman, loves debates)\n●\tMother Clea (mathematician, known for geometry treatises)\n●\tUncle Damophilos (renowned mathematician, Clea’s brother)"
+            },
+            {
+              "name": "Kallisto of Delos",
+              "avatar": "database/NPCs/2. Female 1st-years/Kallisto of Delos/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Kallisto of Delos/image.png",
+              "info": "Place of Origin:\n●\tDelos (a sacred island, associated with art and magic)\n\nMagic:\n●\tPrescience\n●\tInfluence\n●\tCreation\n\nStrengths:\n+\tMagic\n+\tLearning\n+\tWill\n+\tPerception\n\nWeaknesses:\n-\tPhysique\n-\tSocial\n\nBehavior:\n●\tSoft-spoken and introspective, fascinated by ancient texts and magical artifacts.\n●\tOverly self-critical, but fiercely determined when goals align with passions.\n●\tReluctant to confront others, but sharp-witted if pushed.\n\nFamily:\n●\tFather Theron (renowned sculptor)\n●\tMother Eudora (priestess of Apollo)\n●\tOlder Brother Erasmus\n●\tGrandmother Thais (devout priestess of Apollo, deceased from a sudden plague)"
+            },
+            {
+              "name": "Kleio of Byzantium",
+              "avatar": "database/NPCs/2. Female 1st-years/Kleio of Byzantium/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Kleio of Byzantium/image.png",
+              "info": "Place of Origin:\n●\tByzantium (powerful, wealthy naval city-state, loyal ally of Athens)\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tLogic\n+\tPerception\n+\tDeception\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tElegant, charismatic, and socially adept.\n●\tOutwardly pleasant and helpful to fellow students.\n●\tMasterful at forming connections and building influence.\n●\tHighly competitive, especially in social and academic settings.\n●\tSeeks mentorship from teachers in economics and diplomacy.\n\nFamily:\n●\tFather Alexandros (wealthy merchant-lord, deeply influential in Byzantium's political circles)\n●\tMother Eleonora (patron of the arts)\n●\tOlder Sister Helena (graduate from the Academy of Heroes, now an influential officer in the Athenian navy)"
+            },
+            {
+              "name": "Laodice of Delphi",
+              "avatar": "database/NPCs/2. Female 1st-years/Laodice of Delphi/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Laodice of Delphi/image.png",
+              "info": "Place of Origin:\n●\tDelphi (site of the Oracle)\n\nMagic:\n●\tPrescience\n●\tEntropy\n\nStrengths:\n+\tMagic\n+\tPerception\n+\tWill\n\nWeaknesses:\n-\tPoor\n-\tPhysique\n-\tSocial\n\nBehavior:\n●\tSpeaks in riddles or vague statements at times.\n●\tCurious about interpretive magic, scrying, and omens.\n●\tSoft-spoken yet authoritative when visions occur.\n●\tBurdened by foreknowledge of potential disasters, she sometimes isolates herself to avoid emotional pain if she can’t prevent them.\n\nFamily:\n●\tFather Phorbas (temple guardian)\n●\tMother Myrtis (assistant to the Oracle)"
+            },
+            {
+              "name": "Livia of Lesbos",
+              "avatar": "database/NPCs/2. Female 1st-years/Livia of Lesbos/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Livia of Lesbos/image.png",
+              "info": "Place of Origin:\n●\tLesbos\n\nTODO"
+            },
+            {
+              "name": "Melantha of Argos",
+              "avatar": "database/NPCs/2. Female 1st-years/Melantha of Argos/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Melantha of Argos/image.png",
+              "info": "Place of Origin:\n●\tArgos\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tPoor\n-\tMagic\n\nBehavior:\n●\tHums softly to herself when nervous, a habit picked up from her mother.\n●\tKeeps a small journal where she writes poetry inspired by her experiences at the academy.\n●\tBalanced fighter, uses a mix of technique and improvisation.\n●\tHas a melancholic streak, channeling it into music when stressed.\n●\tOften hums or sings to calm herself and allies.\n\nFamily:\n●\tFather Philon (city guard)\n●\tMother Eucharis (musician)Younger sister: Theodora (talented fighter, currently 2nd year student)\n●\tGrandfather Ctesias (revered war hero, died in battle)"
+            },
+            {
+              "name": "Myrine of Euboea",
+              "avatar": "database/NPCs/2. Female 1st-years/Myrine of Euboea/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Myrine of Euboea/image.png",
+              "info": "Place of Origin:\n●\tEuboea (large island with varied terrain)\n\nMagic:\n●\tMovement\n●\tInfluence\n\nStrengths:\n+\tPersuasion\n+\tAgility\n+\tLearning\n\nWeaknesses:\n-\tPoor\n\nBehavior:\n●\tSkilled at improvising in new environments, quickly assessing people and places.\n●\tLoves swimming and diving, using minor spells to explore underwater.\n●\tFriendly and empathetic, often mediating disputes.\n\nFamily:\n●\tFather Polystratus (fisherman)\n●\tMother Myrto (market vendor)\n●\tOlder brother Phildias (travels with merchant caravans)\n●\tYounger sister Thais (still at home, helping in the family business)\n●\tGrandfather Aganippus (celebrated fisherman who died rescuing sailors from a storm)"
+            },
+            {
+              "name": "Pasithea of Mycenae",
+              "avatar": "database/NPCs/2. Female 1st-years/Pasithea of Mycenae/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Pasithea of Mycenae/image.png",
+              "info": "Place of Origin:\n●\tMycenae\n\nMagic:\n●\tAlteration\n\nStrengths:\n+\tMight\n+\tFortitude\n\nWeaknesses:\n-\tMagic\n-\tIntelligence\n-\tSocial\n\nBehavior:\n●\tHands-on learner, focuses on physically constructing or repairing gear.\n●\tPrefers direct action over lengthy debate.\n●\tProud of Mycenaean heritage, strongly defends its honor.\n●\tOften found in the forge, practicing metalwork techniques.\n●\tCollects interesting metal scraps and unusual alloys.\n\nFamily:\n●\tFather Astyanax (renowned blacksmith)\n●\tMother Dryope (artisan, crafts ceremonial armor)\n●\tOlder Brother Dorimachus (skilled weaponsmith, died forging a cursed blade for a warlord)"
+            },
+            {
+              "name": "Selene of Attica",
+              "avatar": "database/NPCs/2. Female 1st-years/Selene of Attica/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Selene of Attica/image.png",
+              "info": "Place of Origin:\n●\tAttica\n\nMagic:\n●\tPrescience\n\nStrengths:\n+\tLearning\n+\tPerception\n\nWeaknesses:\n-\tPhysique\n-\tSocial\n\nBehavior:\n●\tObserves stars at night, sometimes tired during the day.\n●\tIntroverted, but lights up when discussing astronomy.\n●\tSkilled at diagramming constellations and aligning them with magic.\n●\tKeeps detailed astronomical charts and predictions.\n●\tWorks closely with her twin brother on celestial research.\n\nFamily:\n●\tFather Epiktetos (astronomer)\n●\tMother Xanthe (scribes official decrees)\n●\tTwin Brother Perseus (studies astronomy)"
+            },
+            {
+              "name": "Syntyche of Miletus",
+              "avatar": "database/NPCs/2. Female 1st-years/Syntyche of Miletus/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Syntyche of Miletus/image.png",
+              "info": "Place of Origin:\n●\tMiletus (famed for thinkers and explorers)\n\nMagic:\n●\tMovement\n\nStrengths:\n+\tLearning\n+\tPerception\n+\tPersuasion\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tInquisitive, collects maps and foreign trinkets.\n●\tEager to explore, sometimes neglects formal training to gather stories.\n●\tPassionate about cultural exchange and new ideas.\n●\tKeeps a journal of interesting places and cultures.\n●\tEnjoys sharing tales of far-off lands.\n\nFamily:\n●\tFather Phanias (merchant adventurer)\n●\tMother Oenone (cartographer)\n●\tYounger Brother Phileas (inquisitive child, already tinkering with mapmaking)\n●\tAunt Olyssa (explorer, rumored to be lost overseas)"
+            },
+            {
+              "name": "Thalassa of Rhodes",
+              "avatar": "database/NPCs/2. Female 1st-years/Thalassa of Rhodes/avatar.png",
+              "image": "database/NPCs/2. Female 1st-years/Thalassa of Rhodes/image.png",
+              "info": "Place of Origin:\n●\tRhodes (prosperous naval city-state famous for its strong maritime tradition)\n\nMagic:\n●\tMovement\n●\tEnergy\n\nStrengths:\n+\tAgility\n+\tFortitude\n+\tMight\n+\tPerception\n+\tPresence\n+\tPersuasion\n\nWeaknesses:\n-\tIntelligence\n\nBehavior:\n●\tConfident, outspoken, and rebellious.\n●\tIntensely independent and proud.\n●\tAdventurous and spirited, known for her sharp wit and quick temper.\n●\tDefies overly strict rules but respects those who earn it.\n●\tLoyal to those she respects.\n\nFamily:\n●\tMother Captain Althea (legendary former pirate queen, pardoned, now privateer for Athens)\n●\tFather Unknown (rumored to be a foreign pirate or sailor)\n●\tOlder Brother Dorian (first mate on Althea's ship)"
             }
           ]
         },
         {
-          "name": "Teachers",
-          "thumbnail": "database/NPCs/Teachers/thumbnail.png",
+          "name": "3. Teachers",
+          "thumbnail": "database/NPCs/3. Teachers/thumbnail.png",
           "items": [
             {
               "name": "Archimedes of Syracuse",
-              "avatar": "database/NPCs/Teachers/Archimedes of Syracuse/avatar.png",
-              "image": "database/NPCs/Teachers/Archimedes of Syracuse/image.png",
+              "avatar": "database/NPCs/3. Teachers/Archimedes of Syracuse/avatar.png",
+              "image": "database/NPCs/3. Teachers/Archimedes of Syracuse/image.png",
               "info": "Place of Origin:\n●\tSyracuse (a hub of innovation and engineering)\n\nRole:\n●\tEngineer, Mathematics & Physics Teacher\n\nStrengths:\n+\tWealthy\n+\tLogic\n+\tLearning\n+\tPerception\n+\tWill\n+\tPersuasion\n\nWeaknesses:\n-\tMagic\n-\tPhysique\n\nFamily:\n●\tFather Phidias (inventor, deceased)\n●\tSister Eirene (astronomer)"
             },
             {
               "name": "Dorias of Sparta",
-              "avatar": "database/NPCs/Teachers/Dorias of Sparta/avatar.png",
-              "image": "database/NPCs/Teachers/Dorias of Sparta/image.png",
+              "avatar": "database/NPCs/3. Teachers/Dorias of Sparta/avatar.png",
+              "image": "database/NPCs/3. Teachers/Dorias of Sparta/image.png",
               "info": "Place of Origin:\n●\tSparta\n\nRole:\n●\tAdvanced Tactics & Leadership\n\nStrengths:\n+\tMight\n+\tLogic\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tUncompromising, expects perfection in formations and strategies.\n●\tRespects only those who demonstrate strong discipline.\n●\tSurprising compassionate streak for underdogs who show grit.\n●\tMissing a part of his left index finger from a fight with a monster.\n\nFamily:\n●\tBrother Echelas (colonel in the Spartan army)"
             },
             {
               "name": "Eudokia of Argos",
-              "avatar": "database/NPCs/Teachers/Eudokia of Argos/avatar.png",
-              "image": "database/NPCs/Teachers/Eudokia of Argos/image.png",
+              "avatar": "database/NPCs/3. Teachers/Eudokia of Argos/avatar.png",
+              "image": "database/NPCs/3. Teachers/Eudokia of Argos/image.png",
               "info": "Place of Origin:\n●\tArgos\n\nRole:\n●\tHealer & Herbalist\n\nMagic:\n●\tCreation\n●\tProtection\n\nStrengths:\n+\tLearning\n+\tPerception\n+\tPresence\n\nWeaknesses:\n-\tPoor\n-\tPhysique\n\nBehavior:\n●\tGentle demeanor, but firm in teaching correct healing methods.\n●\tCollects rare herbs and shares knowledge generously.\n●\tOften found in the academy gardens, growing medicinal plants.\n\nFamily:\n●\tGranddaughter Calyce (Healer Apprentice)\n"
             },
             {
               "name": "Euphemios of Athens",
-              "avatar": "database/NPCs/Teachers/Euphemios of Athens/avatar.png",
-              "image": "database/NPCs/Teachers/Euphemios of Athens/image.png",
+              "avatar": "database/NPCs/3. Teachers/Euphemios of Athens/avatar.png",
+              "image": "database/NPCs/3. Teachers/Euphemios of Athens/image.png",
               "info": "Place of Origin:\n●\tAthens (a hub of philosophy and politics)\n\nRole:\n●\tHeadmaster, Philosophy & Etiquette Teacher\n\nMagic:\n●\tInfluence\n●\tPrescience\n\nStrengths:\n+\tWealthy\n+\tLogic\n+\tLearning\n+\tWill\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tCharismatic and diplomatic, resolves conflicts skillfully.\n●\tTends to lecture at length, sometimes losing his audience.\n●\tOverly formal at times, yet genuinely cares for the students.\n\nFamily:\n●\tWife Sophia (philosopher)\n●\tDaughter Xanthe"
             },
             {
               "name": "Eustathios of Samos",
-              "avatar": "database/NPCs/Teachers/Eustathios of Samos/avatar.png",
-              "image": "database/NPCs/Teachers/Eustathios of Samos/image.png",
+              "avatar": "database/NPCs/3. Teachers/Eustathios of Samos/avatar.png",
+              "image": "database/NPCs/3. Teachers/Eustathios of Samos/image.png",
               "info": "Place of Origin:\n●\tSamos (island known for sea trade)\n\nRole:\n●\tGeography, Maritime Strategy & Sailing Specialist\n\nStrengths:\n+\tAgility\n+\tLogic\n+\tPerception\n+\tPersuasion\n\nWeaknesses:\n-\tMagic\n\nBehavior:\n●\tAlways references maritime analogies in lessons.\n●\tEnjoys leading mock naval battles for strategic thinking.\n●\tEncourages negotiation before conflict.\n\nFamily:\n●\tFather Aristeas (ship captain, now retired)"
             },
             {
               "name": "Iphigenia of Knossos",
-              "avatar": "database/NPCs/Teachers/Iphigenia of Knossos/avatar.png",
-              "image": "database/NPCs/Teachers/Iphigenia of Knossos/image.png",
+              "avatar": "database/NPCs/3. Teachers/Iphigenia of Knossos/avatar.png",
+              "image": "database/NPCs/3. Teachers/Iphigenia of Knossos/image.png",
               "info": "Place of Origin:\n●\tKnossos (Crete)\n\nRole:\n●\tMagic Instructor\n\nMagic:\n●\tAlteration\n●\tCreation\n●\tMovement\n\nStrengths:\n+\tMagic\n+\tLogic\n+\tLearning\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tPassionate about teaching creative approaches to magic.\n●\tBelieves in hands-on learning, often setting elaborate transformation challenges.\n●\tKnown to be a bit absent-minded when focused on an idea.\n\nFamily:\n●\tFather Asterios (archeologist)\n●\tMother Clymene (scholar of ancient rites)"
             },
             {
               "name": "Kyriakos of Crete",
-              "avatar": "database/NPCs/Teachers/Kyriakos of Crete/avatar.png",
-              "image": "database/NPCs/Teachers/Kyriakos of Crete/image.png",
+              "avatar": "database/NPCs/3. Teachers/Kyriakos of Crete/avatar.png",
+              "image": "database/NPCs/3. Teachers/Kyriakos of Crete/image.png",
               "info": "Place of Origin:\n●\tCrete\n\nRole:\n●\tPhysical Discipline Instructor\n\nStrengths:\n+\tFortitude\n+\tMight\n\nWeaknesses:\n-\tPoor\n-\tMagic\n-\tSocial\n\nBehavior:\n●\tEmphasizes endurance training and stamina.\n●\tBelieves in practical survival skills, often organizes wilderness drills.\n●\tOffers advice akin to tough love, motivating through rigor.\n\nFamily:\n●\tWife Thais (farmer)\n●\tSon Eudromos (young shepherd)"
             },
             {
               "name": "Lyra of Rhodes",
-              "avatar": "database/NPCs/Teachers/Lyra of Rhodes/avatar.png",
-              "image": "database/NPCs/Teachers/Lyra of Rhodes/image.png",
+              "avatar": "database/NPCs/3. Teachers/Lyra of Rhodes/avatar.png",
+              "image": "database/NPCs/3. Teachers/Lyra of Rhodes/image.png",
               "info": "Place of Origin:\n●\tRhodes (known for naval prowess and the Colossus)\n\nRole:\n●\tCombat & Magic Instructor\n\nMagic:\n●\tEnergy\n●\tProtection\n\nStrengths:\n+\tMight\n+\tFortitude\n+\tLogic\n+\tPresence\n\nBehavior:\n●\tStrict and disciplined, setting high standards for students.\n●\tDry sense of humor, surprising students with witty remarks.\n●\tFiercely protective of students, considering them extended family.\n\nFamily:\n●\tSon Pollux (aspiring naval officer)."
             },
             {
               "name": "Nikephoros of Athens",
-              "avatar": "database/NPCs/Teachers/Nikephoros of Athens/avatar.png",
-              "image": "database/NPCs/Teachers/Nikephoros of Athens/image.png",
+              "avatar": "database/NPCs/3. Teachers/Nikephoros of Athens/avatar.png",
+              "image": "database/NPCs/3. Teachers/Nikephoros of Athens/image.png",
               "info": "Place of Origin:\n●\tAthens\n\nRole:\n●\tVice-principal, Philosophy, Ethics & Statecraft Teacher\n\nStrengths:\n+\tWill\n+\tLogic\n+\tPersuasion\n+\tPresence\n\nWeaknesses:\n-\tMagic\n-\tPhysique\n\nBehavior:\n●\tCalm, patient, fosters open discussion in the classroom.\n●\tSkilled at moral dilemmas, encouraging nuanced thinking.\n●\tCan appear aloof, but truly enjoys guiding students toward wisdom.\n\nFamily:\n●\tWife Theano of Thebes (Academy librarian)"
             },
             {
               "name": "Phoibe of Delos",
-              "avatar": "database/NPCs/Teachers/Phoibe of Delos/avatar.png",
-              "image": "database/NPCs/Teachers/Phoibe of Delos/image.png",
+              "avatar": "database/NPCs/3. Teachers/Phoibe of Delos/avatar.png",
+              "image": "database/NPCs/3. Teachers/Phoibe of Delos/image.png",
               "info": "Place of Origin:\n●\tElf born in Egypt (200+ years old), grew up on a small island called Delos\n\nRole:\n●\tMagic Instructor\n\nMagic:\n●\tPrescience\n●\tInfluence\n●\tEntropy\n\nStrengths:\n+\tMagic\n+\tLearning\n+\tPerception\n+\tPresence\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tSoft-spoken yet authoritative in magical instruction.\n●\tIntrigued by prophecy and divine intervention.\n●\tEncourages students to respect the gods’ role in magic.\n●\tStudying the connection between Greek and Egyptian gods.\n\nFamily:\n●\tSister Harmonia (priestess of Zeus)"
             },
             {
               "name": "Rhexenor of Corinth",
-              "avatar": "database/NPCs/Teachers/Rhexenor of Corinth/avatar.png",
-              "image": "database/NPCs/Teachers/Rhexenor of Corinth/image.png",
+              "avatar": "database/NPCs/3. Teachers/Rhexenor of Corinth/avatar.png",
+              "image": "database/NPCs/3. Teachers/Rhexenor of Corinth/image.png",
               "info": "Place of Origin:\n●\tCorinth\n\nRole:\n●\tAccountant, Economics & Trade Instructor\n\nStrengths:\n+\tWealthy\n+\tLogic\n+\tPersuasion\n+\tDeception\n\nWeaknesses:\n-\tMagic\n-\tPhysique\n\nBehavior:\n●\tEnthusiastic about teaching students financial literacy.\n●\tQuick-witted, loves bartering games in class.\n●\tSometimes overly fixated on profit margins.\n\nFamily:\n●\tWife Ione (merchant of luxury fabrics)\n●\tSon Doros (apprentice trader)"
             },
             {
               "name": "Theano of Thebes",
-              "avatar": "database/NPCs/Teachers/Theano of Thebes/avatar.png",
-              "image": "database/NPCs/Teachers/Theano of Thebes/image.png",
+              "avatar": "database/NPCs/3. Teachers/Theano of Thebes/avatar.png",
+              "image": "database/NPCs/3. Teachers/Theano of Thebes/image.png",
               "info": "Place of Origin:\n●\tThebes\n\nRole:\n●\tLibrarian, Mythology & Lore Expert\n\nMagic:\n●\tInfluence\n●\tCreation\n\nStrengths:\n+\tLogic\n+\tLearning\n+\tPersuasion\n\nWeaknesses:\n-\tPhysique\n\nBehavior:\n●\tEnthralled by epic stories and genealogies of gods.\n●\tHolds interactive storytelling sessions, mesmerizing students.\n●\tBelieves in learning from myths to avoid repeating tragic fates.\n\nFamily:\n●\tHusband Nikephoros of Athens (Academy vice-principal)"
+            }
+          ]
+        },
+        {
+          "name": "4. Other",
+          "thumbnail": "database/NPCs/4. Other/thumbnail.png",
+          "items": [
+            {
+              "name": "2nd year Theodora",
+              "avatar": "database/NPCs/4. Other/2nd year Theodora/avatar.png",
+              "image": "database/NPCs/4. Other/2nd year Theodora/image.png",
+              "info": "Place of Origin:\n●\tArgos\n\nRole:\n●\tGenius 2nd year student\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tFortitude\n+\tLearning\n+\tPerception\n\nWeaknesses:\n-\tSocial\n\nBehavior:\n●\tAppears confident and decisive, thriving in competitive and tactical settings.\n●\tProtective of those she cares about, but quick to confront perceived injustice.\n●\tTends to isolate herself emotionally, hiding her feelings behind a mask of determination.\n\nFamily:\n●\tSister Melantha (Healer of the Academy)\n"
+            },
+            {
+              "name": "Apprentice Calyce",
+              "avatar": "database/NPCs/4. Other/Apprentice Calyce/avatar.png",
+              "image": "database/NPCs/4. Other/Apprentice Calyce/image.png",
+              "info": "Place of Origin:\n●\tArgos\n\nRole:\n●\tApprentice Healer\n\nMagic:\n●\tCreation\n●\tProtection\n\nStrengths:\n+\tLearning\n+\tPerception\n+\tPresence\n+\tMagic\n\nWeaknesses:\n-\tPoor\n-\tPhysique\n\nBehavior:\n●\tCurious and empathetic, always eager to learn and improve her skills.\n●\tOften overworks herself in her studies, forgetting to rest or eat when focused.\n●\tAt only 16 years old, is the youngest person living at the academy.\n\nFamily:\n●\tGrandmother Eudokia (Healer of the Academy)\n"
             }
           ]
         }
