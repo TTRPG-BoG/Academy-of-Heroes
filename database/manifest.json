@@ -8,10 +8,40 @@
           "thumbnail": null,
           "items": [
             {
+              "name": "Amazonky",
+              "avatar": null,
+              "image": null,
+              "info": "AKA:\n●\tAmazonky\n●\tAMZ – Alpha Mu Zeta\n\nTyp:\n●\tSesterstvo\n\nPopis:\n●\tVálečnice zkušené v přežití v přírodě, bylinkářství a aclhymii.\n●\tHluboce spjaty s přírodou a její ochranou.\n●\tPěstují silná sesterská pouta a zdravou mentalitu podpořenou silnou komunitou.\n●\tProsazují nezávislost a někdy i nadřazenost žen."
+            },
+            {
+              "name": "Circle of the Enlightened",
+              "avatar": null,
+              "image": null,
+              "info": "AKA:\n●\tKruh osvícených\n●\tLUX – Lambda Upsilon Xi\n\nTyp:\n●\tSmíšený spolek\n\nPopis:\n●\tElitní společnost vlivných šlechticů, bohatých obchodníků, ambiciózních umělců a politiků.\n●\tLuxusní životní styl, vytříbený hédonismus, kulturní mecenášství a silné politické konexe."
+            },
+            {
+              "name": "Hades Watch",
+              "avatar": "database/Factions/Academy Societies/Hades Watch/avatar.png",
+              "image": "database/Factions/Academy Societies/Hades Watch/image.png",
+              "info": "AKA:\n●\tHádova hlídka\n●\tAID – Alpha Iota Delta\n\nTyp:\n●\tBratrstvo\n\nPopis:\n●\tTajemné bratrstvo chránící Řecko před zapovězenou magií a skrytými hrozbami.\n●\tMistři magické historie a archeologie."
+            },
+            {
+              "name": "Madmen",
+              "avatar": null,
+              "image": null,
+              "info": "AKA:\n●\tŠílenci\n●\tMAD – Mu Alpha Delta\n\nTyp:\n●\tBratrstvo\n\nPopis:\n●\tNebojácní odvážlivci vyžívající se v extrémních dobrodružstvích, riziku a bratrství v bitvě.\n●\tZnámí pro své divoké večírky a přesto disciplinování, když čelí nebezpečí."
+            },
+            {
               "name": "Sisters of Circe",
               "avatar": null,
               "image": null,
-              "info": ""
+              "info": "AKA:\n●\tSestry Kirké\n●\tKIS – Kappa Iota Sigma\n\nTyp:\n●\tSesterstvo\n\nPopis:\n●\tSestry navštěvují dvory vyšších společností a ze stínů manipulují politickou scénu v Řecku i zahraničí.\n●\tSpoléhají na nebojovou magii, společenské vychování a ženské vnady."
+            },
+            {
+              "name": "Society of Athena",
+              "avatar": null,
+              "image": null,
+              "info": "AKA:\n●\tSpolečnost Athény\n●\tSOPH – Sigma Omicron Phi\n\nTyp:\n●\tSmíšený spolek\n\nPopis:\n●\tUčenci a inovátoři oddaní vzdělání a intelektuální dokonalosti.\n●\tStrategicky aplikují znalosti fyziky, inženýrství a architektury k posílení obranyschopnosti a ekonomiky Řecka."
             }
           ]
         },
