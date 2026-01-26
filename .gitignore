@@ -5,4 +5,4 @@ SESSION_CONTEXT.md
 resources/
 
 # Copilot scripts
-*.ps1
+generate_npc_info_final.ps1

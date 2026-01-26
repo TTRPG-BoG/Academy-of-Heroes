@@ -26,8 +26,12 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   
-  <!-- Favicon (placeholder - add actual favicon later) -->
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="icons/site.webmanifest">
   
   <!-- External Stylesheet -->
   <link rel="stylesheet" href="css/main.css">
@@ -52,10 +56,27 @@
     <div id="category-list" role="tablist"></div>
   </nav>
   
+  <!-- Subcategories Bar (Mobile only - shown below sidebar) -->
+  <div id="subcategories" role="toolbar" aria-label="Subcategories"></div>
+  
   <!-- Main Content Area -->
   <div id="main">
-    <!-- Subcategories Bar -->
-    <div id="subcategories" role="toolbar" aria-label="Subcategories"></div>
+    <!-- Search Bar -->
+    <div id="search-container">
+      <input 
+        type="search" 
+        id="search-input" 
+        placeholder="Search characters and categories..." 
+        aria-label="Search characters"
+        autocomplete="off"
+        aria-autocomplete="list"
+        aria-controls="search-results">
+      <!-- Search Results Dropdown -->
+      <div id="search-results" role="listbox" aria-label="Search results"></div>
+    </div>
+    
+    <!-- Breadcrumb Navigation (Hidden) -->
+    <div id="breadcrumb" role="navigation" aria-label="Breadcrumb"></div>
     
     <!-- Content Panels -->
     <div id="content">
@@ -71,6 +92,9 @@
       <aside id="image-panel" role="complementary" aria-label="Character image"></aside>
     </div>
   </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
   <!-- External JavaScript -->
   <script src="js/app.js" defer></script>

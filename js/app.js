@@ -20,7 +20,11 @@ const state = {
   currentSubcategory: 0,
   currentItem: 0,
   imageCache: new Map(),
-  isLoading: false
+  isLoading: false,
+  searchQuery: '',
+  searchResults: [],
+  searchSelectedIndex: -1,
+  showSearchDropdown: false
 };
 
 // ===== DOM ELEMENT REFERENCES =====
@@ -30,7 +34,12 @@ const elements = {
   itemsGrid: null,
   infoPanel: null,
   imagePanel: null,
-  mainContent: null
+  mainContent: null,
+  searchInput: null,
+  searchContainer: null,
+  searchResults: null,
+  shareButton: null,
+  breadcrumb: null
 };
 
 // ===== INITIALIZATION =====
@@ -47,6 +56,11 @@ async function init() {
     elements.infoPanel = document.getElementById('info-panel');
     elements.imagePanel = document.getElementById('image-panel');
     elements.mainContent = document.getElementById('main-content');
+    elements.searchInput = document.getElementById('search-input');
+    elements.searchContainer = document.getElementById('search-container');
+    elements.searchResults = document.getElementById('search-results');
+    elements.shareButton = document.getElementById('share-button');
+    elements.breadcrumb = document.getElementById('breadcrumb');
 
     // Show loading state
     showLoading();
@@ -57,10 +71,20 @@ async function init() {
       throw new Error(`Failed to load manifest: ${response.statusText}`);
     }
     state.manifest = await response.json();
+    
+    // Validate manifest
+    if (!state.manifest || !state.manifest.categories || !Array.isArray(state.manifest.categories)) {
+      throw new Error('Invalid manifest structure');
+    }
 
-    // Preload images for better UX
+    // Preload images for better UX (won't fail on empty categories)
     if (CONFIG.preloadImages) {
-      await preloadImages();
+      try {
+        await preloadImages();
+      } catch (imgError) {
+        console.warn('Image preload failed:', imgError);
+        // Continue anyway - images can load on demand
+      }
     }
 
     // Parse URL hash for initial state (if routing enabled)
@@ -79,7 +103,8 @@ async function init() {
 
   } catch (error) {
     console.error('Initialization error:', error);
-    showError('Failed to load the database. Please refresh the page.');
+    showToast('Failed to load the database. Please refresh the page.', 'error', 0);
+    hideLoading();
   }
 }
 
@@ -91,10 +116,20 @@ async function preloadImages() {
   const imagesToLoad = [];
 
   state.manifest.categories.forEach(category => {
+    // Skip categories without subcategories
+    if (!category.subcategories || !Array.isArray(category.subcategories)) {
+      return;
+    }
+    
     category.subcategories.forEach(subcategory => {
       // Add subcategory thumbnails
       if (subcategory.thumbnail) {
         imagesToLoad.push(subcategory.thumbnail);
+      }
+
+      // Skip subcategories without items
+      if (!subcategory.items || !Array.isArray(subcategory.items)) {
+        return;
       }
 
       // Add item avatars and images
@@ -144,88 +179,134 @@ function loadImage(src) {
  * Update all UI components
  */
 function updateUI() {
-  renderCategories();
-  renderSubcategories();
-  renderItemsGrid();
-  renderInfoPanel();
-  renderImagePanel();
+  try {
+    renderCategories();
+    renderItemsGrid();
+    renderInfoPanel();
+    renderImagePanel();
 
-  // Update URL hash if routing enabled
-  if (CONFIG.enableUrlRouting) {
-    updateUrlHash();
+    // Update URL hash if routing enabled
+    if (CONFIG.enableUrlRouting) {
+      updateUrlHash();
+    }
+
+    // Update ARIA live region for screen readers
+    announceSelection();
+  } catch (error) {
+    console.error('UI update error:', error);
+    // Don't show toast - this is expected with empty categories
   }
-
-  // Update ARIA live region for screen readers
-  announceSelection();
 }
 
 /**
- * Render category navigation buttons in sidebar
+ * Render category navigation buttons in sidebar with tree structure
  */
 function renderCategories() {
   elements.categoryList.innerHTML = '';
 
-  state.manifest.categories.forEach((category, index) => {
+  state.manifest.categories.forEach((category, catIndex) => {
+    // Create category button
     const button = document.createElement('button');
+    button.className = 'category';
     button.textContent = category.name;
     button.setAttribute('role', 'tab');
-    button.setAttribute('aria-selected', index === state.currentCategory ? 'true' : 'false');
-    button.setAttribute('tabindex', index === state.currentCategory ? '0' : '-1');
-    button.id = `category-${index}`;
+    button.setAttribute('aria-selected', catIndex === state.currentCategory ? 'true' : 'false');
+    button.setAttribute('tabindex', catIndex === state.currentCategory ? '0' : '-1');
+    button.id = `category-${catIndex}`;
 
-    if (index === state.currentCategory) {
+    if (catIndex === state.currentCategory) {
       button.classList.add('selected');
     }
 
-    button.addEventListener('click', () => selectCategory(index));
+    button.addEventListener('click', () => selectCategory(catIndex));
 
     elements.categoryList.appendChild(button);
+
+    // For desktop/tablet: Add subcategories tree if this category is selected (tree view)
+    // This will be hidden in mobile view
+    if (catIndex === state.currentCategory) {
+      const tree = document.createElement('div');
+      tree.className = 'subcategories-tree show';
+
+      // Only render subcategories if they exist
+      if (category.subcategories && Array.isArray(category.subcategories)) {
+        category.subcategories.forEach((subcategory, subIndex) => {
+          const subItem = document.createElement('div');
+          subItem.className = 'subcat-item';
+          subItem.setAttribute('role', 'button');
+          subItem.setAttribute('tabindex', '0');
+          subItem.setAttribute('aria-label', subcategory.name);
+
+          if (subIndex === state.currentSubcategory) {
+            subItem.classList.add('selected');
+          }
+
+          // Add thumbnail if available
+          if (subcategory.thumbnail && state.imageCache.has(subcategory.thumbnail)) {
+            const img = state.imageCache.get(subcategory.thumbnail).cloneNode();
+            img.alt = '';
+            subItem.appendChild(img);
+          }
+
+          // Add subcategory name
+          const span = document.createElement('span');
+          span.textContent = subcategory.name;
+          subItem.appendChild(span);
+
+          subItem.addEventListener('click', () => selectSubcategory(subIndex));
+          subItem.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              selectSubcategory(subIndex);
+            }
+          });
+
+          tree.appendChild(subItem);
+        });
+      }
+
+      elements.categoryList.appendChild(tree);
+    }
   });
+  
+  // Render subcategories separately for mobile view
+  renderSubcategories();
 }
 
 /**
- * Render subcategory navigation bar
+ * Render subcategory navigation bar (for mobile view)
  */
 function renderSubcategories() {
   elements.subcategories.innerHTML = '';
-
-  const subcategories = state.manifest.categories[state.currentCategory].subcategories;
-
-  subcategories.forEach((subcategory, index) => {
-    const element = document.createElement('div');
-    element.className = 'subcat';
-    element.setAttribute('role', 'button');
-    element.setAttribute('tabindex', '0');
-    element.setAttribute('aria-label', subcategory.name);
-
-    if (index === state.currentSubcategory) {
-      element.classList.add('selected');
-      element.setAttribute('aria-pressed', 'true');
-    } else {
-      element.setAttribute('aria-pressed', 'false');
+  
+  const category = state.manifest.categories[state.currentCategory];
+  if (!category || !category.subcategories || !Array.isArray(category.subcategories)) {
+    return;
+  }
+  
+  category.subcategories.forEach((subcategory, subIndex) => {
+    const button = document.createElement('button');
+    button.className = 'subcat';
+    button.textContent = subcategory.name;
+    button.setAttribute('role', 'tab');
+    button.setAttribute('aria-selected', subIndex === state.currentSubcategory ? 'true' : 'false');
+    button.setAttribute('tabindex', '0');
+    
+    if (subIndex === state.currentSubcategory) {
+      button.classList.add('selected');
     }
-
+    
     // Add thumbnail if available
     if (subcategory.thumbnail && state.imageCache.has(subcategory.thumbnail)) {
       const img = state.imageCache.get(subcategory.thumbnail).cloneNode();
-      img.alt = `${subcategory.name} thumbnail`;
-      element.appendChild(img);
+      img.alt = '';
+      img.className = 'subcat-icon';
+      button.insertBefore(img, button.firstChild);
     }
-
-    // Add subcategory name
-    const span = document.createElement('span');
-    span.textContent = subcategory.name;
-    element.appendChild(span);
-
-    element.addEventListener('click', () => selectSubcategory(index));
-    element.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        selectSubcategory(index);
-      }
-    });
-
-    elements.subcategories.appendChild(element);
+    
+    button.addEventListener('click', () => selectSubcategory(subIndex));
+    
+    elements.subcategories.appendChild(button);
   });
 }
 
@@ -357,8 +438,17 @@ function selectCategory(index) {
   if (index === state.currentCategory) return;
 
   state.currentCategory = index;
-  state.currentSubcategory = 0;
-  state.currentItem = 0;
+  
+  // Reset subcategory and item - but check if subcategories exist
+  const category = state.manifest.categories[index];
+  if (category && category.subcategories && category.subcategories.length > 0) {
+    state.currentSubcategory = 0;
+    state.currentItem = 0;
+  } else {
+    // No subcategories - reset to -1 to indicate none selected
+    state.currentSubcategory = -1;
+    state.currentItem = -1;
+  }
 
   updateUI();
 }
@@ -371,7 +461,15 @@ function selectSubcategory(index) {
   if (index === state.currentSubcategory) return;
 
   state.currentSubcategory = index;
-  state.currentItem = 0;
+  
+  // Check if subcategory has items
+  const category = state.manifest.categories[state.currentCategory];
+  const subcategory = category?.subcategories?.[index];
+  if (subcategory?.items && subcategory.items.length > 0) {
+    state.currentItem = 0;
+  } else {
+    state.currentItem = -1; // No items available
+  }
 
   updateUI();
 }
@@ -395,8 +493,22 @@ function selectItem(index) {
  * @returns {Array} Current items array
  */
 function getCurrentItems() {
-  return state.manifest.categories[state.currentCategory]
-    .subcategories[state.currentSubcategory].items;
+  const category = state.manifest.categories[state.currentCategory];
+  if (!category || !category.subcategories || !Array.isArray(category.subcategories)) {
+    return [];
+  }
+  
+  // Handle case where no subcategory is selected
+  if (state.currentSubcategory < 0 || state.currentSubcategory >= category.subcategories.length) {
+    return [];
+  }
+  
+  const subcategory = category.subcategories[state.currentSubcategory];
+  if (!subcategory || !subcategory.items || !Array.isArray(subcategory.items)) {
+    return [];
+  }
+  
+  return subcategory.items;
 }
 
 /**
@@ -441,22 +553,88 @@ function hideLoading() {
  * Show error message
  * @param {string} message - Error message to display
  */
-function showError(message) {
-  const errorDiv = document.createElement('div');
-  errorDiv.className = 'error-message';
-  errorDiv.style.cssText = `
-    background: #f8d7da;
-    color: #721c24;
-    padding: 1rem;
-    margin: 1rem;
-    border: 1px solid #f5c6cb;
-    border-radius: 4px;
-    text-align: center;
-  `;
-  errorDiv.textContent = message;
-  errorDiv.setAttribute('role', 'alert');
+/**
+ * Show toast notification
+ * @param {string} message - Message to display
+ * @param {string} type - Type of toast: 'error', 'success', 'warning', 'info'
+ * @param {number} duration - Duration in ms (0 = manual close only)
+ */
+function showToast(message, type = 'info', duration = 5000) {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
   
-  document.body.insertBefore(errorDiv, document.body.firstChild);
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.setAttribute('role', 'alert');
+  
+  // Add icon based on type
+  const icon = document.createElement('span');
+  icon.className = 'toast-icon';
+  icon.setAttribute('aria-hidden', 'true');
+  
+  switch(type) {
+    case 'error':
+      icon.textContent = '✕';
+      break;
+    case 'success':
+      icon.textContent = '✓';
+      break;
+    case 'warning':
+      icon.textContent = '⚠';
+      break;
+    case 'info':
+    default:
+      icon.textContent = 'ℹ';
+      break;
+  }
+  
+  // Add message
+  const messageEl = document.createElement('div');
+  messageEl.className = 'toast-message';
+  messageEl.textContent = message;
+  
+  // Add close button
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'toast-close';
+  closeBtn.setAttribute('aria-label', 'Close notification');
+  closeBtn.textContent = '×';
+  closeBtn.addEventListener('click', () => dismissToast(toast));
+  
+  toast.appendChild(icon);
+  toast.appendChild(messageEl);
+  toast.appendChild(closeBtn);
+  
+  container.appendChild(toast);
+  
+  // Auto-dismiss after duration (if duration > 0)
+  if (duration > 0) {
+    setTimeout(() => dismissToast(toast), duration);
+  }
+  
+  return toast;
+}
+
+/**
+ * Dismiss a toast notification
+ * @param {HTMLElement} toast - Toast element to dismiss
+ */
+function dismissToast(toast) {
+  if (!toast || !toast.parentElement) return;
+  
+  toast.classList.add('hiding');
+  setTimeout(() => {
+    if (toast.parentElement) {
+      toast.parentElement.removeChild(toast);
+    }
+  }, 300); // Match animation duration
+}
+
+/**
+ * Show error message (deprecated - use showToast instead)
+ * @deprecated Use showToast(message, 'error') instead
+ */
+function showError(message) {
+  showToast(message, 'error', 0); // No auto-dismiss for errors
 }
 
 /**
@@ -475,28 +653,376 @@ function showEmptyState(container, message) {
  * Announce selection to screen readers
  */
 function announceSelection() {
+  try {
+    const item = getCurrentItem();
+    const category = state.manifest.categories[state.currentCategory];
+    
+    if (!category) return;
+    
+    const categoryName = category.name;
+    let subcategoryName = '';
+    
+    // Safely get subcategory name
+    if (category.subcategories && 
+        category.subcategories[state.currentSubcategory]) {
+      subcategoryName = category.subcategories[state.currentSubcategory].name;
+    }
+
+    const announcement = item
+      ? `Selected ${item.name} in ${categoryName}${subcategoryName ? ', ' + subcategoryName : ''}`
+      : `Viewing ${categoryName}${subcategoryName ? ', ' + subcategoryName : ''}`;
+
+    // Update or create live region
+    let liveRegion = document.getElementById('live-region');
+    if (!liveRegion) {
+      liveRegion = document.createElement('div');
+      liveRegion.id = 'live-region';
+      liveRegion.setAttribute('role', 'status');
+      liveRegion.setAttribute('aria-live', 'polite');
+      liveRegion.setAttribute('aria-atomic', 'true');
+      liveRegion.style.cssText = 'position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;';
+      document.body.appendChild(liveRegion);
+    }
+
+    liveRegion.textContent = announcement;
+  } catch (error) {
+    console.warn('Announce selection failed:', error);
+    // Don't propagate error - this is non-critical
+  }
+}
+
+// ===== SEARCH FUNCTIONALITY =====
+
+/**
+ * Search across entire database
+ * @param {string} query - Search query
+ */
+function searchAllDatabase(query) {
+  const searchTerm = query.toLowerCase().trim();
+  
+  if (!searchTerm) {
+    state.searchResults = [];
+    state.showSearchDropdown = false;
+    renderSearchResults();
+    return;
+  }
+  
+  const results = [];
+  
+  try {
+    // Search through all categories and subcategories
+    state.manifest.categories.forEach((category, catIndex) => {
+      // Skip categories without subcategories
+      if (!category.subcategories || !Array.isArray(category.subcategories)) {
+        return;
+      }
+      
+      category.subcategories.forEach((subcategory, subIndex) => {
+        // Check if subcategory name matches
+        const subcatMatches = subcategory.name.toLowerCase().includes(searchTerm);
+        
+        // Skip subcategories without items
+        if (!subcategory.items || !Array.isArray(subcategory.items) || subcategory.items.length === 0) {
+          // Still add subcategory to results if it matches search (even if empty)
+          if (subcatMatches) {
+            results.push({
+              type: 'subcategory',
+              category: category.name,
+              categoryIndex: catIndex,
+              subcategory: subcategory.name,
+              subcategoryIndex: subIndex,
+              thumbnail: subcategory.thumbnail,
+              path: `${category.name} › ${subcategory.name}`,
+              itemCount: 0
+            });
+          }
+          return;
+        }
+        
+        // Track if we've added this subcategory already
+        let subcategoryAdded = false;
+        
+        // Search through items
+        subcategory.items.forEach((item, itemIndex) => {
+          const searchableText = [
+            item.name,
+            subcategory.name,
+            category.name,
+            item.info || ''
+          ].join(' ').toLowerCase();
+          
+          const itemMatches = searchableText.includes(searchTerm);
+          
+          if (itemMatches) {
+            results.push({
+              type: 'item',
+              category: category.name,
+              categoryIndex: catIndex,
+              subcategory: subcategory.name,
+              subcategoryIndex: subIndex,
+              item: item,
+              itemIndex: itemIndex,
+              path: `${category.name} › ${subcategory.name}`,
+              matchedSubcategory: subcatMatches
+            });
+            
+            // If subcategory matches and we haven't added it yet, add it once
+            if (subcatMatches && !subcategoryAdded) {
+              results.push({
+                type: 'subcategory',
+                category: category.name,
+                categoryIndex: catIndex,
+                subcategory: subcategory.name,
+                subcategoryIndex: subIndex,
+                thumbnail: subcategory.thumbnail,
+                path: `${category.name}`,
+                itemCount: subcategory.items.length
+              });
+              subcategoryAdded = true;
+            }
+          }
+        });
+      });
+    });
+  } catch (error) {
+    console.error('Search error:', error);
+    showToast('Search failed. Please try again.', 'error', 3000);
+    return;
+  }
+  
+  state.searchResults = results;
+  state.searchSelectedIndex = results.length > 0 ? 0 : -1;
+  state.showSearchDropdown = true;
+  
+  renderSearchResults();
+}
+
+/**
+ * Render search results dropdown
+ */
+function renderSearchResults() {
+  if (!elements.searchResults) return;
+  
+  if (!state.showSearchDropdown || state.searchResults.length === 0) {
+    elements.searchResults.classList.remove('show');
+    
+    if (state.searchQuery && state.searchResults.length === 0) {
+      elements.searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
+      elements.searchResults.classList.add('show');
+    } else {
+      elements.searchResults.innerHTML = '';
+    }
+    return;
+  }
+  
+  elements.searchResults.innerHTML = '';
+  
+  state.searchResults.forEach((result, index) => {
+    const item = document.createElement('div');
+    item.className = 'search-result-item';
+    item.setAttribute('role', 'option');
+    item.setAttribute('data-index', index);
+    
+    if (index === state.searchSelectedIndex) {
+      item.classList.add('selected');
+      item.setAttribute('aria-selected', 'true');
+    } else {
+      item.setAttribute('aria-selected', 'false');
+    }
+    
+    // Avatar/thumbnail
+    const avatar = document.createElement('img');
+    avatar.className = 'search-result-avatar';
+    
+    if (result.type === 'item' && result.item.avatar && state.imageCache.has(result.item.avatar)) {
+      avatar.src = result.item.avatar;
+      avatar.alt = '';
+    } else if (result.type === 'subcategory' && result.thumbnail && state.imageCache.has(result.thumbnail)) {
+      avatar.src = result.thumbnail;
+      avatar.alt = '';
+    } else {
+      avatar.style.background = 'var(--bg-secondary)';
+    }
+    
+    item.appendChild(avatar);
+    
+    // Info
+    const info = document.createElement('div');
+    info.className = 'search-result-info';
+    
+    const name = document.createElement('div');
+    name.className = 'search-result-name';
+    name.textContent = result.type === 'item' ? result.item.name : result.subcategory;
+    
+    const path = document.createElement('div');
+    path.className = 'search-result-path';
+    path.textContent = result.path + (result.type === 'subcategory' ? ` (${result.itemCount} items)` : '');
+    
+    info.appendChild(name);
+    info.appendChild(path);
+    item.appendChild(info);
+    
+    // Click handler
+    item.addEventListener('click', () => selectSearchResult(index));
+    
+    elements.searchResults.appendChild(item);
+  });
+  
+  elements.searchResults.classList.add('show');
+}
+
+/**
+ * Select a search result
+ * @param {number} index - Result index
+ */
+function selectSearchResult(index) {
+  const result = state.searchResults[index];
+  
+  if (!result) return;
+  
+  // Navigate to the result
+  if (result.type === 'item') {
+    state.currentCategory = result.categoryIndex;
+    state.currentSubcategory = result.subcategoryIndex;
+    state.currentItem = result.itemIndex;
+  } else if (result.type === 'subcategory') {
+    state.currentCategory = result.categoryIndex;
+    state.currentSubcategory = result.subcategoryIndex;
+    // Check if subcategory has items
+    const category = state.manifest.categories[result.categoryIndex];
+    const subcategory = category?.subcategories?.[result.subcategoryIndex];
+    if (subcategory?.items && subcategory.items.length > 0) {
+      state.currentItem = 0;
+    } else {
+      state.currentItem = -1; // No items available
+    }
+  }
+  
+  // Clear search
+  state.searchQuery = '';
+  state.searchResults = [];
+  state.showSearchDropdown = false;
+  elements.searchInput.value = '';
+  
+  // Update UI
+  updateUI();
+  renderSearchResults();
+  
+  // Scroll to top
+  if (elements.mainContent) {
+    document.getElementById('main').scrollTop = 0;
+  }
+}
+
+/**
+ * Handle search input
+ * @param {string} query - Search query
+ */
+function handleSearch(query) {
+  state.searchQuery = query;
+  searchAllDatabase(query);
+}
+
+/**
+ * Navigate search results with keyboard
+ * @param {number} direction - -1 for up, 1 for down
+ */
+function navigateSearchResults(direction) {
+  if (state.searchResults.length === 0) return;
+  
+  state.searchSelectedIndex += direction;
+  
+  if (state.searchSelectedIndex < 0) {
+    state.searchSelectedIndex = state.searchResults.length - 1;
+  } else if (state.searchSelectedIndex >= state.searchResults.length) {
+    state.searchSelectedIndex = 0;
+  }
+  
+  renderSearchResults();
+  
+  // Scroll selected item into view
+  const selected = elements.searchResults.querySelector('.search-result-item.selected');
+  if (selected) {
+    selected.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+}
+
+/**
+ * Show search results count (DEPRECATED)
+ */
+function showSearchResults(found, total) {
+  // Search now uses dropdown, this is no longer needed
+  return;
+}
+
+// ===== BREADCRUMB NAVIGATION (DEPRECATED) =====
+
+/**
+ * Render breadcrumb navigation (DEPRECATED - hidden)
+ */
+function renderBreadcrumb() {
+  // Breadcrumbs are hidden for now
+  return;
+}
+
+// ===== SHARE FUNCTIONALITY =====
+
+/**
+ * Share current character
+ */
+function shareCharacter() {
   const item = getCurrentItem();
+  if (!item) return;
+  
   const category = state.manifest.categories[state.currentCategory].name;
   const subcategory = state.manifest.categories[state.currentCategory]
     .subcategories[state.currentSubcategory].name;
-
-  const announcement = item
-    ? `Selected ${item.name} in ${category}, ${subcategory}`
-    : `Viewing ${category}, ${subcategory}`;
-
-  // Update or create live region
-  let liveRegion = document.getElementById('live-region');
-  if (!liveRegion) {
-    liveRegion = document.createElement('div');
-    liveRegion.id = 'live-region';
-    liveRegion.setAttribute('role', 'status');
-    liveRegion.setAttribute('aria-live', 'polite');
-    liveRegion.setAttribute('aria-atomic', 'true');
-    liveRegion.style.cssText = 'position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;';
-    document.body.appendChild(liveRegion);
+  
+  const url = window.location.href;
+  const title = `${item.name} - ${category}`;
+  const text = `Check out ${item.name} from ${subcategory} in the Academy of Heroes database!`;
+  
+  // Try native share API first (mobile)
+  if (navigator.share) {
+    navigator.share({
+      title: title,
+      text: text,
+      url: url
+    }).catch(err => console.log('Share cancelled', err));
+  } else {
+    // Fallback: copy to clipboard
+    copyToClipboard(url);
+    showShareTooltip('Link copied to clipboard!');
   }
+}
 
-  liveRegion.textContent = announcement;
+/**
+ * Copy text to clipboard
+ * @param {string} text - Text to copy
+ */
+function copyToClipboard(text) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text);
+  } else {
+    // Fallback for older browsers
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  }
+}
+
+/**
+ * Show share tooltip (deprecated - use showToast instead)
+ * @deprecated Use showToast(message, 'success') instead
+ * @param {string} message - Message to display
+ */
+function showShareTooltip(message) {
+  showToast(message, 'success', 2000);
 }
 
 // ===== URL ROUTING (HASH-BASED) =====
@@ -510,18 +1036,37 @@ function parseUrlHash() {
 
   const [cat, subcat, item] = hash.split('/').map(Number);
 
-  if (!isNaN(cat) && cat >= 0 && cat < state.manifest.categories.length) {
-    state.currentCategory = cat;
+  try {
+    if (!isNaN(cat) && cat >= 0 && cat < state.manifest.categories.length) {
+      state.currentCategory = cat;
 
-    const subcategories = state.manifest.categories[cat].subcategories;
-    if (!isNaN(subcat) && subcat >= 0 && subcat < subcategories.length) {
-      state.currentSubcategory = subcat;
+      const category = state.manifest.categories[cat];
+      const subcategories = category.subcategories;
+      
+      if (subcategories && Array.isArray(subcategories) &&
+          !isNaN(subcat) && subcat >= 0 && subcat < subcategories.length) {
+        state.currentSubcategory = subcat;
 
-      const items = subcategories[subcat].items;
-      if (!isNaN(item) && item >= 0 && item < items.length) {
-        state.currentItem = item;
+        const items = subcategories[subcat].items;
+        if (items && Array.isArray(items) &&
+            !isNaN(item) && item >= 0 && item < items.length) {
+          state.currentItem = item;
+        } else {
+          // No items or invalid item index
+          state.currentItem = -1;
+        }
+      } else {
+        // No subcategories or invalid subcategory index
+        state.currentSubcategory = -1;
+        state.currentItem = -1;
       }
     }
+  } catch (error) {
+    console.warn('Failed to parse URL hash:', error);
+    // Reset to defaults
+    state.currentCategory = 0;
+    state.currentSubcategory = 0;
+    state.currentItem = 0;
   }
 }
 
@@ -553,6 +1098,60 @@ function setupEventListeners() {
       updateUI();
     });
   }
+  
+  // Search input
+  if (elements.searchInput) {
+    let searchTimeout;
+    
+    elements.searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        handleSearch(e.target.value);
+      }, 300); // Debounce 300ms
+    });
+    
+    // Keyboard navigation in search
+    elements.searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        e.target.value = '';
+        state.searchQuery = '';
+        state.searchResults = [];
+        state.showSearchDropdown = false;
+        renderSearchResults();
+        e.target.blur();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (state.showSearchDropdown) {
+          navigateSearchResults(1);
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (state.showSearchDropdown) {
+          navigateSearchResults(-1);
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (state.showSearchDropdown && state.searchSelectedIndex >= 0) {
+          selectSearchResult(state.searchSelectedIndex);
+        }
+      }
+    });
+  }
+  
+  // Hash change for URL routing
+  if (CONFIG.enableUrlRouting) {
+    window.addEventListener('hashchange', parseUrlHash);
+  }
+  
+  // Click outside to close search dropdown
+  document.addEventListener('click', (e) => {
+    if (elements.searchResults && 
+        !elements.searchContainer.contains(e.target) && 
+        !elements.searchResults.contains(e.target)) {
+      state.showSearchDropdown = false;
+      renderSearchResults();
+    }
+  });
 }
 
 /**
