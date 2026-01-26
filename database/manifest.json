@@ -1,6 +1,52 @@
 {
   "categories": [
     {
+      "name": "Factions",
+      "subcategories": [
+        {
+          "name": "Academy Societies",
+          "thumbnail": null,
+          "items": [
+            {
+              "name": "Sisters of Circe",
+              "avatar": null,
+              "image": null,
+              "info": ""
+            }
+          ]
+        },
+        {
+          "name": "Greek States",
+          "thumbnail": null,
+          "items": [
+            {
+              "name": "Athens",
+              "avatar": null,
+              "image": null,
+              "info": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Locations",
+      "subcategories": [
+        {
+          "name": "Greek Cities",
+          "thumbnail": null,
+          "items": [
+            {
+              "name": "Athens",
+              "avatar": null,
+              "image": null,
+              "info": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "NPCs",
       "subcategories": [
         {
