@@ -1,278 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Academy of Heroes — Database</title>
-  <style>
-    html, body {
-      margin: 0; padding: 0;
-      width: 100%; height: 100%;
-      overflow: hidden;
-      display: flex;
-      font-family: sans-serif;
-    }
-    /* Left sidebar */
-    #sidebar {
-      flex: 0 0 200px;
-      background: #2c3e50;
-      color: #ecf0f1;
-      display: flex; flex-direction: column;
-      overflow-y: auto;
-    }
-    #sidebar button {
-      background: none; border: none;
-      color: inherit; text-align: left;
-      padding: 0.75rem 1rem; cursor: pointer;
-      width: 100%; font-size: 1rem;
-    }
-    #sidebar button.selected { background: #34495e; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Academy of Heroes — Character Database</title>
+  <meta name="description" content="Browse the Academy of Heroes character database. Explore NPCs, students, and teachers with detailed profiles, images, and information.">
+  <meta name="keywords" content="Academy of Heroes, character database, NPCs, students, teachers">
+  <meta name="author" content="Academy of Heroes">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Academy of Heroes — Character Database">
+  <meta property="og:description" content="Browse the Academy of Heroes character database. Explore NPCs, students, and teachers with detailed profiles.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="https://example.com/og-image.jpg">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Academy of Heroes — Character Database">
+  <meta name="twitter:description" content="Browse the Academy of Heroes character database.">
+  
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  
+  <!-- Favicon (placeholder - add actual favicon later) -->
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==">
+  
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- Removed inline styles - now in external CSS -->
 
-    /* Main column */
-    #main {
-      flex: 1; display: flex; flex-direction: column;
-      overflow: hidden;
-    }
-
-    /* Top bar */
-    #subcategories {
-      flex: 0 0 auto;
-      display: flex;
-      background: #ecf0f1;
-      border-bottom: 1px solid #ccc;
-      padding: 0.5rem;
-      overflow-x: auto;
-    }
-    .subcat {
-      display: flex; flex-direction: column;
-      align-items: center; margin-right: 1rem;
-      cursor: pointer; padding: 0.25rem;
-      border-radius: 4px;
-    }
-    .subcat.selected { background: #ddd; }
-    .subcat img {
-      width: 40px; height: 40px;
-      object-fit: contain; border-radius: 4px;
-      margin-bottom: 0.25rem;
-    }
-    .subcat span {
-      font-size: 0.9rem; white-space: nowrap;
-    }
-
-    /* Content area */
-    #content {
-      flex: 1; display: flex; overflow: hidden;
-    }
-
-    /* Items grid */
-    #items-grid {
-      width: calc(5 * 80px + 4 * 1rem);
-      padding: 1rem;
-      display: grid;
-      grid-template-columns: repeat(5, 80px);
-      grid-auto-rows: min-content;
-      align-content: start;
-      gap: 1rem;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-    .item {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      align-self: start;       /* ← prevents stretching */
-    }
-    .item.selected {
-      outline: 2px solid #2980b9;
-      border-radius: 4px;
-    }
-    .item img {
-      width: 80px; height: 80px;
-      object-fit: cover; border-radius: 4px;
-    }
-    .item .name {
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
-      text-align: center;
-      word-break: break-word;
-    }
-
-    /* Info panel */
-    #info-panel {
-      flex: 1; min-width: 0;
-      padding: 1rem;
-      overflow-y: auto;
-      overflow-x: hidden;    /* ← hide any horizontal scrollbar */
-      border-left: 1px solid #ccc;
-      background: #fafafa;
-    }
-    #info-panel p {
-      white-space: pre-wrap;
-      overflow-wrap: break-word;  /* ← wrap long words */
-      line-height: 1.4;
-    }
-
-    /* Image panel */
-    #image-panel {
-      flex: 1; min-width: 0;
-      padding: 1rem;
-      overflow-y: auto;
-      border-left: 1px solid #ccc;
-      background: #fafafa;
-      display: flex; align-items: flex-start;
-      justify-content: center;
-    }
-    #image-panel img {
-      max-width: 100%; height: auto;
-    }
-  </style>
 </head>
 <body>
-  <div id="sidebar">
-    <div id="category-list"></div>
-  </div>
+  <!-- Skip Navigation Link (Accessibility) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Noscript Warning -->
+  <noscript>
+    <div class="noscript-warning" role="alert">
+      <strong>JavaScript Required:</strong> This application requires JavaScript to function. 
+      Please enable JavaScript in your browser settings.
+    </div>
+  </noscript>
+  
+  <!-- Left Sidebar - Categories Navigation -->
+  <nav id="sidebar" role="navigation" aria-label="Main categories">
+    <div id="category-list" role="tablist"></div>
+  </nav>
+  
+  <!-- Main Content Area -->
   <div id="main">
-    <div id="subcategories"></div>
+    <!-- Subcategories Bar -->
+    <div id="subcategories" role="toolbar" aria-label="Subcategories"></div>
+    
+    <!-- Content Panels -->
     <div id="content">
-      <div id="items-grid"></div>
-      <div id="info-panel"></div>
-      <div id="image-panel"></div>
+      <!-- Items Grid -->
+      <main id="main-content">
+        <div id="items-grid" role="grid" aria-label="Character list"></div>
+      </main>
+      
+      <!-- Info Panel -->
+      <aside id="info-panel" role="complementary" aria-label="Character information"></aside>
+      
+      <!-- Image Panel -->
+      <aside id="image-panel" role="complementary" aria-label="Character image"></aside>
     </div>
   </div>
 
-  <script>
-    const manifestUrl = 'database/manifest.json';
-    let manifest, currentCategory = 0, currentSubcategory = 0, currentItem = 0;
-    const imageCache = new Map();
-
-    async function preloadImages() {
-      const toLoad = [];
-      manifest.categories.forEach(cat =>
-        cat.subcategories.forEach(sub => {
-          if (sub.thumbnail) toLoad.push(sub.thumbnail);
-          sub.items.forEach(item => {
-            if (item.avatar) toLoad.push(item.avatar);
-            if (item.image)  toLoad.push(item.image);
-          });
-        })
-      );
-      await Promise.all(toLoad.map(src => new Promise(res => {
-        const img = new Image();
-        img.src = src;
-        img.onload = () => { imageCache.set(src, img); res(); };
-        img.onerror = () => res();
-      })));
-    }
-
-    function renderCategories() {
-      const c = document.getElementById('category-list');
-      c.innerHTML = '';
-      manifest.categories.forEach((cat, i) => {
-        const btn = document.createElement('button');
-        btn.textContent = cat.name;
-        if (i === currentCategory) btn.classList.add('selected');
-        btn.onclick = () => {
-          currentCategory = i;
-          currentSubcategory = 0;
-          currentItem = 0;
-          updateUI();
-        };
-        c.appendChild(btn);
-      });
-    }
-
-    function renderSubcategories() {
-      const c = document.getElementById('subcategories');
-      c.innerHTML = '';
-      const subs = manifest.categories[currentCategory].subcategories;
-      subs.forEach((sub, i) => {
-        const el = document.createElement('div');
-        el.className = 'subcat' + (i === currentSubcategory ? ' selected' : '');
-        if (sub.thumbnail && imageCache.has(sub.thumbnail)) {
-          el.appendChild(imageCache.get(sub.thumbnail).cloneNode());
-        }
-        const span = document.createElement('span');
-        span.textContent = sub.name;
-        el.appendChild(span);
-        el.onclick = () => {
-          currentSubcategory = i;
-          currentItem = 0;
-          updateUI();
-        };
-        c.appendChild(el);
-      });
-    }
-
-    function renderItemsGrid() {
-      const c = document.getElementById('items-grid');
-      c.innerHTML = '';
-      const items = manifest
-        .categories[currentCategory]
-        .subcategories[currentSubcategory]
-        .items;
-      items.forEach((item, i) => {
-        const el = document.createElement('div');
-        el.className = 'item' + (i === currentItem ? ' selected' : '');
-        if (item.avatar && imageCache.has(item.avatar)) {
-          el.appendChild(imageCache.get(item.avatar).cloneNode());
-        } else {
-          const ph = document.createElement('div');
-          ph.style.cssText = 'width:80px;height:80px;background:#ccc;';
-          el.appendChild(ph);
-        }
-        const nm = document.createElement('div');
-        nm.className = 'name';
-        nm.textContent = item.name;
-        el.appendChild(nm);
-        el.onclick = () => {
-          currentItem = i;
-          updateUI();
-        };
-        c.appendChild(el);
-      });
-    }
-
-    function renderInfoPanel() {
-      const panel = document.getElementById('info-panel');
-      panel.innerHTML = '';
-      const item = manifest
-        .categories[currentCategory]
-        .subcategories[currentSubcategory]
-        .items[currentItem];
-      if (item.info) {
-        const p = document.createElement('p');
-        p.textContent = item.info;
-        panel.appendChild(p);
-      }
-    }
-
-    function renderImagePanel() {
-      const panel = document.getElementById('image-panel');
-      panel.innerHTML = '';
-      const item = manifest
-        .categories[currentCategory]
-        .subcategories[currentSubcategory]
-        .items[currentItem];
-      if (item.image && imageCache.has(item.image)) {
-        panel.appendChild(imageCache.get(item.image).cloneNode());
-      }
-    }
-
-    function updateUI() {
-      renderCategories();
-      renderSubcategories();
-      renderItemsGrid();
-      renderInfoPanel();
-      renderImagePanel();
-    }
-
-    window.addEventListener('load', async () => {
-      const resp = await fetch(manifestUrl);
-      manifest = await resp.json();
-      await preloadImages();
-      updateUI();
-    });
-  </script>
+  <!-- External JavaScript -->
+  <script src="js/app.js" defer></script>
 </body>
 </html>
