@@ -607,6 +607,29 @@ body {
   padding: var(--spacing-xl);
 }
 
+/* Pin button */
+.pin-button {
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: background-color var(--transition-speed) var(--transition-easing);
+  white-space: nowrap;
+}
+
+.pin-button:hover {
+  background: var(--color-accent-hover);
+}
+
+.pin-button:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 /* ===== IMAGE PANEL ===== */
 #image-panel {
   flex: 1;

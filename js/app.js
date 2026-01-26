@@ -24,7 +24,8 @@ const state = {
   searchQuery: '',
   searchResults: [],
   searchSelectedIndex: -1,
-  showSearchDropdown: false
+  showSearchDropdown: false,
+  favorites: [] // Array of pinned items: [{categoryIndex, subcategoryIndex, itemIndex, item}]
 };
 
 // ===== DOM ELEMENT REFERENCES =====
@@ -41,6 +42,103 @@ const elements = {
   shareButton: null,
   breadcrumb: null
 };
+
+// ===== FAVORITES MANAGEMENT =====
+
+/**
+ * Load favorites from localStorage
+ */
+function loadFavorites() {
+  try {
+    const saved = localStorage.getItem('aoh-favorites');
+    if (saved) {
+      state.favorites = JSON.parse(saved);
+    }
+  } catch (error) {
+    console.warn('Failed to load favorites:', error);
+    state.favorites = [];
+  }
+}
+
+/**
+ * Save favorites to localStorage
+ */
+function saveFavorites() {
+  try {
+    localStorage.setItem('aoh-favorites', JSON.stringify(state.favorites));
+  } catch (error) {
+    console.error('Failed to save favorites:', error);
+  }
+}
+
+/**
+ * Check if current item is pinned
+ * @returns {boolean} True if pinned
+ */
+function isItemPinned() {
+  if (state.currentCategory === -1) return false;
+  
+  return state.favorites.some(fav => 
+    fav.categoryIndex === state.currentCategory &&
+    fav.subcategoryIndex === state.currentSubcategory &&
+    fav.itemIndex === state.currentItem
+  );
+}
+
+/**
+ * Toggle pin status of current item
+ */
+function togglePin() {
+  if (state.currentCategory === -1) return;
+  
+  const item = getCurrentItem();
+  if (!item) return;
+  
+  const existingIndex = state.favorites.findIndex(fav =>
+    fav.categoryIndex === state.currentCategory &&
+    fav.subcategoryIndex === state.currentSubcategory &&
+    fav.itemIndex === state.currentItem
+  );
+  
+  if (existingIndex >= 0) {
+    // Unpin
+    state.favorites.splice(existingIndex, 1);
+    showToast(`${item.name} removed from favorites`, 'info', 2000);
+  } else {
+    // Pin
+    state.favorites.push({
+      categoryIndex: state.currentCategory,
+      subcategoryIndex: state.currentSubcategory,
+      itemIndex: state.currentItem,
+      item: {
+        name: item.name,
+        avatar: item.avatar,
+        image: item.image,
+        info: item.info
+      }
+    });
+    showToast(`${item.name} added to favorites`, 'success', 2000);
+  }
+  
+  saveFavorites();
+  updateUI();
+}
+
+/**
+ * Select a favorite item (navigate to it)
+ * @param {number} favIndex - Index in favorites array
+ */
+function selectFavorite(favIndex) {
+  const fav = state.favorites[favIndex];
+  if (!fav) return;
+  
+  // Navigate to the actual item
+  state.currentCategory = fav.categoryIndex;
+  state.currentSubcategory = fav.subcategoryIndex;
+  state.currentItem = fav.itemIndex;
+  
+  updateUI();
+}
 
 // ===== INITIALIZATION =====
 
@@ -76,6 +174,9 @@ async function init() {
     if (!state.manifest || !state.manifest.categories || !Array.isArray(state.manifest.categories)) {
       throw new Error('Invalid manifest structure');
     }
+    
+    // Load favorites from localStorage
+    loadFavorites();
 
     // Preload images for better UX (won't fail on empty categories)
     if (CONFIG.preloadImages) {
@@ -203,7 +304,66 @@ function updateUI() {
  */
 function renderCategories() {
   elements.categoryList.innerHTML = '';
+  
+  // Add Favorites category first
+  const favButton = document.createElement('button');
+  favButton.className = 'category';
+  favButton.textContent = '⭐ Favorites';
+  favButton.setAttribute('role', 'tab');
+  favButton.setAttribute('aria-selected', state.currentCategory === -1 ? 'true' : 'false');
+  favButton.setAttribute('tabindex', state.currentCategory === -1 ? '0' : '-1');
+  favButton.id = 'category-favorites';
+  
+  if (state.currentCategory === -1) {
+    favButton.classList.add('selected');
+  }
+  
+  favButton.addEventListener('click', () => selectCategory(-1));
+  elements.categoryList.appendChild(favButton);
+  
+  // Add favorites tree if selected
+  if (state.currentCategory === -1) {
+    const tree = document.createElement('div');
+    tree.className = 'subcategories-tree show';
+    
+    state.favorites.forEach((fav, favIndex) => {
+      const subItem = document.createElement('div');
+      subItem.className = 'subcat-item';
+      subItem.setAttribute('role', 'button');
+      subItem.setAttribute('tabindex', '0');
+      subItem.setAttribute('aria-label', fav.item.name);
+      
+      if (favIndex === state.currentSubcategory) {
+        subItem.classList.add('selected');
+      }
+      
+      // Use avatar instead of thumbnail
+      if (fav.item.avatar && state.imageCache.has(fav.item.avatar)) {
+        const img = state.imageCache.get(fav.item.avatar).cloneNode();
+        img.alt = '';
+        subItem.appendChild(img);
+      }
+      
+      // Add item name
+      const span = document.createElement('span');
+      span.textContent = fav.item.name;
+      subItem.appendChild(span);
+      
+      subItem.addEventListener('click', () => selectFavorite(favIndex));
+      subItem.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectFavorite(favIndex);
+        }
+      });
+      
+      tree.appendChild(subItem);
+    });
+    
+    elements.categoryList.appendChild(tree);
+  }
 
+  // Render regular categories
   state.manifest.categories.forEach((category, catIndex) => {
     // Create category button
     const button = document.createElement('button');
@@ -279,6 +439,35 @@ function renderCategories() {
 function renderSubcategories() {
   elements.subcategories.innerHTML = '';
   
+  // Handle Favorites category
+  if (state.currentCategory === -1) {
+    state.favorites.forEach((fav, favIndex) => {
+      const button = document.createElement('button');
+      button.className = 'subcat';
+      button.textContent = fav.item.name;
+      button.setAttribute('role', 'tab');
+      button.setAttribute('aria-selected', favIndex === state.currentSubcategory ? 'true' : 'false');
+      button.setAttribute('tabindex', '0');
+      
+      if (favIndex === state.currentSubcategory) {
+        button.classList.add('selected');
+      }
+      
+      // Add avatar if available
+      if (fav.item.avatar && state.imageCache.has(fav.item.avatar)) {
+        const img = state.imageCache.get(fav.item.avatar).cloneNode();
+        img.alt = '';
+        img.className = 'subcat-icon';
+        button.insertBefore(img, button.firstChild);
+      }
+      
+      button.addEventListener('click', () => selectFavorite(favIndex));
+      
+      elements.subcategories.appendChild(button);
+    });
+    return;
+  }
+  
   const category = state.manifest.categories[state.currentCategory];
   if (!category || !category.subcategories || !Array.isArray(category.subcategories)) {
     return;
@@ -319,7 +508,7 @@ function renderItemsGrid() {
   const items = getCurrentItems();
 
   if (items.length === 0) {
-    showEmptyState(elements.itemsGrid, 'No items found in this category.');
+    showEmptyState(elements.itemsGrid, state.currentCategory === -1 ? 'No favorite items yet. Pin items to see them here!' : 'No items found in this category.');
     return;
   }
 
@@ -391,10 +580,28 @@ function renderInfoPanel() {
     return;
   }
 
-  // Add character name as heading
+  // Add character name as heading with pin button
+  const headerDiv = document.createElement('div');
+  headerDiv.style.cssText = 'display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--spacing-lg);';
+  
   const heading = document.createElement('h2');
   heading.textContent = item.name;
-  elements.infoPanel.appendChild(heading);
+  heading.style.margin = '0';
+  headerDiv.appendChild(heading);
+  
+  // Add pin/unpin button (only if not in Favorites category)
+  if (state.currentCategory !== -1) {
+    const isPinned = isItemPinned();
+    const pinButton = document.createElement('button');
+    pinButton.className = 'pin-button';
+    pinButton.textContent = isPinned ? '⭐ Unpin' : '☆ Pin';
+    pinButton.setAttribute('aria-label', isPinned ? 'Unpin from favorites' : 'Pin to favorites');
+    pinButton.title = isPinned ? 'Remove from favorites' : 'Add to favorites';
+    pinButton.addEventListener('click', togglePin);
+    headerDiv.appendChild(pinButton);
+  }
+  
+  elements.infoPanel.appendChild(headerDiv);
 
   // Add character info
   if (item.info) {
@@ -438,6 +645,14 @@ function selectCategory(index) {
   if (index === state.currentCategory) return;
 
   state.currentCategory = index;
+  
+  // Handle Favorites category
+  if (index === -1) {
+    state.currentSubcategory = state.favorites.length > 0 ? 0 : -1;
+    state.currentItem = state.favorites.length > 0 ? 0 : -1;
+    updateUI();
+    return;
+  }
   
   // Reset subcategory and item - but check if subcategories exist
   const category = state.manifest.categories[index];
@@ -493,6 +708,11 @@ function selectItem(index) {
  * @returns {Array} Current items array
  */
 function getCurrentItems() {
+  // Handle Favorites category
+  if (state.currentCategory === -1) {
+    return state.favorites.map(fav => fav.item);
+  }
+  
   const category = state.manifest.categories[state.currentCategory];
   if (!category || !category.subcategories || !Array.isArray(category.subcategories)) {
     return [];
