@@ -404,6 +404,10 @@ body {
   padding: var(--spacing-xl);
   color: var(--text-secondary);
   text-align: center;
+  min-width: 300px;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .empty-state-icon {
@@ -650,6 +654,7 @@ body {
   height: auto;
   border-radius: var(--border-radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
 }
 
 #image-panel .empty-state {
@@ -876,6 +881,13 @@ body {
   /* Search input */
   #search-input {
     font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Mobile screens smaller than 700px - Image fills available width */
+@media (max-width: 700px) {
+  #image-panel img {
+    max-width: 100%;
   }
 }
 
