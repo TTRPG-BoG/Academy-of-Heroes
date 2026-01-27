@@ -125,6 +125,60 @@ function togglePin() {
 }
 
 /**
+ * Toggle pin status of item by index (for grid pin buttons)
+ * @param {number} itemIndex - Index of the item in current items array
+ */
+function togglePinByIndex(itemIndex) {
+  const items = getCurrentItems();
+  const item = items[itemIndex];
+  if (!item) return;
+  
+  // Handle Favorites category differently
+  if (state.currentCategory === -1) {
+    // In Favorites view, itemIndex corresponds to favorites array index
+    if (itemIndex >= 0 && itemIndex < state.favorites.length) {
+      const fav = state.favorites[itemIndex];
+      state.favorites.splice(itemIndex, 1);
+      showToast(`${fav.item.name} removed from favorites`, 'info', 2000);
+      saveFavorites();
+      renderCategories(); // Update favorites list in sidebar
+      renderItemsGrid(); // Re-render grid to update pin button state
+    }
+    return;
+  }
+  
+  const existingIndex = state.favorites.findIndex(fav =>
+    fav.categoryIndex === state.currentCategory &&
+    fav.subcategoryIndex === state.currentSubcategory &&
+    fav.itemIndex === itemIndex
+  );
+  
+  if (existingIndex >= 0) {
+    // Unpin
+    state.favorites.splice(existingIndex, 1);
+    showToast(`${item.name} removed from favorites`, 'info', 2000);
+  } else {
+    // Pin
+    state.favorites.push({
+      categoryIndex: state.currentCategory,
+      subcategoryIndex: state.currentSubcategory,
+      itemIndex: itemIndex,
+      item: {
+        name: item.name,
+        avatar: item.avatar,
+        image: item.image,
+        info: item.info
+      }
+    });
+    showToast(`${item.name} added to favorites`, 'success', 2000);
+  }
+  
+  saveFavorites();
+  renderCategories(); // Update favorites list in sidebar
+  renderItemsGrid(); // Re-render grid to update pin button state
+}
+
+/**
  * Select a favorite item (navigate to it)
  * @param {number} favIndex - Index in favorites array
  */
@@ -308,7 +362,7 @@ function renderCategories() {
   // Add Favorites category first
   const favButton = document.createElement('button');
   favButton.className = 'category';
-  favButton.textContent = '⭐ Favorites';
+  favButton.innerHTML = '<i class="fas fa-thumbtack"></i> Favorites';
   favButton.setAttribute('role', 'tab');
   favButton.setAttribute('aria-selected', state.currentCategory === -1 ? 'true' : 'false');
   favButton.setAttribute('tabindex', state.currentCategory === -1 ? '0' : '-1');
@@ -549,6 +603,36 @@ function renderItemsGrid() {
       element.appendChild(placeholder);
     }
 
+    // Add pin button (show in all categories including Favorites)
+    let isPinned;
+    if (state.currentCategory === -1) {
+      // In Favorites, all items are pinned by definition
+      isPinned = true;
+    } else {
+      // In other categories, check if item exists in favorites
+      isPinned = state.favorites.some(fav =>
+        fav.categoryIndex === state.currentCategory &&
+        fav.subcategoryIndex === state.currentSubcategory &&
+        fav.itemIndex === index
+      );
+    }
+    
+    const pinButton = document.createElement('button');
+    pinButton.className = isPinned ? 'pin-icon pinned' : 'pin-icon';
+    pinButton.setAttribute('aria-label', isPinned ? 'Unpin from favorites' : 'Pin to favorites');
+    pinButton.title = isPinned ? 'Remove from favorites' : 'Add to favorites';
+    
+    const icon = document.createElement('i');
+    icon.className = 'fas fa-thumbtack';
+    pinButton.appendChild(icon);
+    
+    pinButton.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent item selection when clicking pin
+      togglePinByIndex(index);
+    });
+    
+    element.appendChild(pinButton);
+
     // Add item name
     const nameDiv = document.createElement('div');
     nameDiv.className = 'name';
@@ -580,28 +664,10 @@ function renderInfoPanel() {
     return;
   }
 
-  // Add character name as heading with pin button
-  const headerDiv = document.createElement('div');
-  headerDiv.style.cssText = 'display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--spacing-lg);';
-  
+  // Add character name as heading
   const heading = document.createElement('h2');
   heading.textContent = item.name;
-  heading.style.margin = '0';
-  headerDiv.appendChild(heading);
-  
-  // Add pin/unpin button (only if not in Favorites category)
-  if (state.currentCategory !== -1) {
-    const isPinned = isItemPinned();
-    const pinButton = document.createElement('button');
-    pinButton.className = 'pin-button';
-    pinButton.textContent = isPinned ? '⭐ Unpin' : '☆ Pin';
-    pinButton.setAttribute('aria-label', isPinned ? 'Unpin from favorites' : 'Pin to favorites');
-    pinButton.title = isPinned ? 'Remove from favorites' : 'Add to favorites';
-    pinButton.addEventListener('click', togglePin);
-    headerDiv.appendChild(pinButton);
-  }
-  
-  elements.infoPanel.appendChild(headerDiv);
+  elements.infoPanel.appendChild(heading);
 
   // Add character info
   if (item.info) {
