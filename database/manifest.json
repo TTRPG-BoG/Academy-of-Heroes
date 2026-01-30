@@ -422,8 +422,8 @@
           "items": [
             {
               "name": "Amazons",
-              "avatar": null,
-              "image": null,
+              "avatar": "database/Factions/Academy Societies/Amazons/avatar.png",
+              "image": "database/Factions/Academy Societies/Amazons/image.png",
               "info": "AKA:\n●\tAmazonky\n●\tAMZ – Alpha Mu Zeta\n\nTyp:\n●\tSesterstvo\n\nPopis:\n●\tVálečnice zkušené v přežití v přírodě, bylinkářství a aclhymii.\n●\tHluboce spjaty s přírodou a její ochranou.\n●\tPěstují silná sesterská pouta a zdravou mentalitu podpořenou silnou komunitou.\n●\tProsazují nezávislost a někdy i nadřazenost žen."
             },
             {
