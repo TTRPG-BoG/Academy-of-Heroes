@@ -428,8 +428,8 @@
             },
             {
               "name": "Circle of the Enlightened",
-              "avatar": null,
-              "image": null,
+              "avatar": "database/Factions/Academy Societies/Circle of the Enlightened/avatar.png",
+              "image": "database/Factions/Academy Societies/Circle of the Enlightened/image.png",
               "info": "AKA:\n●\tKruh osvícených\n●\tLUX – Lambda Upsilon Xi\n\nTyp:\n●\tSmíšený spolek\n\nPopis:\n●\tElitní společnost vlivných šlechticů, bohatých obchodníků, ambiciózních umělců a politiků.\n●\tLuxusní životní styl, vytříbený hédonismus, kulturní mecenášství a silné politické konexe."
             },
             {
@@ -440,20 +440,20 @@
             },
             {
               "name": "Madmen",
-              "avatar": null,
-              "image": null,
+              "avatar": "database/Factions/Academy Societies/Madmen/avatar.png",
+              "image": "database/Factions/Academy Societies/Madmen/image.png",
               "info": "AKA:\n●\tŠílenci\n●\tMAD – Mu Alpha Delta\n\nTyp:\n●\tBratrstvo\n\nPopis:\n●\tNebojácní odvážlivci vyžívající se v extrémních dobrodružstvích, riziku a bratrství v bitvě.\n●\tZnámí pro své divoké večírky a přesto disciplinování, když čelí nebezpečí."
             },
             {
               "name": "Sisters of Circe",
-              "avatar": null,
-              "image": null,
+              "avatar": "database/Factions/Academy Societies/Sisters of Circe/avatar.png",
+              "image": "database/Factions/Academy Societies/Sisters of Circe/image.png",
               "info": "AKA:\n●\tSestry Kirké\n●\tKIS – Kappa Iota Sigma\n\nTyp:\n●\tSesterstvo\n\nPopis:\n●\tSestry navštěvují dvory vyšších společností a ze stínů manipulují politickou scénu v Řecku i zahraničí.\n●\tSpoléhají na nebojovou magii, společenské vychování a ženské vnady."
             },
             {
               "name": "Society of Athena",
-              "avatar": null,
-              "image": null,
+              "avatar": "database/Factions/Academy Societies/Society of Athena/avatar.png",
+              "image": "database/Factions/Academy Societies/Society of Athena/image.png",
               "info": "AKA:\n●\tSpolečnost Athény\n●\tSOPH – Sigma Omicron Phi\n\nTyp:\n●\tSmíšený spolek\n\nPopis:\n●\tUčenci a inovátoři oddaní vzdělání a intelektuální dokonalosti.\n●\tStrategicky aplikují znalosti fyziky, inženýrství a architektury k posílení obranyschopnosti a ekonomiky Řecka."
             }
           ]
