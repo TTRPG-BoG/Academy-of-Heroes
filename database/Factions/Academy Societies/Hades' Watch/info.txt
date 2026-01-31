@@ -6,5 +6,20 @@ Typ:
 ●	Bratrstvo
 
 Popis:
-●	Tajemné bratrstvo chránící Řecko před zapovězenou magií a skrytými hrozbami.
+●	Nejtajemnější ze všech spolků.
+●	Studují zapovězenou magii a dávné artefakty.
 ●	Mistři magické historie a archeologie.
+
+Doporučené schopnosti:
+●	Fortitude
+●	Learning
+●	Logic
+●	Perception
+●	Will
+●	Alteration
+●	Creation
+●	Energy
+●	Entropy
+●	Movement
+●	Prescience
+●	Protection

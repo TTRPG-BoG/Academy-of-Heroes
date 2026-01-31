@@ -8,3 +8,15 @@ Typ:
 Popis:
 ●	Nebojácní odvážlivci vyžívající se v extrémních dobrodružstvích, riziku a bratrství v bitvě.
 ●	Známí pro své divoké večírky a přesto disciplinování, když čelí nebezpečí.
+
+Doporučené schopnosti:
+●	Fortitude
+●	Might
+●	Will
+●	Presence
+●	Creation
+●	Energy
+●	Entropy
+●	Influence
+●	Movement
+●	Protection

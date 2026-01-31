@@ -10,3 +10,15 @@ Popis:
 ●	Hluboce spjaty s přírodou a její ochranou.
 ●	Pěstují silná sesterská pouta a zdravou mentalitu podpořenou silnou komunitou.
 ●	Prosazují nezávislost a někdy i nadřazenost žen.
+
+Doporučené schopnosti:
+●	Agility
+●	Fortitude
+●	Might
+●	Perception
+●	Will
+●	Presence
+●	Alteration
+●	Creation
+●	Movement
+●	Protection

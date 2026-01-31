@@ -8,3 +8,12 @@ Typ:
 Popis:
 ●	Elitní společnost vlivných šlechticů, bohatých obchodníků, ambiciózních umělců a politiků.
 ●	Luxusní životní styl, vytříbený hédonismus, kulturní mecenášství a silné politické konexe.
+
+Doporučené schopnosti:
+●	Learning
+●	Perception
+●	Deception
+●	Persuasion
+●	Presence
+●	Influence
+●	Prescience
