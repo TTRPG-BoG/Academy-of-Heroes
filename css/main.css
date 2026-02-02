@@ -475,6 +475,28 @@ body {
   border-radius: 3px;
 }
 
+/* Subcategory icon placeholder for progressive loading */
+.subcat-icon-placeholder {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  border-radius: 3px;
+  background: var(--bg-secondary);
+}
+
+.subcat-icon-placeholder.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.subcat-icon-placeholder.error {
+  background: #ffe6e6;
+  color: #d32f2f;
+  font-size: 10px;
+}
+
 .subcat {
   display: flex;
   flex-direction: column;

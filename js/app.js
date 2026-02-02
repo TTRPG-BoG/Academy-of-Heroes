@@ -232,23 +232,28 @@ async function init() {
     // Load favorites from localStorage
     loadFavorites();
 
+    // Load all thumbnails first (blocking - but they're small and few)
+    if (CONFIG.preloadImages) {
+      await preloadThumbnails();
+    }
+
     // Parse URL hash for initial state (if routing enabled)
     if (CONFIG.enableUrlRouting) {
       parseUrlHash();
     }
 
-    // Render initial UI immediately - images will load progressively
+    // Render initial UI immediately - thumbnails are loaded
     updateUI();
 
     // Setup event listeners
     setupEventListeners();
 
-    // Hide loading state - UI is ready
+    // Hide loading state - UI is ready with thumbnails
     hideLoading();
 
-    // Start progressive image loading in background (non-blocking)
+    // Start progressive loading of avatars and images in background (non-blocking)
     if (CONFIG.preloadImages) {
-      preloadImagesProgressively().catch(error => {
+      preloadAvatarsAndImagesProgressively().catch(error => {
         console.warn('Progressive image preload encountered errors:', error);
       });
     }
@@ -261,54 +266,62 @@ async function init() {
 }
 
 /**
- * Preload images progressively - loads one at a time without blocking UI
- * Prioritizes currently visible items first
+ * Preload all thumbnails (blocking - but small and few)
  * @returns {Promise<void>}
  */
-async function preloadImagesProgressively() {
-  const imagesToLoad = [];
-  const priorityImages = [];
+async function preloadThumbnails() {
+  const thumbnails = [];
 
-  state.manifest.categories.forEach((category, catIndex) => {
-    // Skip categories without subcategories
+  state.manifest.categories.forEach((category) => {
     if (!category.subcategories || !Array.isArray(category.subcategories)) {
       return;
     }
     
-    category.subcategories.forEach((subcategory, subIndex) => {
-      // Add subcategory thumbnails
+    category.subcategories.forEach((subcategory) => {
       if (subcategory.thumbnail) {
-        imagesToLoad.push(subcategory.thumbnail);
+        thumbnails.push(subcategory.thumbnail);
       }
+    });
+  });
 
-      // Skip subcategories without items
+  // Load all thumbnails in parallel (they're small)
+  await Promise.all(thumbnails.map(src => loadImage(src)));
+}
+
+/**
+ * Preload avatars and images progressively - loads one at a time without blocking UI
+ * Priority: 1) Avatars, 2) Full images
+ * @returns {Promise<void>}
+ */
+async function preloadAvatarsAndImagesProgressively() {
+  const avatars = [];
+  const images = [];
+
+  state.manifest.categories.forEach((category) => {
+    if (!category.subcategories || !Array.isArray(category.subcategories)) {
+      return;
+    }
+    
+    category.subcategories.forEach((subcategory) => {
       if (!subcategory.items || !Array.isArray(subcategory.items)) {
         return;
       }
 
-      // Add item avatars and images
-      subcategory.items.forEach((item, itemIndex) => {
-        const images = [];
-        if (item.avatar) images.push(item.avatar);
+      // Collect avatars and full images
+      subcategory.items.forEach((item) => {
+        if (item.avatar) avatars.push(item.avatar);
         if (item.image) images.push(item.image);
-        
-        // Prioritize currently visible category/subcategory
-        if (catIndex === state.currentCategory && subIndex === state.currentSubcategory) {
-          priorityImages.push(...images);
-        } else {
-          imagesToLoad.push(...images);
-        }
       });
     });
   });
 
-  // Load priority images first (currently visible items)
-  for (const src of priorityImages) {
+  // Load avatars first (for grid items)
+  for (const src of avatars) {
     await loadImage(src);
   }
 
-  // Then load remaining images one by one
-  for (const src of imagesToLoad) {
+  // Load full images last
+  for (const src of images) {
     await loadImage(src);
   }
 }
@@ -551,7 +564,7 @@ function renderSubcategories() {
       button.classList.add('selected');
     }
     
-    // Add thumbnail if available
+    // Add thumbnail if available (already loaded during init)
     if (subcategory.thumbnail && state.imageCache.has(subcategory.thumbnail)) {
       const img = state.imageCache.get(subcategory.thumbnail).cloneNode();
       img.alt = '';
