@@ -315,6 +315,12 @@ async function preloadAvatarsAndImagesProgressively() {
     });
   });
 
+  // Also collect images from favorites
+  state.favorites.forEach((fav) => {
+    if (fav.item.avatar) avatars.push(fav.item.avatar);
+    if (fav.item.image) images.push(fav.item.image);
+  });
+
   // Load avatars first (for grid items)
   for (const src of avatars) {
     await loadImage(src);
