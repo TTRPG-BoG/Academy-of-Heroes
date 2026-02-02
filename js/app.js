@@ -232,29 +232,26 @@ async function init() {
     // Load favorites from localStorage
     loadFavorites();
 
-    // Preload images for better UX (won't fail on empty categories)
-    if (CONFIG.preloadImages) {
-      try {
-        await preloadImages();
-      } catch (imgError) {
-        console.warn('Image preload failed:', imgError);
-        // Continue anyway - images can load on demand
-      }
-    }
-
     // Parse URL hash for initial state (if routing enabled)
     if (CONFIG.enableUrlRouting) {
       parseUrlHash();
     }
 
-    // Render initial UI
+    // Render initial UI immediately - images will load progressively
     updateUI();
 
     // Setup event listeners
     setupEventListeners();
 
-    // Hide loading state
+    // Hide loading state - UI is ready
     hideLoading();
+
+    // Start progressive image loading in background (non-blocking)
+    if (CONFIG.preloadImages) {
+      preloadImagesProgressively().catch(error => {
+        console.warn('Progressive image preload encountered errors:', error);
+      });
+    }
 
   } catch (error) {
     console.error('Initialization error:', error);
@@ -264,19 +261,21 @@ async function init() {
 }
 
 /**
- * Preload all images from the manifest for smooth navigation
+ * Preload images progressively - loads one at a time without blocking UI
+ * Prioritizes currently visible items first
  * @returns {Promise<void>}
  */
-async function preloadImages() {
+async function preloadImagesProgressively() {
   const imagesToLoad = [];
+  const priorityImages = [];
 
-  state.manifest.categories.forEach(category => {
+  state.manifest.categories.forEach((category, catIndex) => {
     // Skip categories without subcategories
     if (!category.subcategories || !Array.isArray(category.subcategories)) {
       return;
     }
     
-    category.subcategories.forEach(subcategory => {
+    category.subcategories.forEach((subcategory, subIndex) => {
       // Add subcategory thumbnails
       if (subcategory.thumbnail) {
         imagesToLoad.push(subcategory.thumbnail);
@@ -288,17 +287,30 @@ async function preloadImages() {
       }
 
       // Add item avatars and images
-      subcategory.items.forEach(item => {
-        if (item.avatar) imagesToLoad.push(item.avatar);
-        if (item.image) imagesToLoad.push(item.image);
+      subcategory.items.forEach((item, itemIndex) => {
+        const images = [];
+        if (item.avatar) images.push(item.avatar);
+        if (item.image) images.push(item.image);
+        
+        // Prioritize currently visible category/subcategory
+        if (catIndex === state.currentCategory && subIndex === state.currentSubcategory) {
+          priorityImages.push(...images);
+        } else {
+          imagesToLoad.push(...images);
+        }
       });
     });
   });
 
-  // Load images in parallel
-  await Promise.all(
-    imagesToLoad.map(src => loadImage(src))
-  );
+  // Load priority images first (currently visible items)
+  for (const src of priorityImages) {
+    await loadImage(src);
+  }
+
+  // Then load remaining images one by one
+  for (const src of imagesToLoad) {
+    await loadImage(src);
+  }
 }
 
 /**
@@ -580,24 +592,49 @@ function renderItemsGrid() {
       element.setAttribute('aria-pressed', 'false');
     }
 
-    // Add avatar image or placeholder
-    if (item.avatar && state.imageCache.has(item.avatar)) {
-      const img = state.imageCache.get(item.avatar).cloneNode();
-      img.alt = `${item.name} avatar`;
-      element.appendChild(img);
+    // Add avatar image with progressive loading
+    if (item.avatar) {
+      const imgContainer = document.createElement('div');
+      imgContainer.className = 'avatar-container';
+      
+      if (state.imageCache.has(item.avatar)) {
+        // Image already loaded
+        const img = state.imageCache.get(item.avatar).cloneNode();
+        img.alt = `${item.name} avatar`;
+        imgContainer.appendChild(img);
+      } else {
+        // Show loading placeholder, load image in background
+        const placeholder = document.createElement('div');
+        placeholder.className = 'avatar-placeholder loading';
+        placeholder.textContent = '⏳';
+        placeholder.setAttribute('aria-label', 'Loading...');
+        imgContainer.appendChild(placeholder);
+        
+        // Load image asynchronously
+        loadImage(item.avatar).then(loadedImg => {
+          if (loadedImg) {
+            placeholder.className = 'avatar-placeholder';
+            placeholder.textContent = '';
+            const img = loadedImg.cloneNode();
+            img.alt = `${item.name} avatar`;
+            imgContainer.appendChild(img);
+            // Fade in effect
+            setTimeout(() => {
+              if (placeholder.parentNode) {
+                placeholder.remove();
+              }
+            }, 100);
+          } else {
+            placeholder.className = 'avatar-placeholder error';
+            placeholder.textContent = '?';
+            placeholder.setAttribute('aria-label', 'Image failed to load');
+          }
+        });
+      }
+      element.appendChild(imgContainer);
     } else {
       const placeholder = document.createElement('div');
-      placeholder.style.cssText = `
-        width: var(--item-size);
-        height: var(--item-size);
-        background: var(--bg-secondary);
-        border-radius: var(--border-radius);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-secondary);
-        font-size: 0.75rem;
-      `;
+      placeholder.className = 'avatar-placeholder';
       placeholder.textContent = '?';
       placeholder.setAttribute('aria-label', 'No image available');
       element.appendChild(placeholder);
@@ -697,7 +734,25 @@ function renderImagePanel() {
     img.alt = `${item.name} full image`;
     elements.imagePanel.appendChild(img);
   } else {
-    showEmptyState(elements.imagePanel, 'Image failed to load.');
+    // Show loading state while image loads
+    const loadingDiv = document.createElement('div');
+    loadingDiv.className = 'image-loading';
+    loadingDiv.innerHTML = '<div class="spinner">⏳</div><p>Loading image...</p>';
+    elements.imagePanel.appendChild(loadingDiv);
+    
+    // Load image asynchronously
+    loadImage(item.image).then(loadedImg => {
+      if (loadedImg && getCurrentItem() === item) {
+        // Only update if still viewing the same item
+        elements.imagePanel.innerHTML = '';
+        const img = loadedImg.cloneNode();
+        img.alt = `${item.name} full image`;
+        elements.imagePanel.appendChild(img);
+      } else if (getCurrentItem() === item) {
+        elements.imagePanel.innerHTML = '';
+        showEmptyState(elements.imagePanel, 'Image failed to load.');
+      }
+    });
   }
 }
 
