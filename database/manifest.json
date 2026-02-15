@@ -424,37 +424,37 @@
               "name": "Amazons",
               "avatar": "database/Factions/Academy Societies/Amazons/avatar.png",
               "image": "database/Factions/Academy Societies/Amazons/image.png",
-              "info": "AKA:\n●\tAmazonky\n●\tAMZ – Alpha Mu Zeta\n\nTyp:\n●\tSesterstvo\n\nPopis:\n●\tVálečnice zkušené v přežití v přírodě, bylinkářství a aclhymii.\n●\tHluboce spjaty s přírodou a její ochranou.\n●\tPěstují silná sesterská pouta a zdravou mentalitu podpořenou silnou komunitou.\n●\tProsazují nezávislost a někdy i nadřazenost žen.\n\nDoporučené schopnosti:\n●\tAgility\n●\tFortitude\n●\tMight\n●\tPerception\n●\tWill\n●\tPresence\n●\tAlteration\n●\tCreation\n●\tMovement\n●\tProtection"
+              "info": "AKA:\n●\tAmazonky\n●\tAMZ – Alpha Mu Zeta\n\nTyp:\n●\tPrimárně sesterstvo (vyjímečně mohou být i muži)\n\nPopis:\n●\tVálečnice zkušené v přežití v přírodě, bylinkářství a aclhymii.\n●\tHluboce spjaty s přírodou a její ochranou.\n●\tPěstují silná sesterská pouta a zdravou mentalitu podpořenou silnou komunitou.\n●\tProsazují nezávislost a někdy i nadřazenost žen.\n\nDoporučené schopnosti:\n●\tAgility\n●\tFortitude\n●\tMight\n●\tPerception\n●\tWill\n●\tPresence\n●\tAlteration\n●\tCreation\n●\tMovement\n●\tProtection"
             },
             {
               "name": "Circle of the Enlightened",
               "avatar": "database/Factions/Academy Societies/Circle of the Enlightened/avatar.png",
               "image": "database/Factions/Academy Societies/Circle of the Enlightened/image.png",
-              "info": "AKA:\n●\tKruh osvícených\n●\tLUX – Lambda Upsilon Xi\n\nTyp:\n●\tSmíšený spolek\n\nPopis:\n●\tElitní společnost vlivných šlechticů, bohatých obchodníků, ambiciózních umělců a politiků.\n●\tLuxusní životní styl, vytříbený hédonismus, kulturní mecenášství a silné politické konexe.\n\nDoporučené schopnosti:\n●\tLearning\n●\tPerception\n●\tDeception\n●\tPersuasion\n●\tPresence\n●\tInfluence\n●\tPrescience"
+              "info": "AKA:\n●\tKruh osvícených\n●\tLUX – Lambda Upsilon Xi\n\nTyp:\n●\tMuži i ženy\n\nPopis:\n●\tElitní společnost vlivných šlechticů, bohatých obchodníků, ambiciózních umělců a politiků.\n●\tLuxusní životní styl, vytříbený hédonismus, kulturní mecenášství a silné politické konexe.\n\nDoporučené schopnosti:\n●\tLearning\n●\tPerception\n●\tDeception\n●\tPersuasion\n●\tPresence\n●\tInfluence\n●\tPrescience"
             },
             {
               "name": "Hades' Watch",
               "avatar": "database/Factions/Academy Societies/Hades' Watch/avatar.png",
               "image": "database/Factions/Academy Societies/Hades' Watch/image.png",
-              "info": "AKA:\n●\tHádova hlídka\n●\tAID – Alpha Iota Delta\n\nTyp:\n●\tBratrstvo\n\nPopis:\n●\tNejtajemnější ze všech spolků.\n●\tStudují zapovězenou magii a dávné artefakty.\n●\tMistři magické historie a archeologie.\n\nDoporučené schopnosti:\n●\tFortitude\n●\tLearning\n●\tLogic\n●\tPerception\n●\tWill\n●\tAlteration\n●\tCreation\n●\tEnergy\n●\tEntropy\n●\tMovement\n●\tPrescience\n●\tProtection"
+              "info": "AKA:\n●\tHádova hlídka\n●\tAID – Alpha Iota Delta\n\nTyp:\n●\tMuži i ženy\n\nPopis:\n●\tNejtajemnější ze všech spolků.\n●\tStudují zapovězenou magii a dávné artefakty.\n●\tMistři magické historie a archeologie.\n\nDoporučené schopnosti:\n●\tFortitude\n●\tLearning\n●\tLogic\n●\tPerception\n●\tWill\n●\tAlteration\n●\tCreation\n●\tEnergy\n●\tEntropy\n●\tMovement\n●\tPrescience\n●\tProtection"
             },
             {
               "name": "Madmen",
               "avatar": "database/Factions/Academy Societies/Madmen/avatar.png",
               "image": "database/Factions/Academy Societies/Madmen/image.png",
-              "info": "AKA:\n●\tŠílenci\n●\tMAD – Mu Alpha Delta\n\nTyp:\n●\tBratrstvo\n\nPopis:\n●\tNebojácní odvážlivci vyžívající se v extrémních dobrodružstvích, riziku a bratrství v bitvě.\n●\tZnámí pro své divoké večírky a přesto disciplinování, když čelí nebezpečí.\n\nDoporučené schopnosti:\n●\tFortitude\n●\tMight\n●\tWill\n●\tPresence\n●\tCreation\n●\tEnergy\n●\tEntropy\n●\tInfluence\n●\tMovement\n●\tProtection"
+              "info": "AKA:\n●\tŠílenci\n●\tMAD – Mu Alpha Delta\n\nTyp:\n●\tMuži i ženy, ale převážně muži\n\nPopis:\n●\tNebojácní odvážlivci vyžívající se v extrémních dobrodružstvích, riziku a bratrství v bitvě.\n●\tZnámí pro své divoké večírky a přesto disciplinování, když čelí nebezpečí.\n\nDoporučené schopnosti:\n●\tFortitude\n●\tMight\n●\tWill\n●\tPresence\n●\tCreation\n●\tEnergy\n●\tEntropy\n●\tInfluence\n●\tMovement\n●\tProtection"
             },
             {
               "name": "Sisters of Circe",
               "avatar": "database/Factions/Academy Societies/Sisters of Circe/avatar.png",
               "image": "database/Factions/Academy Societies/Sisters of Circe/image.png",
-              "info": "AKA:\n●\tSestry Kirké\n●\tKIS – Kappa Iota Sigma\n\nTyp:\n●\tSesterstvo\n\nPopis:\n●\tSestry často navštěvují dvory vyšších společností a ovlivňují politiku v Řecku i zahraničí.\n●\tSpoléhají na nebojovou magii, společenské vychování a ženské vnady.\n\nDoporučené schopnosti:\n●\tAgility\n●\tLogic\n●\tPerception\n●\tWill\n●\tDeception\n●\tPersuasion\n●\tAlteration\n●\tInfluence\n●\tMovement\n●\tPrescience"
+              "info": "AKA:\n●\tSestry Kirké\n●\tKIS – Kappa Iota Sigma\n\nTyp:\n●\tPrimárně sesterstvo (vyjímečně mohou být i muži)\n\nPopis:\n●\tSestry často navštěvují dvory vyšších společností a ovlivňují politiku v Řecku i zahraničí.\n●\tSpoléhají na nebojovou magii, společenské vychování a ženské vnady.\n\nDoporučené schopnosti:\n●\tAgility\n●\tLogic\n●\tPerception\n●\tWill\n●\tDeception\n●\tPersuasion\n●\tAlteration\n●\tInfluence\n●\tMovement\n●\tPrescience"
             },
             {
               "name": "Society of Athena",
               "avatar": "database/Factions/Academy Societies/Society of Athena/avatar.png",
               "image": "database/Factions/Academy Societies/Society of Athena/image.png",
-              "info": "AKA:\n●\tSpolečnost Athény\n●\tSOPH – Sigma Omicron Phi\n\nTyp:\n●\tSmíšený spolek\n\nPopis:\n●\tUčenci a inovátoři oddaní vzdělání a intelektuální dokonalosti.\n●\tStrategicky aplikují znalosti fyziky, inženýrství a architektury k posílení obranyschopnosti a ekonomiky Řecka.\n\nDoporučené schopnosti:\n●\tLearning\n●\tLogic\n●\tWill\n●\tAlteration\n●\tCreation\n●\tProtection"
+              "info": "AKA:\n●\tSpolečnost Athény\n●\tSOPH – Sigma Omicron Phi\n\nTyp:\n●\tMuži i ženy\n\nPopis:\n●\tUčenci a inovátoři oddaní vzdělání a intelektuální dokonalosti.\n●\tStrategicky aplikují znalosti fyziky, inženýrství a architektury k posílení obranyschopnosti a ekonomiky Řecka.\n\nDoporučené schopnosti:\n●\tLearning\n●\tLogic\n●\tWill\n●\tAlteration\n●\tCreation\n●\tProtection"
             }
           ]
         },
