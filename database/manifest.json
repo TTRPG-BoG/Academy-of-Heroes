@@ -398,16 +398,88 @@
           "thumbnail": "database/Characters/4. Other/thumbnail.png",
           "items": [
             {
-              "name": "2nd year Theodora",
-              "avatar": "database/Characters/4. Other/2nd year Theodora/avatar.png",
-              "image": "database/Characters/4. Other/2nd year Theodora/image.png",
+              "name": "AID - Chithonia of Megara",
+              "avatar": "database/Characters/4. Other/AID - Chithonia of Megara/avatar.jpg",
+              "image": "database/Characters/4. Other/AID - Chithonia of Megara/image.jpeg",
+              "info": "Role: Prezidentka spolku AID\n\nMěsto: Megara (Korint)\n\nRočník: 3.\n\nMagie: Entropy (Hades), Alteration (Demeter)\n\nSilné stránky: Learning, Logic, Perception, Will, Fortitude"
+            },
+            {
+              "name": "AID - Theraios of Miletus",
+              "avatar": "database/Characters/4. Other/AID - Theraios of Miletus/avatar.jpg",
+              "image": "database/Characters/4. Other/AID - Theraios of Miletus/image.jpeg",
+              "info": "Role: Viceprezident spolku AID\n\nMěsto: Milétos (Rhodos)\n\nRočník: 2.\n\nMagie: Protection (Athena), Prescience (Apollo)\n\nSilné stránky: Learning, Will, Perception, Fortitude"
+            },
+            {
+              "name": "AMZ - Arete of Tripoli",
+              "avatar": "database/Characters/4. Other/AMZ - Arete of Tripoli/avatar.jpg",
+              "image": "database/Characters/4. Other/AMZ - Arete of Tripoli/image.jpeg",
+              "info": "Role: Prezidentka spolku AMZ\n\nMěsto: Tripoli (Sparta)\n\nRočník: 3.\n\nMagie: Alteration (Demeter), Creation (Hera)\n\nSilné stránky: Fortitude, Might, Perception, Will, Presence"
+            },
+            {
+              "name": "AMZ - Nausika of Olympia",
+              "avatar": "database/Characters/4. Other/AMZ - Nausika of Olympia/avatar.jpg",
+              "image": "database/Characters/4. Other/AMZ - Nausika of Olympia/image.jpeg",
+              "info": "Role: Viceprezidentka spolku AMZ\n\nMěsto: Olympia (Sparta)\n\nRočník: 2.\n\nMagie: Creation (Hera), Alteration (Demeter)\n\nSilné stránky: Will, Fortitude, Learning, Presence"
+            },
+            {
+              "name": "Healer - Calyce of Argos",
+              "avatar": "database/Characters/4. Other/Healer - Calyce of Argos/avatar.png",
+              "image": "database/Characters/4. Other/Healer - Calyce of Argos/image.png",
+              "info": "Place of Origin:\n●\tArgos\n\nRole:\n●\tApprentice Healer\n\nMagic:\n●\tCreation\n●\tProtection\n\nStrengths:\n+\tLearning\n+\tPerception\n+\tPresence\n+\tMagic\n\nWeaknesses:\n-\tPoor\n-\tPhysique\n\nBehavior:\n●\tCurious and empathetic, always eager to learn and improve her skills.\n●\tOften overworks herself in her studies, forgetting to rest or eat when focused.\n●\tAt only 16 years old, is the youngest person living at the academy.\n\nFamily:\n●\tGrandmother Eudokia (Healer of the Academy)\n"
+            },
+            {
+              "name": "KIS - Eidothea of Chios",
+              "avatar": "database/Characters/4. Other/KIS - Eidothea of Chios/avatar.jpg",
+              "image": "database/Characters/4. Other/KIS - Eidothea of Chios/image.jpeg",
+              "info": "Role: Viceprezidentka spolku KIS\n\nMěsto: Chios (Lesbos)\n\nRočník: 2.\n\nMagie: Movement (Hermes), Influence (Aphrodite)\n\nSilné stránky: Agility, Perception, Deception, Will"
+            },
+            {
+              "name": "KIS - Philomela of Ephesus",
+              "avatar": "database/Characters/4. Other/KIS - Philomela of Ephesus/avatar.jpg",
+              "image": "database/Characters/4. Other/KIS - Philomela of Ephesus/image.jpeg",
+              "info": "Role: Prezidentka spolku KIS\n\nMěsto: Efesos (Rhodos)\n\nRočník: 3.\n\nMagie: Influence (Aphrodite), Alteration (Demeter)\n\nSilné stránky: Persuasion, Deception, Perception, Will, Agility"
+            },
+            {
+              "name": "LUX - Leontios of Corinth",
+              "avatar": "database/Characters/4. Other/LUX - Leontios of Corinth/avatar.jpg",
+              "image": "database/Characters/4. Other/LUX - Leontios of Corinth/image.jpeg",
+              "info": "Role: Prezident spolku LUX\n\nMěsto: Korint\n\nRočník: 3.\n\nMagie: Influence (Aphrodite), Prescience (Apollo)\n\nSilné stránky: Presence, Persuasion, Deception, Perception, Learning"
+            },
+            {
+              "name": "LUX - Theodora of Argos",
+              "avatar": "database/Characters/4. Other/LUX - Theodora of Argos/avatar.png",
+              "image": "database/Characters/4. Other/LUX - Theodora of Argos/image.png",
               "info": "Place of Origin:\n●\tArgos\n\nRole:\n●\tGenius 2nd year student\n\nMagic:\n●\tInfluence\n\nStrengths:\n+\tAgility\n+\tFortitude\n+\tLearning\n+\tPerception\n\nWeaknesses:\n-\tSocial\n\nBehavior:\n●\tAppears confident and decisive, thriving in competitive and tactical settings.\n●\tProtective of those she cares about, but quick to confront perceived injustice.\n●\tTends to isolate herself emotionally, hiding her feelings behind a mask of determination.\n\nFamily:\n●\tSister Melantha (Healer of the Academy)\n"
             },
             {
-              "name": "Apprentice Calyce",
-              "avatar": "database/Characters/4. Other/Apprentice Calyce/avatar.png",
-              "image": "database/Characters/4. Other/Apprentice Calyce/image.png",
-              "info": "Place of Origin:\n●\tArgos\n\nRole:\n●\tApprentice Healer\n\nMagic:\n●\tCreation\n●\tProtection\n\nStrengths:\n+\tLearning\n+\tPerception\n+\tPresence\n+\tMagic\n\nWeaknesses:\n-\tPoor\n-\tPhysique\n\nBehavior:\n●\tCurious and empathetic, always eager to learn and improve her skills.\n●\tOften overworks herself in her studies, forgetting to rest or eat when focused.\n●\tAt only 16 years old, is the youngest person living at the academy.\n\nFamily:\n●\tGrandmother Eudokia (Healer of the Academy)\n"
+              "name": "LUX - Thespia of Lesbos",
+              "avatar": "database/Characters/4. Other/LUX - Thespia of Lesbos/avatar.jpg",
+              "image": "database/Characters/4. Other/LUX - Thespia of Lesbos/image.jpeg",
+              "info": "Role: Viceprezidentka spolku LUX\n\nMěsto: Lesbos\n\nRočník: 2.\n\nMagie: Influence (Aphrodite), Movement (Hermes)\n\nSilné stránky: Presence, Persuasion, Deception, Learning, Perception"
+            },
+            {
+              "name": "MAD - Alkaios of Larissa",
+              "avatar": "database/Characters/4. Other/MAD - Alkaios of Larissa/avatar.jpg",
+              "image": "database/Characters/4. Other/MAD - Alkaios of Larissa/image.jpeg",
+              "info": "Role: Prezident spolku MAD\n\nMěsto: Larisa (Thessálie)\n\nRočník: 3.\n\nMagie: Energy (Zeus), Protection (Athena)\n\nSilné stránky: Might, Fortitude, Will, Presence"
+            },
+            {
+              "name": "MAD - Kynthia of Rhodos",
+              "avatar": "database/Characters/4. Other/MAD - Kynthia of Rhodos/avatar.jpg",
+              "image": "database/Characters/4. Other/MAD - Kynthia of Rhodos/image.jpeg",
+              "info": "Role: Viceprezidentka spolku MAD\n\nMěsto: Rhodos\n\nRočník: 2.\n\nMagie: Creation (Hera), Movement (Hermes)\n\nSilné stránky: Fortitude, Will, Agility, Perception"
+            },
+            {
+              "name": "SOPH - Kleareta of Syracuse",
+              "avatar": "database/Characters/4. Other/SOPH - Kleareta of Syracuse/avatar.jpg",
+              "image": "database/Characters/4. Other/SOPH - Kleareta of Syracuse/image.jpeg",
+              "info": "Role: Viceprezidentka spolku SOPH\n\nMěsto: Syrakusy (nyní nezávislý stát patřící Římu)\n\nRočník: 2.\n\nMagie: Alteration (Demeter), Protection (Athena)\n\nSilné stránky: Logic, Learning, Will, Perception"
+            },
+            {
+              "name": "SOPH - Sofronios of Athens",
+              "avatar": "database/Characters/4. Other/SOPH - Sofronios of Athens/avatar.jpg",
+              "image": "database/Characters/4. Other/SOPH - Sofronios of Athens/image.jpeg",
+              "info": "Role: Prezident spolku SOPH\n\nMěsto: Athény\n\nRočník: 3.\n\nMagie: Protection (Athena), Creation (Hera)\n\nSilné stránky: Learning, Logic, Will"
             }
           ]
         }
