@@ -176,12 +176,6 @@
               "info": "Place of Origin:\n●\tDelphi (site of the Oracle)\n\nMagic:\n●\tPrescience\n●\tEntropy\n\nStrengths:\n+\tMagic\n+\tPerception\n+\tWill\n\nWeaknesses:\n-\tPoor\n-\tPhysique\n-\tSocial\n\nBehavior:\n●\tSpeaks in riddles or vague statements at times.\n●\tCurious about interpretive magic, scrying, and omens.\n●\tSoft-spoken yet authoritative when visions occur.\n●\tBurdened by foreknowledge of potential disasters, she sometimes isolates herself to avoid emotional pain if she can’t prevent them.\n\nFamily:\n●\tFather Phorbas (temple guardian)\n●\tMother Myrtis (assistant to the Oracle)"
             },
             {
-              "name": "Livia of Lesbos",
-              "avatar": "database/Characters/2. Female 1st-years/Livia of Lesbos/avatar.png",
-              "image": "database/Characters/2. Female 1st-years/Livia of Lesbos/image.png",
-              "info": "Place of Origin:\n●\tLesbos\n\nTODO"
-            },
-            {
               "name": "Melantha of Argos",
               "avatar": "database/Characters/2. Female 1st-years/Melantha of Argos/avatar.png",
               "image": "database/Characters/2. Female 1st-years/Melantha of Argos/image.png",
@@ -444,6 +438,12 @@
               "avatar": "database/Characters/5. Dead/Iolanthe of Athens/avatar.png",
               "image": "database/Characters/5. Dead/Iolanthe of Athens/image.png",
               "info": "Place of Origin:\n●\tAthens (hub of philosophy)\n\nMagic:\n●\tAlteration\n●\tInfluence\n\nStrengths:\n+\tWealthy\n+\tLogic\n+\tLearning\n+\tWill\n\nWeaknesses:\n-\tPhysique\n-\tSocial\n\nBehavior:\n●\tPassionate about logic and philosophical discourse.\n●\tMay come across as condescending if she feels others are uninformed.\n●\tEager to prove her intelligence through academic feats.\n●\tUnder chronic stress to surpass both parents and her famous uncle, occasionally leading to insomnia and anxiety attacks.\n\nFamily:\n●\tFather Praxion (statesman, loves debates)\n●\tMother Clea (mathematician, known for geometry treatises)\n●\tUncle Damophilos (renowned mathematician, Clea’s brother)"
+            },
+            {
+              "name": "Livia of Lesbos",
+              "avatar": "database/Characters/5. Dead/Livia of Lesbos/avatar.png",
+              "image": "database/Characters/5. Dead/Livia of Lesbos/image.png",
+              "info": "Place of Origin:\n●\tLesbos\n\nTODO"
             },
             {
               "name": "Lysandros of Crete",
