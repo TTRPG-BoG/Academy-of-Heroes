@@ -1,7 +1,10 @@
+Kallias of Delphi
+
 Place of Origin:
 ●	Delphi
 
 Magic:
+●	Prescience
 ●	Prescience
 
 Strengths:
@@ -10,10 +13,19 @@ Strengths:
 +	Presence
 
 Weaknesses:
--	Physical
+-	Might
+-	Deception
 
-Connections:
-●	Father ? (hunter?, missing)
-●	Brother Nikolaos (hunter?, missing)
-●	Brother Alexis (musician?)
-●	Sister Leontia (oracle)
+Behavior:
+●	Interested in talking about almost anything. Especially things that are none of his business.
+●	Has to squint to read his own notes, but still somehow comments on what other people are writing in theirs.
+●	Often absent-mindedly plucking a quiet tune on his lyre.
+●	Pretty skilled with a bow and determined to improve in close range combat.
+●	Sometimes seems to genuinely forget that he's not invincible.
+
+Family:
+●	Father Alkaios (hunter, went missing a few years ago)
+●	Mother Xanthe (seamstress)
+●	Brother Nikolaos (26, trained with weapons, often hunted, went missing a few years ago)
+●	Sister Leontia (25, studies to be an oracle)
+●	Brother Alexis (23, musician)
