@@ -1,8 +1,2 @@
-# Session context file - not to be committed
-SESSION_CONTEXT.md
-
 # Resources folder - contains input data, not to be committed
 resources/
-
-# Copilot scripts
-generate_npc_info_final.ps1

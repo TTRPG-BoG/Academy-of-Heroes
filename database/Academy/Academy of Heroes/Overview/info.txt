@@ -1,0 +1,16 @@
+Název:
+●	Akademie hrdinů
+
+Poloha:
+●	Skrytá v okolí hory Olymp
+
+Postavení:
+●	Nejprestižnější škola v Řecku
+
+Popis:
+●	Akademie vyhledává mladé lidi s mimořádným magickým potenciálem a schopnostmi, které mohou rozhodovat o budoucnosti federace. Každý rok se hlásí stovky uchazečů, ale přijato je pouze přibližně padesát.
+●	Studium není zaručenou cestou ke slávě. Studenti musejí obstát v tvrdém výcviku, zkouškách a soupeření s ostatními talentovanými lidmi z celého Řecka.
+●	Akademie stojí mimo každodenní život velkých měst, ale není mimo politiku. Přijímá dědice vlivných rodů i nadané uchazeče z chudých poměrů a jejich budoucí loajalita má pro provincie velkou cenu.
+
+Pověst:
+●	Kdo uspěje, může vstoupit mezi elitu společnosti. Kdo selže, riskuje, že po něm nezůstane nic než zapomenuté jméno.

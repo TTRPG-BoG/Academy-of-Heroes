@@ -1,6 +1,47 @@
 {
   "categories": [
     {
+      "name": "Academy",
+      "subcategories": [
+        {
+          "name": "Academy of Heroes",
+          "thumbnail": null,
+          "items": [
+            {
+              "name": "Admissions",
+              "avatar": null,
+              "image": null,
+              "info": "Přijímací řízení:\n●\tPět náročných vstupních zkoušek\n\nTermín zahájení:\n●\tJednou ročně, na konci léta po žních\n\nPrvní zkouška:\n●\tMěření magického potenciálu v athénském Parthenónu\n\nPopis:\n●\tUchazeči putují se svými blízkými do Athén, kde chrám přesně změří jejich potenciál ve všech osmi magických disciplínách: Alteration, Creation, Energy, Entropy, Influence, Movement, Prescience a Protection.\n●\tPrvní zkouška nehodnotí, kolik kouzel už uchazeč umí. Rozlišuje vrozený potenciál daný božskou krví od dovednosti získané výcvikem.\n●\tPokud chrám označí potenciál za nedostačující, uchazeč nemůže pokračovat. Pro mnohé rodiny je tento rozsudek koncem dlouho budovaných nadějí.\n●\tPodoba zbývajících čtyř zkoušek není v obecných informacích zveřejněna. Jisté je pouze to, že samotná magie nestačí: Akademie hledá také sílu, důvtip a odhodlání.\n"
+            },
+            {
+              "name": "Magic and Bloodlines",
+              "avatar": null,
+              "image": null,
+              "info": "Základ magie:\n●\tBožská krev předávaná lidskými pokrevními liniemi\n\nPočet disciplín:\n●\tOsm\n\nDisciplíny a bohové:\n●\tDémétér – Alteration\n●\tHéra – Creation\n●\tZeus – Energy\n●\tHádés – Entropy\n●\tAfrodita – Influence\n●\tHermés – Movement\n●\tApollón – Prescience\n●\tAthéna – Protection\n\nPopis:\n●\tTéměř každý člověk nese alespoň stopu magického potenciálu, ale většina se nikdy nenaučí skutečně čarovat. Potenciál určuje krev; schopnost vzniká až výcvikem.\n●\tVysoký potenciál hodný budoucího hrdiny je vzácný. Akademie proto netestuje pouze jednu nejsilnější oblast, ale profil uchazeče ve všech osmi disciplínách.\n●\tBohové jako Arés nebo Artemis jsou uctíváni, ale nevytvářejí další druh magie. Náboženská oddanost tedy nemusí odpovídat magické pokrevní linii člověka.\n"
+            },
+            {
+              "name": "Overview",
+              "avatar": null,
+              "image": null,
+              "info": "Název:\n●\tAkademie hrdinů\n\nPoloha:\n●\tSkrytá v okolí hory Olymp\n\nPostavení:\n●\tNejprestižnější škola v Řecku\n\nPopis:\n●\tAkademie vyhledává mladé lidi s mimořádným magickým potenciálem a schopnostmi, které mohou rozhodovat o budoucnosti federace. Každý rok se hlásí stovky uchazečů, ale přijato je pouze přibližně padesát.\n●\tStudium není zaručenou cestou ke slávě. Studenti musejí obstát v tvrdém výcviku, zkouškách a soupeření s ostatními talentovanými lidmi z celého Řecka.\n●\tAkademie stojí mimo každodenní život velkých měst, ale není mimo politiku. Přijímá dědice vlivných rodů i nadané uchazeče z chudých poměrů a jejich budoucí loajalita má pro provincie velkou cenu.\n\nPověst:\n●\tKdo uspěje, může vstoupit mezi elitu společnosti. Kdo selže, riskuje, že po něm nezůstane nic než zapomenuté jméno.\n"
+            },
+            {
+              "name": "Paths after Graduation",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení absolventů:\n●\tElita řecké společnosti\n\nMožné cesty:\n●\tVelení armádě\n●\tSlužba jako pravá ruka šlechtice nebo politika\n●\tLov nestvůr za odměnu\n●\tPrůzkum zapomenutých ruin\n\nPopis:\n●\tAbsolvent Akademie nezíská jediné pevně dané povolání. Výcvik ho připravuje na role, v nichž se běžná autorita, vojsko nebo znalosti ukážou jako nedostatečné.\n●\tProvincie, armáda, šlechtické rody i soukromí zadavatelé mají o schopné absolventy zájem. Nabídka prestižní služby může být poctou, ale také pokusem zavázat si nového hrdinu.\n●\tSvět za hranicemi bezpečných měst je plný monster, konfliktů a ruin se zapomenutými tajemstvími. Právě tam mohou absolventi získat slávu, bohatství a vliv – nebo zmizet beze stopy.\n●\tTitul absolventa otevírá dveře, ale legenda vzniká až skutky. Akademie poskytuje příležitost; nezaručuje bezpečí ani nesmrtelnost.\n"
+            },
+            {
+              "name": "Training and Student Life",
+              "avatar": null,
+              "image": null,
+              "info": "Hlavní cíl:\n●\tProměnit vrozený potenciál ve skutečnou schopnost obstát v nebezpečném světě\n\nPopis:\n●\tStudenti přicházejí z provincií s odlišnými tradicemi, politickými zájmy a představami o hrdinství. Společný výcvik je nutí spolupracovat s budoucími spojenci i soupeři.\n●\tAkademie musí rozvíjet více než magii. Budoucí hrdina potřebuje tělesnou zdatnost, odolnost, úsudek, znalosti, schopnost jednat s lidmi a ochotu rozhodovat se pod tlakem.\n●\tRozdíly v bohatství, původu a rodovém vlivu po přijetí nezmizí. Na jednom místě se setkávají potomci generálů a obchodníků s uchazeči, jejichž rodiny obětovaly vše, aby jim cestu umožnily.\n●\tNeúspěch má váhu. Přijetí je pouze začátek a ani talentovaný student nemá jistotu, že projde všemi zkouškami studia.\n\nKaždodenní napětí:\n●\tPřátelství, rivalita, provinční politika, rodinná očekávání a strach ze zapomnění.\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Characters",
       "subcategories": [
         {
@@ -537,14 +578,98 @@
           ]
         },
         {
-          "name": "Greek States",
+          "name": "Greek Federation",
+          "thumbnail": null,
+          "items": [
+            {
+              "name": "Army Hierarchy",
+              "avatar": null,
+              "image": null,
+              "info": "Charakter armády:\n●\tAthény udržují větší vojsko pro obranu celého Řecka, zatímco každá provincie má také vlastní armádu.\n\nHierarchie:\n●\tVojevůdce – šlechtic nebo generál, který velí celé armádě.\n●\tGenerál – velí divizi o přibližně 1 000 až 2 000 hoplitech.\n●\tPlukovník – velí pluku o přibližně 200 až 400 hoplitech.\n●\tMajor – velí skupině družstev o přibližně 40 až 80 hoplitech.\n●\tKapitán – velí družstvu osmi nebo šestnácti hoplitů.\n●\tHoplit – samostatný voják a základní článek armády.\n\nFungování:\n●\tUvedené počty jsou přibližné a skutečná síla jednotky se může lišit podle ztrát, provincie a typu tažení.\n●\tPři společné obraně se provinční vojska musejí začlenit do širšího velení. To vytváří prostor pro spory o hodnosti, prestiž a poslušnost athénským velitelům.\n●\tPůvod velitele může být stejně důležitý jako jeho schopnosti. Šlechtický titul, politické vazby a skutečná vojenská zkušenost se nemusí vždy sejít v jedné osobě.\n"
+            },
+            {
+              "name": "Government",
+              "avatar": null,
+              "image": null,
+              "info": "Typ státního zřízení:\n●\tVolně spolupracující oligarchie\n\nVedoucí stát:\n●\tAthény\n\nVznik:\n●\tPřed více než dvěma sty lety jako odpověď na perské invaze\n\nPopis:\n●\tŘecká federace není jednolitá říše. Jednotlivé provincie vyrostly z městských států a ponechávají si vlastní panovníky, politické systémy, zákony i armády.\n●\tAthény stojí nad ostatními jako nejsilnější člen. Vybírají federální daně a udržují větší armádu určenou k ochraně celého Řecka před vnějšími hrozbami.\n●\tAthénská moc je však pouze částečná. Provincie mohou federální rozhodnutí podporovat, vyjednávat o nich, obcházet je nebo jim otevřeně vzdorovat podle vlastních zájmů.\n●\tSystém vytváří prostor pro spojenectví i mocenské boje. Korint a Propontis těží z bezpečných obchodních tras, zatímco Makedonie, Théby nebo Peloponés mohou athénské vedení vnímat jako soupeře či omezení vlastní moci.\n\nSoučasné napětí:\n●\tKorupce v Athénách oslabuje důvěru ve federální vedení.\n●\tZvěsti o ztrátách území na východní hranici zpochybňují, zda Athény svou ochrannou roli stále zvládají.\n"
+            }
+          ]
+        },
+        {
+          "name": "Greek Provinces",
           "thumbnail": null,
           "items": [
             {
               "name": "Athens",
               "avatar": null,
               "image": null,
-              "info": ""
+              "info": "Typ:\n●\tVedoucí provincie Řecké federace\n\nHlavní město:\n●\tAthény\n\nZaměření:\n●\tVzdělanost, politika, správa a vyvážené ozbrojené síly\n\nVztah k federaci:\n●\tZakladatel a současné centrum moci\n\nSpráva:\n●\tAthény jsou nadřazeným státem volné řecké oligarchie. Ostatní provincie mají vlastní panovníky, systémy a armády, ale Athény od nich vybírají daně a udržují větší vojsko určené k ochraně celého Řecka.\n\nPopis:\n●\tAthénská provincie je nejlidnatější a nejcivilizovanější částí Řecka. Soustřeďuje učence, filosofy, politiky, generály i velkou část federální správy.\n●\tPřed více než dvěma sty lety stála u zrodu federace, která spojila řecké státy proti perským invazím. Dodnes velí společné armádě, ale její pravomoc nad ostatními provinciemi je pouze částečná.\n●\tJejí vlastní vojsko nespoléhá na jedinou specializaci: pěchota, jízda, loďstvo a mágové jsou zastoupeni poměrně rovnoměrně.\n●\tMoc a bohatství však přinášejí korupci. Úřady, vojenské velení i staré rody soupeří o vliv a loajalita spojenců není samozřejmostí.\n\nPro postavy:\n●\tPůvod z Athén se hodí pro vzdělané, politicky napojené nebo vojensky vycvičené postavy, ale také pro ty, kdo viděli odvrácenou stranu federální moci.\n"
+            },
+            {
+              "name": "Corinth",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tProvincie Řecké federace\n\nHlavní město:\n●\tKorint\n\nZaměření:\n●\tObchod, finance a přeprava zboží\n\nVztah k Athénám:\n●\tLoajální\n\nSpráva:\n●\tKorint si spravuje vlastní obchodní zákony, vládce i ozbrojené síly. Athénskou nadřazenost podporuje, protože federální daně financují ochranu cest a mořských tras, na nichž stojí jeho bohatství.\n\nPopis:\n●\tKorint je nejbohatší provincií federace. Jeho obchodníci propojují domácí trhy se vzdálenými zeměmi a místní bohatství financuje lodě, sklady, cesty i politické dohody.\n●\tLoajalita k Athénám je pevná, protože stabilní federace chrání obchodní trasy. Korinťané však očekávají, že za svou podporu získají slovo při důležitých rozhodnutích.\n●\tVliv se zde měří nejen původem, ale také majetkem, důvěryhodností a sítí závazků. Jediná ztracená zásilka může vyvolat stejný spor jako porážka na bojišti.\n\nPro postavy:\n●\tKorinťané mohou pocházet z obchodnických rodin, přístavního podsvětí, bohatých domácností i z řad lidí, kteří bohatství provincie pouze sledují zvenčí.\n"
+            },
+            {
+              "name": "Crete",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tOstrovní provincie Řecké federace\n\nČeský název:\n●\tKréta\n\nHlavní město:\n●\tKnóssos\n\nZaměření:\n●\tMysticismus, obchod a námořní kultura\n\nVztah k Athénám:\n●\tNeutrální a izolacionistický\n\nSpráva:\n●\tKréta má vlastní vládce, zákony i námořní síly. Federální spolupráci přijímá pragmaticky, ale zásahy Athén do ostrovních záležitostí odmítá.\n\nPopis:\n●\tKréta spojuje staré mystické tradice s praktickou kulturou mořeplavců a obchodníků. Ostrovní poloha podporuje silnou vlastní identitu a nedůvěru k zásahům z pevniny.\n●\tProvincie se vůči Athénám drží neutrálně. Spolupracuje tam, kde je to výhodné, ale odmítá se nechat zatáhnout do každého sporu mezi velkými státy federace.\n●\tTradice hlavního města Knóssu i vzdálenějších sídel jsou plné symbolů, obřadů a příběhů, jejichž význam obyvatelé neradi vysvětlují cizincům.\n\nPro postavy:\n●\tKréta se hodí pro mořeplavce, mystiky, obchodníky a hrdiny svázané s velmi starou rodinnou tradicí.\n"
+            },
+            {
+              "name": "Delphi",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tProvincie Řecké federace\n\nHlavní město:\n●\tDelfy\n\nZaměření:\n●\tNáboženství, mysticismus, magie a komunikace\n\nVztah k Athénám:\n●\tLoajální\n\nSpráva:\n●\tDelfy si zachovávají vlastní náboženské autority, světské vládce i stráže. Athénskou nadřazenost podporují, ale duchovní záležitosti a proroctví považují za svou výhradní oblast.\n\nPopis:\n●\tDelfská provincie je duchovním a informačním uzlem Řecka. Chrámy, věštci a magicky nadaní poslové pomáhají přenášet zprávy mezi vzdálenými částmi federace.\n●\tMístní autorita nestojí pouze na vojácích nebo mincích, ale také na důvěře ve znamení, proroctví a náboženské obřady. To dává Delfám zvláštní vliv na politiku ostatních provincií.\n●\tDelfy jsou k Athénám loajální a jejich komunikační síť je pro fungování federace nepostradatelná. Zároveň si střeží tajemství, která nesdílejí ani se spojenci.\n\nPro postavy:\n●\tPůvod z Delf se hodí pro věštce, kněze, posly, badatele magie i skeptiky vyrůstající ve stínu proroctví.\n"
+            },
+            {
+              "name": "Epirus",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tSeverozápadní provincie Řecké federace\n\nHlavní město:\n●\tIoannina\n\nZaměření:\n●\tMysticismus, magie, průzkum a rozvědka\n\nVztah k Athénám:\n●\tNeutrální a izolacionistický\n\nSpráva:\n●\tEpirus si v rámci volné federace zachovává vlastní vládce, zákony i ozbrojené síly. Athénskou nadřazenost uznává jen v nezbytné míře a své informace považuje za cennější než veřejné sliby.\n\nPopis:\n●\tEpirus je známý zvědy, stopaři a lidmi, kteří dokážou získat informace v obtížném terénu i mezi nedůvěřivými sousedy. Magie zde slouží především pozorování, přežití a utajení.\n●\tProvincie sousedí s oblastmi ovlivněnými podzemní trpasličí říší a izolovanými lidskými sídly. Kontakty na severozápadě jsou cenné, ale nikdy zcela předvídatelné.\n●\tK Athénám se staví neutrálně a své nejlepší informace sdílí opatrně. Obyvatelé Epiru považují soukromí a soběstačnost za obranné nástroje.\n\nPro postavy:\n●\tEpirus se hodí pro stopaře, hraničáře, špehy, průzkumníky a magicky nadané samorosty. Postava může pocházet z Ioanniny i z některého odlehlého sídla provincie.\n"
+            },
+            {
+              "name": "Lesbos",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tOstrovní provincie Řecké federace\n\nHlavní město:\n●\tLesbos\n\nZaměření:\n●\tUmění, magie a diplomacie\n\nVztah k Athénám:\n●\tNeutrální\n\nSpráva:\n●\tLesbos si zachovává vlastní vládce, zákony a ozbrojené síly. Athénské daně přijímá jako cenu za společnou ochranu, ale v politických sporech si střeží neutralitu.\n\nPopis:\n●\tLesbos si vybudoval vliv skrze kulturu, vzdělanost a schopnost promlouvat k lidem. Básníci, hudebníci, mágové a vyslanci zde nejsou okrajovými profesemi, ale součástí politické identity provincie.\n●\tNeutralita vůči Athénám umožňuje místním diplomatům jednat s různými stranami federálních sporů. Tato role prostředníka je cenná, ale snadno vyvolává podezření z dvojí hry.\n●\tUmění zde může být oslavou, kritikou i nástrojem vlivu. Veřejné vystoupení někdy změní náladu obyvatel rychleji než projev politika.\n\nPro postavy:\n●\tLesbos je vhodným domovem pro umělce, vyjednavače, společenské mágy a postavy, které bojují slovy stejně obratně jako zbraněmi.\n"
+            },
+            {
+              "name": "Macedonia",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tSeverní provincie Řecké federace\n\nČeský název:\n●\tMakedonie\n\nHlavní město:\n●\tTesalonika\n\nZaměření:\n●\tSmíšené vojsko a diplomacie\n\nVztah k Athénám:\n●\tRivalský\n\nSpráva:\n●\tMakedonie má vlastní panovníky, politický systém i armádu. Athénám odvádí federální daně, ale jejich právo zasahovat do vnitřních záležitostí pravidelně zpochybňuje.\n\nPopis:\n●\tMakedonie leží v prostoru, kde se vojenská síla musí doplňovat s diplomacií. Její armáda kombinuje různé druhy jednotek a velitelé jsou zvyklí reagovat na proměnlivé hrozby.\n●\tBlízkost severních sousedů a cest vedoucích k Transylvánii i trpasličí říši dělá z provincie přirozené místo pro vyslance, vyjednavače a zpravodajce.\n●\tVůči Athénám vystupuje jako sebevědomý rival. Neusiluje nutně o rozpad federace, ale chce větší podíl na jejím směřování.\n\nPro postavy:\n●\tMakedonie je vhodná pro vojáky s diplomatickým talentem, politické dědice i postavy zvyklé jednat s cizinci a odlišnými kulturami. Jejich domovem může být Tesalonika nebo jiné sídlo provincie.\n"
+            },
+            {
+              "name": "Peloponnese",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tProvincie Řecké federace\n\nČeský název:\n●\tPeloponés\n\nHlavní město:\n●\tSparta\n\nZaměření:\n●\tArmáda, zejména těžká pěchota\n\nVztah k Athénám:\n●\tRebelský\n\nSpráva:\n●\tPeloponés si střeží vlastní vládce, zákony i armádu a athénský nárok na daně a poslušnost snáší ze všech provincií nejhůře.\n\nPopis:\n●\tPeloponés staví svou pověst na kázni, odolnosti a službě ve zbrani. Pěší oddíly vedené ze Sparty patří k nejobávanějším v celé federaci a vojenská připravenost je považována za povinnost, nikoli za povolání několika vyvolených.\n●\tVůči Athénám vystupuje provincie vzdorovitě. Federaci může uznávat jako obrannou nutnost, ale odmítá, aby athénští politici rozhodovali o každém jejím kroku.\n●\tMístní kultura oceňuje činy, stručná slova a osobní odpovědnost. Okázalost a příliš složitá diplomacie zde často budí nedůvěru.\n\nPro postavy:\n●\tObyvatelé Peloponésu mohou být disciplinovaní vojáci, kritici federace nebo lidé, kteří se snaží uniknout přísným očekáváním svého domova. Ne každý pochází přímo ze Sparty.\n"
+            },
+            {
+              "name": "Propontis",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tVýchodní provincie Řecké federace\n\nHlavní město:\n●\tByzantium\n\nZaměření:\n●\tObchod, multikulturní kontakty, loďstvo a pevnosti\n\nVztah k Athénám:\n●\tLoajální\n\nSpráva:\n●\tPropontis spravuje vlastní opevnění, loďstvo i obchodní pravidla. Athénskou nadřazenost podporuje, protože společná armáda a vybrané daně financují obranu východní hranice.\n\nPopis:\n●\tPropontis střeží východní obchodní cesty a přístupy k řeckému prostoru. Pevnosti a námořnictvo kolem hlavního města z provincie dělají obchodní bránu i první obrannou linii.\n●\tSetkávají se zde Řekové, kočovní obchodníci a lidé z mnoha vzdálených zemí. Cizí jazyky, zvyky a zboží jsou běžnou součástí každodenního života.\n●\tLoajalita k Athénám vychází z bezpečnostní reality: Propontis leží nejblíže oblastem, kudy v minulosti přicházely perské invaze. Zvěsti o ztracených východních územích zde znějí zvlášť naléhavě.\n\nPro postavy:\n●\tPropontis je vhodná pro námořníky, strážce pevností, obchodníky, tlumočníky a hrdiny s vazbami na cizí kultury. Byzantium je pouze jedním, byť nejvýznamnějším, z jejích sídel.\n"
+            },
+            {
+              "name": "Rhodes",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tOstrovní provincie Řecké federace\n\nHlavní město:\n●\tRhodos\n\nZaměření:\n●\tObchod a námořní vojsko\n\nVztah k Athénám:\n●\tLoajální, ale izolacionistický\n\nSpráva:\n●\tRhodos má vlastní vládce, zákony a loďstvo. Na společnou obranu přispívá daněmi i loděmi, ale trvá na tom, že ostrovní záležitosti zůstanou mimo přímé řízení Athén.\n\nPopis:\n●\tRhodos chrání své zájmy silným loďstvem a zkušenými námořníky. Obchodní lodě přivážejí bohatství, zatímco válečné galéry zajišťují bezpečnost ostrova i okolních tras.\n●\tProvincie podporuje federaci a Athény, ale pečlivě si hlídá vlastní záležitosti. Cizí rozhodnutí přijímá jen tehdy, pokud respektují ostrovní samostatnost.\n●\tIzolace nevylučuje kontakt se světem: rhodští kapitáni znají cizí přístavy, jazyky i nebezpečí lépe než většina obyvatel vnitrozemí.\n\nPro postavy:\n●\tRhodos je vhodným původem pro námořníky, obchodníky, vojáky loďstva a samostatné osobnosti, které berou loajalitu jako svobodné rozhodnutí.\n"
+            },
+            {
+              "name": "Thebes",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tProvincie Řecké federace\n\nHlavní město:\n●\tThéby\n\nZaměření:\n●\tArmáda, zejména jízda\n\nVztah k Athénám:\n●\tRivalský\n\nSpráva:\n●\tThéby mají vlastní vládce, zákony a armádu. Federální daně a athénské velení společné obrany uznávají, ale usilují o větší podíl na rozhodování.\n\nPopis:\n●\tThéby jsou hrdou vojenskou provincií proslulou jízdními oddíly, rychlými přesuny a důrazem na velení v poli. Koně i schopní jezdci jsou zde symbolem postavení a praktickou součástí obrany.\n●\tAthénské vedení federace otevřeně nezpochybňuje, ale dlouhodobě s ním soupeří o prestiž, vojenský vliv a uznání.\n●\tThébské rody si pečlivě pamatují staré zásluhy i urážky. Soutěživost prostupuje armádou, politikou i výchovou mladých talentů.\n\nPro postavy:\n●\tThébané se dobře hodí pro jezdce, stratégy a ambiciózní hrdiny, kteří chtějí dokázat, že Athény nemají monopol na vedení Řecka.\n"
+            },
+            {
+              "name": "Thessalia",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tProvincie Řecké federace\n\nHlavní město:\n●\tLarissa\n\nZaměření:\n●\tZemědělství, zásobování potravinami a chov koní\n\nVztah k Athénám:\n●\tNeutrální\n\nSpráva:\n●\tThessalia má vlastní vládce, zákony a ozbrojené síly. Athénám odvádí daně na společnou obranu, ale svou skutečnou vyjednávací sílu opírá o zásoby potravin a koní.\n\nPopis:\n●\tThessalia je obilnicí federace. Její pole, pastviny a chovy koní zajišťují potraviny pro města i zvířata pro armádu, dopravu a obchod.\n●\tProvincie nemá potřebu soupeřit s Athénami o okázalou prestiž, ale dobře ví, že bez jejích sklizní a stád se federální moc rychle zastaví.\n●\tŽivot mimo hlavní město Larissu se řídí obdobím setby, sklizně a trhů. Kvalita koní i pověst jednotlivých statků jsou zdrojem rodové hrdosti a dlouhých sporů.\n\nPro postavy:\n●\tThessalia se hodí pro jezdce, chovatele, bylinkáře a prakticky založené hrdiny, kteří znají cenu půdy, jídla a tvrdé práce.\n"
             }
           ]
         }
@@ -561,7 +686,186 @@
               "name": "Athens",
               "avatar": null,
               "image": null,
-              "info": ""
+              "info": "Typ:\n●\tHlavní město athénské provincie a Řecké federace\n\nCharakter:\n●\tNejvětší a nejcivilizovanější město Řecka\n\nPopis:\n●\tAthény jsou sídlem federální politiky, vojenského velení a mnoha center vzdělanosti. V ulicích se potkávají učenci, filosofové, generálové, úředníci, obchodníci i uchazeči o lepší život.\n●\tUlice ukazují všechny kontrasty metropole: otroci v prostých tunikách míjejí urozené pány v hedvábí, chudoba stojí vedle okázalého bohatství a rychlí kurýři se prodírají nepřetržitým davem.\n●\tMagie je viditelnou součástí každodenního života. Na stavbách se kámen vyráží ze skály, přenáší vzduchem a mění v pravidelné kvádry pod vedením vycvičených mágů.\n●\tMěsto založilo federaci, která před více než dvěma sty lety spojila Řecko proti Persii. Athény dnes vybírají od provincií daně a udržují větší armádu pro společnou obranu, zatímco jednotlivé provincie si ponechávají vlastní vládce a vojska.\n●\tParthenón je jednou za rok, na konci léta po žních, cílem stovek uchazečů o studium na Akademii hrdinů. Chrám přesně měří jejich potenciál ve všech osmi magických disciplínách.\n●\tZa obrazem pořádku se skrývá korupce, soupeření mocných rodů a boj o kontrolu nad institucemi federace. V Athénách lze získat téměř cokoli, ale jen máloco bez ceny.\n\nVýznamná místa:\n●\tParthenón a jeho síň pro měření magického potenciálu\n●\tAkropole, monumentální srdce města nad rušnými ulicemi\n●\tSídla federální správy a společného vojenského velení\n●\tŠkoly, knihovny, cvičiště a rušná tržiště\n"
+            },
+            {
+              "name": "Byzantium",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město provincie Propontis\n\nCharakter:\n●\tOpevněná východní brána federace\n\nPopis:\n●\tByzantium je opevněným srdcem Propontidy. Spojuje mohutné pevnosti, vojenský přístav a rušné multikulturní čtvrti; kdokoli nebo cokoli putuje mezi Řeckem a východem, pravděpodobně zanechá stopu právě zde.\n●\tVe městě žijí obchodníci, vojáci, námořníci a přistěhovalci mnoha kultur. Tato rozmanitost je zdrojem bohatství, ale také napětí a příležitostí pro špehy.\n●\tVzpomínky na perské invaze nejsou vzdálenou historií. Zprávy o ztracených územích na východě posilují hlídky a obavy, že další útok může přijít brzy.\n\nAtmosféra:\n●\tHlučná, ostražitá a pestrá; za každou obchodní nabídkou může stát cizí zájem.\n"
+            },
+            {
+              "name": "Corinth",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město korintské provincie\n\nCharakter:\n●\tNejbohatší obchodní centrum federace\n\nPopis:\n●\tKorint je městem přístavů, skladů, obchodních domů a neustálého pohybu zboží. Na jeho trzích lze narazit na výrobky z celého Řecka i ze zahraničí.\n●\tBohaté rodiny investují do lodí, expedic, umění i nadaných mladých lidí. Podpora budoucího hrdiny může být projevem vlastenectví, ale také promyšlenou investicí.\n●\tMěsto je loajální Athénám, protože federální ochrana udržuje cesty otevřené. Za zdvořilými dohodami se však vede tvrdý boj o ceny, smlouvy a informace.\n\nAtmosféra:\n●\tKosmopolitní, bohatá a uspěchaná; téměř každý vztah má svou hodnotu.\n"
+            },
+            {
+              "name": "Delphi",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město delfské provincie\n\nCharakter:\n●\tNáboženské a mystické centrum Řecka\n\nPopis:\n●\tDelfy vyrůstají kolem chrámů, svatyní a míst spojených s věštbami. Poutníci sem přinášejí otázky, dary i politická tajemství.\n●\tMěsto funguje jako komunikační spojka federace. Zprávy zde přebírají poslové, kněží a magicky nadaní specialisté, kteří je posílají dále.\n●\tVliv Delf pramení z důvěry. Každé chybné proroctví nebo prozrazené tajemství proto může mít následky daleko za hranicemi města.\n\nAtmosféra:\n●\tSlavnostní, tajemná a plná náznaků; jasná odpověď je zde vzácnější než dobrá otázka.\n"
+            },
+            {
+              "name": "Ioannina",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město provincie Epirus\n\nCharakter:\n●\tSkryté centrum průzkumníků, stopařů a rozvědky\n\nPopis:\n●\tIoannina není okázalou metropolí. Její význam pro Epirus spočívá v lidech, kteří znají okolní terén, cesty a tajné stezky lépe než kdokoli jiný.\n●\tVe městě se shromažďují zprávy z odlehlých vesnic, hranic a severozápadních oblastí. Informace se zde neposkytují zdarma a jejich zdroj bývá stejně důležitý jako obsah.\n●\tMístní magie se pojí s orientací, vnímáním a přežitím. Cizinci mohou považovat zdrženlivost obyvatel za nepřátelství, pro Ioanniňany jde však o rozumnou opatrnost.\n\nAtmosféra:\n●\tTichá, pozorná a uzavřená; lidé si všímají více, než dávají najevo.\n"
+            },
+            {
+              "name": "Knossos",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město Kréty\n\nCharakter:\n●\tStarobylé centrum ostrovního obchodu a mysticismu\n\nPopis:\n●\tKnóssos je politickým a mystickým srdcem Kréty, městem vrstev, nádvoří a spletitých cest, kde se praktický provoz přístavu mísí se starými obřady. Některé budovy slouží současně jako skladiště, svatyně i rodové sídlo.\n●\tMístní lidé se vyznají v moři a obchodu, ale největší respekt chovají k tradicím, jejichž původ už nemusí nikdo spolehlivě znát.\n●\tCizinci zde snadno ztratí orientaci nejen v uličkách, ale i v nepsaných pravidlech. Knóssané neradi vysvětlují to, co podle nich má správně pochopit každý sám.\n\nAtmosféra:\n●\tStarobylá, uzavřená a podmanivá; každá cesta jako by vedla k dalšímu tajemství.\n"
+            },
+            {
+              "name": "Larissa",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město provincie Thessalia\n\nCharakter:\n●\tSprávní a obchodní centrum zemědělského kraje\n\nPopis:\n●\tLarissa je správním a obchodním srdcem Thessalie. Obklopují ji pole, pastviny a cesty, po nichž proudí zásoby do celé federace; její trhy určují cenu obilí, dobytka i kvalitních koní.\n●\tMěsto je méně okázalé než Athény nebo Korint, ale jeho skladiště a stáje mají pro Řecko strategický význam. Neúroda by zde byla federální krizí.\n●\tNa konci léta se sklizeň pojí s odjezdem uchazečů k první zkoušce Akademie v Athénách. Pro mnohé rodiny jde o největší událost v životě mladého člověka.\n\nAtmosféra:\n●\tPraktická, pracovitá a sezónní; město se mění podle sklizně a příchodu obchodníků.\n"
+            },
+            {
+              "name": "Lesbos",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město ostrovní provincie Lesbos\n\nCharakter:\n●\tMěsto umění, magie a diplomatických setkání\n\nPopis:\n●\tLesbos je známý divadly, hudebními sály, školami a zahradami, v nichž se pořádají veřejné debaty i soukromá jednání. Umělecká pověst může otevřít cestu do nejvyšší společnosti.\n●\tMěsto často hostí vyslance, kteří potřebují neutrální půdu. Zdvořilost a vytříbené chování proto zakrývají velmi tvrdé politické vyjednávání.\n●\tMagie se zde prolíná s vystoupením, rétorikou a společenským vlivem. Hranice mezi inspirací, kouzlem a manipulací nemusí být vždy zřetelná.\n\nAtmosféra:\n●\tKultivovaná, tvořivá a mnohovrstevnatá; nejnebezpečnější souboj může probíhat během hostiny.\n"
+            },
+            {
+              "name": "Rhodes",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město ostrovní provincie Rhodos\n\nCharakter:\n●\tOpevněný přístav a centrum loďstva\n\nPopis:\n●\tRhodos žije podle rytmu přílivu, obchodních konvojů a hlídek. Přístav je plný námořníků, lodních mistrů, celníků a vojáků námořnictva.\n●\tMěsto je otevřené zboží a zprávám ze světa, ale opatrné vůči cizímu politickému vlivu. Návštěvník je vítán, dokud respektuje ostrovní pravidla.\n●\tLoďstvo je zdrojem bezpečí i hrdosti. Zkušení kapitáni mají ve společnosti podobnou váhu jako bohatí obchodníci a úspěšní velitelé.\n\nAtmosféra:\n●\tSebevědomá, slaná a samostatná; za městskými hradbami začíná širé moře.\n"
+            },
+            {
+              "name": "Sparta",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město Peloponésu\n\nCharakter:\n●\tMěsto pěšího vojska, kázně a vzdoru\n\nPopis:\n●\tSparta je vojenským a politickým srdcem Peloponésu. Působí spíše jako rozsáhlý vojenský tábor než jako okázalá metropole; cvičiště, zbrojnice a shromaždiště jsou stejně důležitá jako chrámy a trhy.\n●\tMístní obyvatelé si cení vytrvalosti, stručnosti a schopnosti obstát pod tlakem. Vojenská služba ovlivňuje rodiny, vzdělání i společenské postavení.\n●\tAthénští vyslanci jsou přijímáni chladně a každé federální nařízení se zde nejprve posuzuje podle toho, zda slouží Spartě a obraně Řecka.\n\nAtmosféra:\n●\tPřímá, strohá a soutěživá; respekt je třeba si zasloužit skutky.\n"
+            },
+            {
+              "name": "Thebes",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město thébské provincie\n\nCharakter:\n●\tCentrum jízdy, vojenské cti a soupeřivých rodů\n\nPopis:\n●\tThéby jsou městem kasáren, stájí a otevřených prostranství určených k výcviku jezdců. Schopnost ovládat koně i jednotku přináší velkou prestiž.\n●\tMěstské rody soupeří o velení, politický vliv a slávu svých potomků. Mladí Thébané jsou vedeni k tomu, aby se poměřovali s nejlepšími, zvláště s Athéňany.\n●\tNa veřejnosti se zdůrazňuje jednota provincie, ale pod povrchem přetrvávají rodinné křivdy a dlouhodobé politické dluhy.\n\nAtmosféra:\n●\tHrdá, energická a ambiciózní; každý úspěch se rychle stává součástí veřejné pověsti.\n"
+            },
+            {
+              "name": "Thessaloniki",
+              "avatar": null,
+              "image": null,
+              "info": "Typ:\n●\tHlavní město Makedonie\n\nCharakter:\n●\tSeverní vojenské a diplomatické centrum\n\nPopis:\n●\tTesalonika je politickým a vojenským srdcem Makedonie, připraveným na válku i vyjednávání. Ve městě sídlí smíšené vojenské jednotky a současně sem přijíždějí poslové ze severních zemí.\n●\tMístní velitelé a diplomati pohlížejí na Athény jako na partnera i soupeře. Každý federální úspěch se zde poměřuje s tím, jak by stejný problém vyřešila Tesalonika.\n●\tPoloha města přináší zvěsti o Transylvánii, trpasličí říši i neklidu za hranicemi. Pravdivé zprávy se na trzích rychle mísí s propagandou.\n\nAtmosféra:\n●\tBdělá, ambiciózní a politická; dobrý dojem zde může otevřít stejně dveří jako vojenská hodnost.\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Religion",
+      "subcategories": [
+        {
+          "name": "1. Magic Lineage Gods",
+          "thumbnail": null,
+          "items": [
+            {
+              "name": "Aphrodite",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tJedna z osmi božských pramáti a praotců magie\n\nMagická disciplína:\n●\tInfluence\n\nOblasti úcty:\n●\tLáska, touha, krása, vztahy a přesvědčivost\n\nPopis:\n●\tAfrodita vládne citům a poutům, která mohou spojit jednotlivce i celé národy. Její kult zahrnuje romantickou lásku, ale také přitažlivost, obdiv a moc osobního kouzla.\n●\tJejí lidské pokrevní linie nesou potenciál pro Influence. Výcvik této disciplíny vyvolává etické otázky: rozdíl mezi přesvědčením a odebráním svobodné volby může být nebezpečně tenký.\n\nTypičtí ctitelé:\n●\tMilenci, umělci, diplomati, dvořané a mágové vlivu.\n"
+            },
+            {
+              "name": "Apollo",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tJeden z osmi božských pramáti a praotců magie\n\nMagická disciplína:\n●\tPrescience\n\nOblasti úcty:\n●\tProroctví, světlo, hudba, poznání a léčení\n\nPopis:\n●\tApollón je spojován s jasností, která odhaluje skryté souvislosti. Věštci hledají jeho přízeň před proroctvím, umělci před vystoupením a léčitelé při hledání správné diagnózy.\n●\tJeho lidské pokrevní linie nesou potenciál pro Prescience. Vidět možné dění neznamená rozumět mu a každá předpověď zůstává otevřená výkladu.\n\nTypičtí ctitelé:\n●\tVěštci, léčitelé, hudebníci, učenci, lučištníci a mágové jasnozřivosti.\n"
+            },
+            {
+              "name": "Athena",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tJedna z osmi božských pramáti a praotců magie\n\nMagická disciplína:\n●\tProtection\n\nOblasti úcty:\n●\tMoudrost, strategie, obrana, řemeslo a ukázněná válka\n\nPopis:\n●\tAthéna představuje sílu vedenou rozvahou. Je patronkou obránců, stratégů a lidí, kteří hledají řešení dříve, než tasí zbraň.\n●\tJejí lidské pokrevní linie nesou potenciál pro Protection. Tato magie chrání jednotlivce, skupiny i místa a její skutečná hodnota se často ukáže teprve ve chvíli, kdy ochrana selže.\n●\tAthénský Parthenón hostí první vstupní zkoušku Akademie, při níž se měří potenciál ve všech osmi disciplínách.\n\nTypičtí ctitelé:\n●\tStrážci, učenci, velitelé, stavitelé, řemeslníci a mágové ochrany.\n"
+            },
+            {
+              "name": "Demeter",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tJedna z osmi božských pramáti a praotců magie\n\nMagická disciplína:\n●\tAlteration\n\nOblasti úcty:\n●\tÚroda, proměna, růst, půda a obnova\n\nPopis:\n●\tDémétér je spojována s proměnou živého světa a s cyklem setby, sklizně a nového růstu. Její kult je zvlášť silný v zemědělských oblastech, ale respektují ji všichni, kdo závisejí na úrodě.\n●\tJejí lidské pokrevní linie nesou potenciál pro Alteration. Samotný původ však kouzelníka nevytváří; bez výcviku může nadání zůstat po celý život nevyužité.\n\nTypičtí ctitelé:\n●\tRolníci, zahradníci, bylinkáři, léčitelé a mágové zaměření na proměnu.\n"
+            },
+            {
+              "name": "Hades",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tJeden z osmi božských pramáti a praotců magie\n\nMagická disciplína:\n●\tEntropy\n\nOblasti úcty:\n●\tSmrt, podsvětí, konec věcí, bohatství země a neodvratnost\n\nPopis:\n●\tHádés připomíná, že každá věc má svůj konec a každý slib vůči mrtvým má váhu. Je spíše uctíván s respektem než s radostí a jeho obřady bývají tiché a přísné.\n●\tJeho pokrevní linie je spojena s Entropy. Kvůli povaze této disciplíny budí její nositelé nedůvěru, přestože původ ani potenciál samy o sobě neurčují charakter člověka.\n\nTypičtí ctitelé:\n●\tPohřební kněží, strážci hrobek, horníci, badatelé dávných ruin a mágové entropie.\n"
+            },
+            {
+              "name": "Hera",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tJedna z osmi božských pramáti a praotců magie\n\nMagická disciplína:\n●\tCreation\n\nOblasti úcty:\n●\tRodina, závazky, legitimita, společenský řád a tvoření\n\nPopis:\n●\tHéra zosobňuje pouta, která drží rodiny a společenství pohromadě. Je vzývána při sňatcích, přísahách a okamžicích, kdy je třeba potvrdit právoplatný řád.\n●\tJejí pokrevní linie je spojena s disciplínou Creation. Potenciál se může projevit i v lidech, kteří se nikdy nestanou aktivními mágy; Akademie jej proto měří odděleně od skutečné dovednosti.\n\nTypičtí ctitelé:\n●\tRodové autority, soudci, řemeslníci, léčitelé a mágové tvoření.\n"
+            },
+            {
+              "name": "Hermes",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tJeden z osmi božských pramáti a praotců magie\n\nMagická disciplína:\n●\tMovement\n\nOblasti úcty:\n●\tCesty, rychlost, poslové, obchod, hranice a lstivost\n\nPopis:\n●\tHermés je patronem všech, kdo jsou stále na cestě. Chrání posly a cestovatele, ale dovolávají se ho také obchodníci, vyjednavači a lidé spoléhající na rychlý rozum.\n●\tJeho pokrevní linie je spojena s Movement. Nositelé tohoto potenciálu mohou po výcviku překračovat běžná omezení pohybu, ale bez kázně je rychlost pouze rychlejší cestou k chybě.\n\nTypičtí ctitelé:\n●\tPoslové, kupci, cestovatelé, průzkumníci, zloději a mágové pohybu.\n"
+            },
+            {
+              "name": "Zeus",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tJeden z osmi božských pramáti a praotců magie\n\nMagická disciplína:\n●\tEnergy\n\nOblasti úcty:\n●\tObloha, bouře, vláda, autorita a síla\n\nPopis:\n●\tZeus je symbolem nebeské moci a práva vládnout. Jeho jméno zaznívá při veřejných přísahách, před bitvou i během bouří, kdy lidé hledají ochranu před nespoutanou silou oblohy.\n●\tJeho lidské pokrevní linie nesou potenciál pro Energy. Toto nadání může být mocné i nebezpečné, a proto je disciplína a kontrola stejně důležitá jako samotná síla.\n\nTypičtí ctitelé:\n●\tVládci, generálové, vojáci, strážci přísah a mágové energie.\n"
+            }
+          ]
+        },
+        {
+          "name": "2. Other Worshipped Gods",
+          "thumbnail": null,
+          "items": [
+            {
+              "name": "Ares",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tUctívaný bůh bez vlastní uznané magické disciplíny\n\nOblasti úcty:\n●\tVálka, zuřivost, odvaha a nezkrotná síla boje\n\nPopis:\n●\tArés zosobňuje přímý střet, krev a odvahu pokračovat navzdory strachu. Jeho jméno zaznívá mezi vojáky před bitvou i v arénách, kde rozhoduje rychlost a odhodlání.\n●\tNa rozdíl od osmi bohů magických linií není Arés přímo spojen s jedním druhem magie. Jeho příznivci mohou mít jakékoli nadání, nebo nemusí ovládat magii vůbec.\n\nTypičtí ctitelé:\n●\tVojáci, zápasníci, žoldnéři a lidé, kteří hledají odvahu před nevyhnutelným bojem.\n"
+            },
+            {
+              "name": "Artemis",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tUctívaná bohyně bez vlastní uznané magické disciplíny\n\nOblasti úcty:\n●\tLov, divočina, zvířata, měsíc a nezávislost\n\nPopis:\n●\tArtemis chrání divoká místa a ty, kdo se v nich pohybují s respektem. Lovci ji prosí o přesnou ruku, cestovatelé o bezpečnou cestu a lidé toužící po svobodě o odvahu jít vlastní stezkou.\n●\tNení spojena s jedinou z osmi magických disciplín. Její kult však může sdružovat následovníky různých pokrevních linií, zvláště stopaře a ochránce přírody.\n\nTypičtí ctitelé:\n●\tLovci, lučištníci, hraničáři, porodní báby a nezávislé komunity mimo velká města.\n"
+            },
+            {
+              "name": "Asclepius",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tUctívaný bůh bez vlastní uznané magické disciplíny\n\nOblasti úcty:\n●\tLéčení, lékařství, zotavení a odpovědnost za život pacienta\n\nPopis:\n●\tAsklépios je patronem léčitelů a svatyní, v nichž nemocní hledají pomoc. Jeho kult klade důraz na znalosti, trpělivost a povinnost nepůsobit zbytečné utrpení.\n●\tNení zdrojem devátého druhu magie. Léčitel může využívat Creation, Alteration nebo zcela nemagické postupy; náboženská oddanost a magická pokrevní linie jsou oddělené věci.\n\nTypičtí ctitelé:\n●\tLékaři, ranhojiči, bylinkáři, pečovatelé a lidé prosící za uzdravení.\n"
+            },
+            {
+              "name": "Dionysus",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tUctívaný bůh bez vlastní uznané magické disciplíny\n\nOblasti úcty:\n●\tVíno, slavnosti, divadlo, extáze a osvobození od pravidel\n\nPopis:\n●\tDionýsos je bohem chvil, kdy se společenský řád uvolní a skryté emoce vystoupí na povrch. Jeho svátky mohou být radostné, tvořivé i nebezpečně nepředvídatelné.\n●\tNení přímo spojen s jednou z osmi magických disciplín. Někteří jeho kněží a umělci mohou ovládat Influence či jinou magii, jde však o jejich pokrevní potenciál, nikoli o dar Dionýsa.\n\nTypičtí ctitelé:\n●\tVinaři, herci, hudebníci, hostinští a lidé hledající inspiraci nebo únik.\n"
+            },
+            {
+              "name": "Hephaestus",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tUctívaný bůh bez vlastní uznané magické disciplíny\n\nOblasti úcty:\n●\tOheň výhně, kovářství, řemeslo, vynálezy a vytrvalost\n\nPopis:\n●\tHéfaistos je patronem lidí, kteří dávají myšlenkám hmotnou podobu. Jeho svatyně lze nalézt poblí dílen, kováren a míst, kde řemeslníci pracují s nebezpečnými materiály.\n●\tPřestože tvoření a oheň mohou připomínat Creation nebo Energy, Héfaistos není zdrojem samostatné magické linie. Jeho kult ctí předevší dovednost, trpělivost a práci.\n\nTypičtí ctitelé:\n●\tKováři, zbrojíři, stavitelé, vynálezci a řemeslníci všeho druhu.\n"
+            },
+            {
+              "name": "Hestia",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tUctívaná bohyně bez vlastní uznané magické disciplíny\n\nOblasti úcty:\n●\tDomov, krb, pohostinnost, rodinné bezpečí a společné zázemí\n\nPopis:\n●\tHestia představuje klidný střed domova a oheň, kolem něhož se lidé scházejí. Její kult nebývá okázalý, ale drobné každodenní obřady jsou rozšířené napříč Řeckem.\n●\tHestia není zdrojem vlastní magické disciplíny. Její ochrana je chápána jako náboženské a společenské požehnání, nikoli jako dědičný druh kouzlení.\n\nTypičtí ctitelé:\n●\tRodiny, hostitelé, správci ubytoven, kuchaři a lidé pečující o společné zázemí.\n"
+            },
+            {
+              "name": "Persephone",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tUctívaná bohyně bez vlastní uznané magické disciplíny\n\nOblasti úcty:\n●\tNávrat života, sestup do podsvětí, roční cyklus a přechod mezi světy\n\nPopis:\n●\tPersefona spojuje jarní obnovu s tichem podsvětí. Její příběh dává lidem naději, že odloučení nemusí být konečné a že po období ztráty může přijít návrat.\n●\tNení spojena se samostatnou magickou disciplínou, i když její symbolika se dotýká oblastí Démétér i Háda. Její ctitelé mohou pocházet z různých pokrevních linií.\n\nTypičtí ctitelé:\n●\tPozůstalí, zemědělci, strážci přechodových obřadů a lidé začínající novou etapu života.\n"
+            },
+            {
+              "name": "Poseidon",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení:\n●\tUctívaný bůh bez vlastní uznané magické disciplíny\n\nOblasti úcty:\n●\tMoře, bouře, zemětřesení, koně a námořní cesty\n\nPopis:\n●\tPoseidón je pro ostrovní a pobřežní oblasti silou, kterou nelze ignorovat. Námořníci mu přinášejí oběti před vyplutím a děkují mu po bezpečném návratu.\n●\tNení pramenem samostatné magické disciplíny. Úcta k němu přesto překračuje hranice pokrevních linií a spojuje lidi, jejichž život závisí na moři.\n\nTypičtí ctitelé:\n●\tNámořníci, rybáři, kapitáni, stavitelé lodí a chovatelé koní.\n"
             }
           ]
         }
