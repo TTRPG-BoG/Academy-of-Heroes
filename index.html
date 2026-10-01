@@ -4,27 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- SEO Meta Tags -->
   <title>Academy of Heroes — Character Database</title>
   <meta name="description" content="Browse the Academy of Heroes character database. Explore NPCs, students, and teachers with detailed profiles, images, and information.">
-  <meta name="keywords" content="Academy of Heroes, character database, NPCs, students, teachers">
   <meta name="author" content="Academy of Heroes">
+  <meta name="theme-color" content="#2c3e50">
   
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Academy of Heroes — Character Database">
   <meta property="og:description" content="Browse the Academy of Heroes character database. Explore NPCs, students, and teachers with detailed profiles.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://example.com/">
-  <meta property="og:image" content="https://example.com/og-image.jpg">
   
   <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Academy of Heroes — Character Database">
   <meta name="twitter:description" content="Browse the Academy of Heroes character database.">
   
-  <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; script-src 'self';">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
@@ -34,12 +29,7 @@
   <link rel="manifest" href="icons/site.webmanifest">
   
   <!-- External Stylesheet -->
-  <link rel="stylesheet" href="css/main.css?v=9">
-  
-  <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  
-  <!-- Removed inline styles - now in external CSS -->
+  <link rel="stylesheet" href="css/main.css?v=10">
 
 </head>
 <body>
@@ -55,37 +45,38 @@
   </noscript>
   
   <!-- Left Sidebar - Categories Navigation -->
-  <nav id="sidebar" role="navigation" aria-label="Main categories">
-    <div id="category-list" role="tablist"></div>
+  <nav id="sidebar" aria-label="Character categories">
+    <h1 class="site-title">Academy of Heroes</h1>
+    <div id="category-list"></div>
   </nav>
   
   <!-- Subcategories Bar (Mobile only - shown below sidebar) -->
-  <div id="subcategories" role="toolbar" aria-label="Subcategories"></div>
+  <nav id="subcategories" aria-label="Subcategories"></nav>
   
   <!-- Main Content Area -->
   <div id="main">
     <!-- Search Bar -->
     <div id="search-container">
+      <label for="search-input" class="visually-hidden">Search the character database</label>
       <input 
         type="search" 
         id="search-input" 
         placeholder="Search characters and categories..." 
-        aria-label="Search characters"
         autocomplete="off"
+        role="combobox"
         aria-autocomplete="list"
-        aria-controls="search-results">
+        aria-controls="search-results"
+        aria-expanded="false"
+        aria-haspopup="listbox">
       <!-- Search Results Dropdown -->
       <div id="search-results" role="listbox" aria-label="Search results"></div>
     </div>
-    
-    <!-- Breadcrumb Navigation (Hidden) -->
-    <div id="breadcrumb" role="navigation" aria-label="Breadcrumb"></div>
     
     <!-- Content Panels -->
     <div id="content">
       <!-- Items Grid -->
       <main id="main-content">
-        <div id="items-grid" role="grid" aria-label="Character list"></div>
+        <div id="items-grid" role="list" aria-label="Characters"></div>
       </main>
       
       <!-- Info Panel -->
@@ -97,9 +88,9 @@
   </div>
 
   <!-- Toast Notification Container -->
-  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <div id="toast-container" aria-live="polite"></div>
 
   <!-- External JavaScript -->
-  <script src="js/app.js?v=11" defer></script>
+  <script src="js/app.js?v=12" defer></script>
 </body>
 </html>

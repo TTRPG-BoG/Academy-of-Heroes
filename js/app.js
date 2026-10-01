@@ -1,1582 +1,866 @@
 /**
- * Academy of Heroes - Main Application
- * Manages character database navigation and display
+ * Academy of Heroes character browser.
  */
 
 'use strict';
 
-// ===== CONFIGURATION =====
-const CONFIG = {
+const CONFIG = Object.freeze({
   manifestUrl: 'database/manifest.json',
-  preloadImages: true,
-  enableKeyboardNav: true,
+  imageTimeoutMs: 20_000,
+  searchDelayMs: 150,
+  maxSearchResults: 100,
   enableUrlRouting: true
-};
+});
 
-// ===== STATE MANAGEMENT =====
 const state = {
   manifest: null,
   currentCategory: 0,
   currentSubcategory: 0,
   currentItem: 0,
   imageCache: new Map(),
-  isLoading: false,
+  imageLoads: new Map(),
   searchQuery: '',
   searchResults: [],
   searchSelectedIndex: -1,
   showSearchDropdown: false,
-  favorites: [] // Array of pinned items: [{categoryIndex, subcategoryIndex, itemIndex, item}]
+  favorites: []
 };
 
-// ===== DOM ELEMENT REFERENCES =====
-const elements = {
-  categoryList: null,
-  subcategories: null,
-  itemsGrid: null,
-  infoPanel: null,
-  imagePanel: null,
-  mainContent: null,
-  searchInput: null,
-  searchContainer: null,
-  searchResults: null,
-  shareButton: null,
-  breadcrumb: null
-};
+const elements = {};
 
-// ===== FAVORITES MANAGEMENT =====
+function cacheElements() {
+  const ids = [
+    'category-list', 'subcategories', 'items-grid', 'info-panel',
+    'image-panel', 'main-content', 'search-container', 'search-input',
+    'search-results', 'toast-container'
+  ];
 
-/**
- * Load favorites from localStorage
- */
+  for (const id of ids) {
+    elements[id.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())] = document.getElementById(id);
+  }
+}
+
+function validateManifest(manifest) {
+  if (!manifest || !Array.isArray(manifest.categories)) {
+    throw new Error('The database manifest has an invalid structure.');
+  }
+
+  for (const category of manifest.categories) {
+    if (typeof category.name !== 'string' || !Array.isArray(category.subcategories)) {
+      throw new Error('The database manifest contains an invalid category.');
+    }
+
+    for (const subcategory of category.subcategories) {
+      if (typeof subcategory.name !== 'string' || !Array.isArray(subcategory.items)) {
+        throw new Error('The database manifest contains an invalid subcategory.');
+      }
+    }
+  }
+}
+
+async function init() {
+  cacheElements();
+  showLoading();
+
+  try {
+    const response = await fetch(CONFIG.manifestUrl, { cache: 'no-cache' });
+    if (!response.ok) throw new Error(`Database request failed with status ${response.status}.`);
+
+    const manifest = await response.json();
+    validateManifest(manifest);
+    state.manifest = manifest;
+    loadFavorites();
+
+    if (CONFIG.enableUrlRouting) parseUrlHash();
+    normalizeSelection();
+    setupEventListeners();
+    updateUI();
+  } catch (error) {
+    console.error('Initialization error:', error);
+    elements.itemsGrid.replaceChildren();
+    showEmptyState(elements.itemsGrid, 'The character database could not be loaded.');
+    showToast('Failed to load the database. Please refresh the page.', 'error', 0);
+  } finally {
+    hideLoading();
+  }
+}
+
+// ===== FAVORITES =====
+
+function createFavorite(categoryIndex, subcategoryIndex, itemIndex) {
+  const category = state.manifest.categories[categoryIndex];
+  const subcategory = category?.subcategories?.[subcategoryIndex];
+  const item = subcategory?.items?.[itemIndex];
+  if (!category || !subcategory || !item) return null;
+
+  return {
+    key: JSON.stringify([category.name, subcategory.name, item.name]),
+    categoryName: category.name,
+    subcategoryName: subcategory.name,
+    itemName: item.name,
+    categoryIndex,
+    subcategoryIndex,
+    itemIndex,
+    item
+  };
+}
+
+function resolveFavorite(savedFavorite) {
+  if (!savedFavorite || typeof savedFavorite !== 'object') return null;
+
+  const categoryName = savedFavorite.categoryName;
+  const subcategoryName = savedFavorite.subcategoryName;
+  const itemName = savedFavorite.itemName || savedFavorite.item?.name;
+
+  if (categoryName && subcategoryName && itemName) {
+    const categoryIndex = state.manifest.categories.findIndex(category => category.name === categoryName);
+    const category = state.manifest.categories[categoryIndex];
+    const subcategoryIndex = category?.subcategories?.findIndex(subcategory => subcategory.name === subcategoryName) ?? -1;
+    const subcategory = category?.subcategories?.[subcategoryIndex];
+    const itemIndex = subcategory?.items?.findIndex(item => item.name === itemName) ?? -1;
+    const favorite = createFavorite(categoryIndex, subcategoryIndex, itemIndex);
+    if (favorite) return favorite;
+  }
+
+  // Migrate favorites saved by older versions, while guarding against reordered data.
+  const legacyFavorite = createFavorite(
+    Number(savedFavorite.categoryIndex),
+    Number(savedFavorite.subcategoryIndex),
+    Number(savedFavorite.itemIndex)
+  );
+  if (legacyFavorite && (!itemName || legacyFavorite.item.name === itemName)) return legacyFavorite;
+
+  const savedAvatar = savedFavorite.item?.avatar;
+  const savedImage = savedFavorite.item?.image;
+  for (let categoryIndex = 0; categoryIndex < state.manifest.categories.length; categoryIndex += 1) {
+    const category = state.manifest.categories[categoryIndex];
+    for (let subcategoryIndex = 0; subcategoryIndex < category.subcategories.length; subcategoryIndex += 1) {
+      const subcategory = category.subcategories[subcategoryIndex];
+      const itemIndex = subcategory.items.findIndex(item =>
+        (savedAvatar && item.avatar === savedAvatar) || (savedImage && item.image === savedImage)
+      );
+      if (itemIndex >= 0) return createFavorite(categoryIndex, subcategoryIndex, itemIndex);
+    }
+  }
+
+  return null;
+}
+
 function loadFavorites() {
   try {
-    const saved = localStorage.getItem('aoh-favorites');
-    if (saved) {
-      state.favorites = JSON.parse(saved);
-    }
+    const storedValue = localStorage.getItem('aoh-favorites');
+    const storedFavorites = storedValue ? JSON.parse(storedValue) : [];
+    if (!Array.isArray(storedFavorites)) throw new TypeError('Favorites must be an array.');
+
+    const seen = new Set();
+    state.favorites = storedFavorites
+      .map(resolveFavorite)
+      .filter(favorite => favorite && !seen.has(favorite.key) && seen.add(favorite.key));
+    saveFavorites();
   } catch (error) {
     console.warn('Failed to load favorites:', error);
     state.favorites = [];
   }
 }
 
-/**
- * Save favorites to localStorage
- */
 function saveFavorites() {
+  const serializableFavorites = state.favorites.map(favorite => ({
+    categoryName: favorite.categoryName,
+    subcategoryName: favorite.subcategoryName,
+    itemName: favorite.itemName
+  }));
+
   try {
-    localStorage.setItem('aoh-favorites', JSON.stringify(state.favorites));
+    localStorage.setItem('aoh-favorites', JSON.stringify(serializableFavorites));
   } catch (error) {
-    console.error('Failed to save favorites:', error);
+    console.warn('Failed to save favorites:', error);
   }
 }
 
-/**
- * Check if current item is pinned
- * @returns {boolean} True if pinned
- */
-function isItemPinned() {
-  if (state.currentCategory === -1) return false;
-  
-  return state.favorites.some(fav => 
-    fav.categoryIndex === state.currentCategory &&
-    fav.subcategoryIndex === state.currentSubcategory &&
-    fav.itemIndex === state.currentItem
-  );
+function findFavoriteIndex(categoryIndex, subcategoryIndex, itemIndex) {
+  const candidate = createFavorite(categoryIndex, subcategoryIndex, itemIndex);
+  if (!candidate) return -1;
+  return state.favorites.findIndex(favorite => favorite.key === candidate.key);
 }
 
-/**
- * Toggle pin status of current item
- */
-function togglePin() {
-  if (state.currentCategory === -1) return;
-  
-  const item = getCurrentItem();
-  if (!item) return;
-  
-  const existingIndex = state.favorites.findIndex(fav =>
-    fav.categoryIndex === state.currentCategory &&
-    fav.subcategoryIndex === state.currentSubcategory &&
-    fav.itemIndex === state.currentItem
-  );
-  
-  if (existingIndex >= 0) {
-    // Unpin
-    state.favorites.splice(existingIndex, 1);
-    showToast(`${item.name} removed from favorites`, 'info', 2000);
+function togglePinByIndex(itemIndex) {
+  if (state.currentCategory === -1) {
+    const favorite = state.favorites[itemIndex];
+    if (!favorite) return;
+    state.favorites.splice(itemIndex, 1);
+    state.currentItem = Math.min(itemIndex, state.favorites.length - 1);
+    state.currentSubcategory = state.currentItem;
+    showToast(`${favorite.item.name} removed from favorites`, 'info', 2500);
   } else {
-    // Pin
-    state.favorites.push({
-      categoryIndex: state.currentCategory,
-      subcategoryIndex: state.currentSubcategory,
-      itemIndex: state.currentItem,
-      item: {
-        name: item.name,
-        avatar: item.avatar,
-        image: item.image,
-        info: item.info
-      }
-    });
-    showToast(`${item.name} added to favorites`, 'success', 2000);
+    const existingIndex = findFavoriteIndex(state.currentCategory, state.currentSubcategory, itemIndex);
+    const item = getCurrentItems()[itemIndex];
+    if (!item) return;
+
+    if (existingIndex >= 0) {
+      state.favorites.splice(existingIndex, 1);
+      showToast(`${item.name} removed from favorites`, 'info', 2500);
+    } else {
+      const favorite = createFavorite(state.currentCategory, state.currentSubcategory, itemIndex);
+      if (!favorite) return;
+      state.favorites.push(favorite);
+      showToast(`${item.name} added to favorites`, 'success', 2500);
+    }
   }
-  
+
   saveFavorites();
+  normalizeSelection();
   updateUI();
 }
 
-/**
- * Toggle pin status of item by index (for grid pin buttons)
- * @param {number} itemIndex - Index of the item in current items array
- */
-function togglePinByIndex(itemIndex) {
-  const items = getCurrentItems();
-  const item = items[itemIndex];
-  if (!item) return;
-  
-  // Handle Favorites category differently
-  if (state.currentCategory === -1) {
-    // In Favorites view, itemIndex corresponds to favorites array index
-    if (itemIndex >= 0 && itemIndex < state.favorites.length) {
-      const fav = state.favorites[itemIndex];
-      state.favorites.splice(itemIndex, 1);
-      showToast(`${fav.item.name} removed from favorites`, 'info', 2000);
-      saveFavorites();
-      renderCategories(); // Update favorites list in sidebar
-      renderItemsGrid(); // Re-render grid to update pin button state
-    }
+function selectFavorite(favoriteIndex) {
+  const favorite = state.favorites[favoriteIndex];
+  if (!favorite) return;
+  state.currentCategory = favorite.categoryIndex;
+  state.currentSubcategory = favorite.subcategoryIndex;
+  state.currentItem = favorite.itemIndex;
+  updateUI();
+}
+
+// ===== IMAGES =====
+
+function loadImage(src) {
+  if (!src) return Promise.resolve(null);
+  if (state.imageCache.has(src)) return Promise.resolve(state.imageCache.get(src));
+  if (state.imageLoads.has(src)) return state.imageLoads.get(src);
+
+  const imagePromise = new Promise(resolve => {
+    const image = new Image();
+    let settled = false;
+
+    const finish = result => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timeoutId);
+      state.imageCache.set(src, result);
+      state.imageLoads.delete(src);
+      resolve(result);
+    };
+
+    const timeoutId = setTimeout(() => finish(null), CONFIG.imageTimeoutMs);
+    image.decoding = 'async';
+    image.addEventListener('load', () => finish(image), { once: true });
+    image.addEventListener('error', () => finish(null), { once: true });
+    image.src = src;
+  });
+
+  state.imageLoads.set(src, imagePromise);
+  return imagePromise;
+}
+
+function cloneImage(image, alt, className = '', loading = 'lazy') {
+  const clone = image.cloneNode();
+  clone.alt = alt;
+  clone.decoding = 'async';
+  clone.loading = loading;
+  if (className) clone.className = className;
+  return clone;
+}
+
+function appendProgressiveImage(container, src, alt, options = {}) {
+  const { className = '', loading = 'lazy', placeholderClass = 'image-placeholder' } = options;
+  const cachedImage = state.imageCache.get(src);
+
+  if (cachedImage) {
+    container.appendChild(cloneImage(cachedImage, alt, className, loading));
     return;
   }
-  
-  const existingIndex = state.favorites.findIndex(fav =>
-    fav.categoryIndex === state.currentCategory &&
-    fav.subcategoryIndex === state.currentSubcategory &&
-    fav.itemIndex === itemIndex
-  );
-  
-  if (existingIndex >= 0) {
-    // Unpin
-    state.favorites.splice(existingIndex, 1);
-    showToast(`${item.name} removed from favorites`, 'info', 2000);
-  } else {
-    // Pin
-    state.favorites.push({
-      categoryIndex: state.currentCategory,
-      subcategoryIndex: state.currentSubcategory,
-      itemIndex: itemIndex,
-      item: {
-        name: item.name,
-        avatar: item.avatar,
-        image: item.image,
-        info: item.info
-      }
-    });
-    showToast(`${item.name} added to favorites`, 'success', 2000);
+
+  const placeholder = document.createElement('span');
+  placeholder.className = `${placeholderClass} loading`;
+  placeholder.setAttribute('aria-hidden', 'true');
+  container.appendChild(placeholder);
+
+  if (state.imageCache.has(src)) {
+    placeholder.classList.replace('loading', 'error');
+    return;
   }
-  
-  saveFavorites();
-  renderCategories(); // Update favorites list in sidebar
-  renderItemsGrid(); // Re-render grid to update pin button state
-}
 
-/**
- * Select a favorite item (navigate to it)
- * @param {number} favIndex - Index in favorites array
- */
-function selectFavorite(favIndex) {
-  const fav = state.favorites[favIndex];
-  if (!fav) return;
-  
-  // Navigate to the actual item
-  state.currentCategory = fav.categoryIndex;
-  state.currentSubcategory = fav.subcategoryIndex;
-  state.currentItem = fav.itemIndex;
-  
-  updateUI();
-}
-
-// ===== INITIALIZATION =====
-
-/**
- * Initialize the application when DOM is ready
- */
-async function init() {
-  try {
-    // Cache DOM elements
-    elements.categoryList = document.getElementById('category-list');
-    elements.subcategories = document.getElementById('subcategories');
-    elements.itemsGrid = document.getElementById('items-grid');
-    elements.infoPanel = document.getElementById('info-panel');
-    elements.imagePanel = document.getElementById('image-panel');
-    elements.mainContent = document.getElementById('main-content');
-    elements.searchInput = document.getElementById('search-input');
-    elements.searchContainer = document.getElementById('search-container');
-    elements.searchResults = document.getElementById('search-results');
-    elements.shareButton = document.getElementById('share-button');
-    elements.breadcrumb = document.getElementById('breadcrumb');
-
-    // Show loading state
-    showLoading();
-
-    // Load manifest data
-    const response = await fetch(CONFIG.manifestUrl);
-    if (!response.ok) {
-      throw new Error(`Failed to load manifest: ${response.statusText}`);
-    }
-    state.manifest = await response.json();
-    
-    // Validate manifest
-    if (!state.manifest || !state.manifest.categories || !Array.isArray(state.manifest.categories)) {
-      throw new Error('Invalid manifest structure');
-    }
-    
-    // Load favorites from localStorage
-    loadFavorites();
-
-    // Load all thumbnails first (blocking - but they're small and few)
-    if (CONFIG.preloadImages) {
-      await preloadThumbnails();
-    }
-
-    // Parse URL hash for initial state (if routing enabled)
-    if (CONFIG.enableUrlRouting) {
-      parseUrlHash();
-    }
-
-    // Render initial UI immediately - thumbnails are loaded
-    updateUI();
-
-    // Setup event listeners
-    setupEventListeners();
-
-    // Hide loading state - UI is ready with thumbnails
-    hideLoading();
-
-    // Start progressive loading of avatars and images in background (non-blocking)
-    if (CONFIG.preloadImages) {
-      preloadAvatarsAndImagesProgressively().catch(error => {
-        console.warn('Progressive image preload encountered errors:', error);
-      });
-    }
-
-  } catch (error) {
-    console.error('Initialization error:', error);
-    showToast('Failed to load the database. Please refresh the page.', 'error', 0);
-    hideLoading();
-  }
-}
-
-/**
- * Preload all thumbnails (blocking - but small and few)
- * @returns {Promise<void>}
- */
-async function preloadThumbnails() {
-  const thumbnails = [];
-
-  state.manifest.categories.forEach((category) => {
-    if (!category.subcategories || !Array.isArray(category.subcategories)) {
+  loadImage(src).then(image => {
+    if (!placeholder.isConnected) return;
+    if (!image) {
+      placeholder.classList.replace('loading', 'error');
       return;
     }
-    
-    category.subcategories.forEach((subcategory) => {
-      if (subcategory.thumbnail) {
-        thumbnails.push(subcategory.thumbnail);
-      }
-    });
-  });
-
-  // Load all thumbnails in parallel (they're small)
-  await Promise.all(thumbnails.map(src => loadImage(src)));
-}
-
-/**
- * Preload avatars and images progressively - loads one at a time without blocking UI
- * Priority: 1) Avatars, 2) Full images
- * @returns {Promise<void>}
- */
-async function preloadAvatarsAndImagesProgressively() {
-  const avatars = [];
-  const images = [];
-
-  state.manifest.categories.forEach((category) => {
-    if (!category.subcategories || !Array.isArray(category.subcategories)) {
-      return;
-    }
-    
-    category.subcategories.forEach((subcategory) => {
-      if (!subcategory.items || !Array.isArray(subcategory.items)) {
-        return;
-      }
-
-      // Collect avatars and full images
-      subcategory.items.forEach((item) => {
-        if (item.avatar) avatars.push(item.avatar);
-        if (item.image) images.push(item.image);
-      });
-    });
-  });
-
-  // Also collect images from favorites
-  state.favorites.forEach((fav) => {
-    if (fav.item.avatar) avatars.push(fav.item.avatar);
-    if (fav.item.image) images.push(fav.item.image);
-  });
-
-  // Load avatars first (for grid items)
-  for (const src of avatars) {
-    await loadImage(src);
-  }
-
-  // Load full images last
-  for (const src of images) {
-    await loadImage(src);
-  }
-}
-
-/**
- * Load a single image and cache it
- * @param {string} src - Image source URL
- * @returns {Promise<HTMLImageElement>}
- */
-function loadImage(src) {
-  return new Promise((resolve) => {
-    if (state.imageCache.has(src)) {
-      resolve(state.imageCache.get(src));
-      return;
-    }
-
-    const img = new Image();
-    img.src = src;
-
-    img.onload = () => {
-      state.imageCache.set(src, img);
-      resolve(img);
-    };
-
-    img.onerror = () => {
-      console.warn(`Failed to load image: ${src}`);
-      resolve(null);
-    };
+    container.appendChild(cloneImage(image, alt, className, loading));
+    placeholder.remove();
   });
 }
 
-// ===== RENDERING FUNCTIONS =====
+// ===== RENDERING =====
 
-/**
- * Update all UI components
- */
 function updateUI() {
-  try {
-    renderCategories();
-    renderItemsGrid();
-    renderInfoPanel();
-    renderImagePanel();
-
-    // Update URL hash if routing enabled
-    if (CONFIG.enableUrlRouting) {
-      updateUrlHash();
-    }
-
-    // Update ARIA live region for screen readers
-    announceSelection();
-  } catch (error) {
-    console.error('UI update error:', error);
-    // Don't show toast - this is expected with empty categories
-  }
+  renderCategories();
+  renderItemsGrid();
+  renderInfoPanel();
+  renderImagePanel();
+  if (CONFIG.enableUrlRouting) updateUrlHash();
+  announceSelection();
 }
 
-/**
- * Render category navigation buttons in sidebar with tree structure
- */
+function createNavigationButton(label, className, selected, onClick) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = className;
+  button.setAttribute('aria-current', selected ? 'page' : 'false');
+  if (selected) button.classList.add('selected');
+  button.addEventListener('click', onClick);
+
+  const labelElement = document.createElement('span');
+  labelElement.textContent = label;
+  button.appendChild(labelElement);
+  return button;
+}
+
 function renderCategories() {
-  elements.categoryList.innerHTML = '';
-  
-  // Add Favorites category first
-  const favButton = document.createElement('button');
-  favButton.className = 'category';
-  favButton.innerHTML = '<i class="fas fa-thumbtack"></i> Favorites';
-  favButton.setAttribute('role', 'tab');
-  favButton.setAttribute('aria-selected', state.currentCategory === -1 ? 'true' : 'false');
-  favButton.setAttribute('tabindex', state.currentCategory === -1 ? '0' : '-1');
-  favButton.id = 'category-favorites';
-  
-  if (state.currentCategory === -1) {
-    favButton.classList.add('selected');
-  }
-  
-  favButton.addEventListener('click', () => selectCategory(-1));
-  elements.categoryList.appendChild(favButton);
-  
-  // Add favorites tree if selected
-  if (state.currentCategory === -1) {
-    const tree = document.createElement('div');
-    tree.className = 'subcategories-tree show';
-    
-    state.favorites.forEach((fav, favIndex) => {
-      const subItem = document.createElement('div');
-      subItem.className = 'subcat-item';
-      subItem.setAttribute('role', 'button');
-      subItem.setAttribute('tabindex', '0');
-      subItem.setAttribute('aria-label', fav.item.name);
-      
-      if (favIndex === state.currentSubcategory) {
-        subItem.classList.add('selected');
-      }
-      
-      // Use avatar instead of thumbnail
-      if (fav.item.avatar && state.imageCache.has(fav.item.avatar)) {
-        const img = state.imageCache.get(fav.item.avatar).cloneNode();
-        img.alt = '';
-        subItem.appendChild(img);
-      }
-      
-      // Add item name
-      const span = document.createElement('span');
-      span.textContent = fav.item.name;
-      subItem.appendChild(span);
-      
-      subItem.addEventListener('click', () => selectFavorite(favIndex));
-      subItem.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          selectFavorite(favIndex);
-        }
-      });
-      
-      tree.appendChild(subItem);
-    });
-    
-    elements.categoryList.appendChild(tree);
+  const fragment = document.createDocumentFragment();
+  const favoritesButton = createNavigationButton(
+    `Favorites (${state.favorites.length})`, 'category', state.currentCategory === -1, () => selectCategory(-1)
+  );
+  favoritesButton.classList.add('category-favorites');
+  fragment.appendChild(favoritesButton);
+
+  if (state.currentCategory === -1 && state.favorites.length > 0) {
+    fragment.appendChild(createSubcategoryTree(
+      state.favorites.map(favorite => ({ name: favorite.item.name, thumbnail: favorite.item.avatar })),
+      state.currentItem,
+      selectFavorite
+    ));
   }
 
-  // Render regular categories
-  state.manifest.categories.forEach((category, catIndex) => {
-    // Create category button
-    const button = document.createElement('button');
-    button.className = 'category';
-    button.textContent = category.name;
-    button.setAttribute('role', 'tab');
-    button.setAttribute('aria-selected', catIndex === state.currentCategory ? 'true' : 'false');
-    button.setAttribute('tabindex', catIndex === state.currentCategory ? '0' : '-1');
-    button.id = `category-${catIndex}`;
-
-    if (catIndex === state.currentCategory) {
-      button.classList.add('selected');
-    }
-
-    button.addEventListener('click', () => selectCategory(catIndex));
-
-    elements.categoryList.appendChild(button);
-
-    // For desktop/tablet: Add subcategories tree if this category is selected (tree view)
-    // This will be hidden in mobile view
-    if (catIndex === state.currentCategory) {
-      const tree = document.createElement('div');
-      tree.className = 'subcategories-tree show';
-
-      // Only render subcategories if they exist
-      if (category.subcategories && Array.isArray(category.subcategories)) {
-        category.subcategories.forEach((subcategory, subIndex) => {
-          const subItem = document.createElement('div');
-          subItem.className = 'subcat-item';
-          subItem.setAttribute('role', 'button');
-          subItem.setAttribute('tabindex', '0');
-          subItem.setAttribute('aria-label', subcategory.name);
-
-          if (subIndex === state.currentSubcategory) {
-            subItem.classList.add('selected');
-          }
-
-          // Add thumbnail if available
-          if (subcategory.thumbnail && state.imageCache.has(subcategory.thumbnail)) {
-            const img = state.imageCache.get(subcategory.thumbnail).cloneNode();
-            img.alt = '';
-            subItem.appendChild(img);
-          }
-
-          // Add subcategory name
-          const span = document.createElement('span');
-          span.textContent = subcategory.name;
-          subItem.appendChild(span);
-
-          subItem.addEventListener('click', () => selectSubcategory(subIndex));
-          subItem.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              selectSubcategory(subIndex);
-            }
-          });
-
-          tree.appendChild(subItem);
-        });
-      }
-
-      elements.categoryList.appendChild(tree);
+  state.manifest.categories.forEach((category, categoryIndex) => {
+    fragment.appendChild(createNavigationButton(
+      category.name, 'category', categoryIndex === state.currentCategory, () => selectCategory(categoryIndex)
+    ));
+    if (categoryIndex === state.currentCategory && category.subcategories.length > 0) {
+      fragment.appendChild(createSubcategoryTree(category.subcategories, state.currentSubcategory, selectSubcategory));
     }
   });
-  
-  // Render subcategories separately for mobile view
+
+  elements.categoryList.replaceChildren(fragment);
   renderSubcategories();
 }
 
-/**
- * Render subcategory navigation bar (for mobile view)
- */
+function createSubcategoryTree(entries, selectedIndex, selectHandler) {
+  const tree = document.createElement('div');
+  tree.className = 'subcategories-tree show';
+
+  entries.forEach((entry, index) => {
+    const button = createNavigationButton(entry.name, 'subcat-item', index === selectedIndex, () => selectHandler(index));
+    if (entry.thumbnail) {
+      const imageContainer = document.createElement('span');
+      imageContainer.className = 'subcat-item-image';
+      appendProgressiveImage(imageContainer, entry.thumbnail, '', {
+        className: 'subcat-icon', placeholderClass: 'subcat-icon-placeholder'
+      });
+      button.prepend(imageContainer);
+    }
+    tree.appendChild(button);
+  });
+  return tree;
+}
+
 function renderSubcategories() {
-  elements.subcategories.innerHTML = '';
-  
-  // Handle Favorites category
-  if (state.currentCategory === -1) {
-    state.favorites.forEach((fav, favIndex) => {
-      const button = document.createElement('button');
-      button.className = 'subcat';
-      button.textContent = fav.item.name;
-      button.setAttribute('role', 'tab');
-      button.setAttribute('aria-selected', favIndex === state.currentSubcategory ? 'true' : 'false');
-      button.setAttribute('tabindex', '0');
-      
-      if (favIndex === state.currentSubcategory) {
-        button.classList.add('selected');
-      }
-      
-      // Add avatar if available
-      if (fav.item.avatar && state.imageCache.has(fav.item.avatar)) {
-        const img = state.imageCache.get(fav.item.avatar).cloneNode();
-        img.alt = '';
-        img.className = 'subcat-icon';
-        button.insertBefore(img, button.firstChild);
-      }
-      
-      button.addEventListener('click', () => selectFavorite(favIndex));
-      
-      elements.subcategories.appendChild(button);
-    });
-    return;
-  }
-  
-  const category = state.manifest.categories[state.currentCategory];
-  if (!category || !category.subcategories || !Array.isArray(category.subcategories)) {
-    return;
-  }
-  
-  category.subcategories.forEach((subcategory, subIndex) => {
-    const button = document.createElement('button');
-    button.className = 'subcat';
-    button.textContent = subcategory.name;
-    button.setAttribute('role', 'tab');
-    button.setAttribute('aria-selected', subIndex === state.currentSubcategory ? 'true' : 'false');
-    button.setAttribute('tabindex', '0');
-    
-    if (subIndex === state.currentSubcategory) {
-      button.classList.add('selected');
+  const fragment = document.createDocumentFragment();
+  const entries = state.currentCategory === -1
+    ? state.favorites.map(favorite => ({ name: favorite.item.name, thumbnail: favorite.item.avatar }))
+    : state.manifest.categories[state.currentCategory]?.subcategories || [];
+  const selectedIndex = state.currentCategory === -1 ? state.currentItem : state.currentSubcategory;
+  const selectHandler = state.currentCategory === -1 ? selectFavorite : selectSubcategory;
+
+  entries.forEach((entry, index) => {
+    const button = createNavigationButton(entry.name, 'subcat', index === selectedIndex, () => selectHandler(index));
+    if (entry.thumbnail) {
+      const imageContainer = document.createElement('span');
+      imageContainer.className = 'subcat-image';
+      appendProgressiveImage(imageContainer, entry.thumbnail, '', {
+        className: 'subcat-icon', placeholderClass: 'subcat-icon-placeholder'
+      });
+      button.prepend(imageContainer);
     }
-    
-    // Add thumbnail if available (already loaded during init)
-    if (subcategory.thumbnail && state.imageCache.has(subcategory.thumbnail)) {
-      const img = state.imageCache.get(subcategory.thumbnail).cloneNode();
-      img.alt = '';
-      img.className = 'subcat-icon';
-      button.insertBefore(img, button.firstChild);
-    }
-    
-    button.addEventListener('click', () => selectSubcategory(subIndex));
-    
-    elements.subcategories.appendChild(button);
+    fragment.appendChild(button);
   });
+
+  elements.subcategories.replaceChildren(fragment);
+  elements.subcategories.hidden = entries.length === 0;
 }
 
-/**
- * Render items grid
- */
 function renderItemsGrid() {
-  elements.itemsGrid.innerHTML = '';
-
   const items = getCurrentItems();
-
   if (items.length === 0) {
-    showEmptyState(elements.itemsGrid, state.currentCategory === -1 ? 'No favorite items yet. Pin items to see them here!' : 'No items found in this category.');
+    elements.itemsGrid.replaceChildren();
+    showEmptyState(elements.itemsGrid, state.currentCategory === -1
+      ? 'No favorite items yet. Pin an item to keep it here.'
+      : 'No items are available in this category.');
     return;
   }
 
-  items.forEach((item, index) => {
-    const element = document.createElement('div');
-    element.className = 'item';
-    element.setAttribute('role', 'button');
-    element.setAttribute('tabindex', '0');
-    element.setAttribute('aria-label', `View ${item.name}`);
+  const fragment = document.createDocumentFragment();
+  items.forEach((item, itemIndex) => {
+    const card = document.createElement('article');
+    card.className = 'item';
+    card.setAttribute('role', 'listitem');
 
-    if (index === state.currentItem) {
-      element.classList.add('selected');
-      element.setAttribute('aria-pressed', 'true');
-    } else {
-      element.setAttribute('aria-pressed', 'false');
-    }
+    const selectButton = document.createElement('button');
+    selectButton.type = 'button';
+    selectButton.className = 'item-select';
+    selectButton.dataset.index = String(itemIndex);
+    selectButton.setAttribute('aria-label', `View ${item.name}`);
+    selectButton.setAttribute('aria-current', itemIndex === state.currentItem ? 'true' : 'false');
+    if (itemIndex === state.currentItem) card.classList.add('selected');
 
-    // Add avatar image with progressive loading
+    const avatarContainer = document.createElement('span');
+    avatarContainer.className = 'avatar-container';
     if (item.avatar) {
-      const imgContainer = document.createElement('div');
-      imgContainer.className = 'avatar-container';
-      
-      if (state.imageCache.has(item.avatar)) {
-        // Image already loaded
-        const img = state.imageCache.get(item.avatar).cloneNode();
-        img.alt = `${item.name} avatar`;
-        imgContainer.appendChild(img);
-      } else {
-        // Show loading placeholder, load image in background
-        const placeholder = document.createElement('div');
-        placeholder.className = 'avatar-placeholder loading';
-        placeholder.textContent = '⏳';
-        placeholder.setAttribute('aria-label', 'Loading...');
-        imgContainer.appendChild(placeholder);
-        
-        // Load image asynchronously
-        loadImage(item.avatar).then(loadedImg => {
-          if (loadedImg) {
-            placeholder.className = 'avatar-placeholder';
-            placeholder.textContent = '';
-            const img = loadedImg.cloneNode();
-            img.alt = `${item.name} avatar`;
-            imgContainer.appendChild(img);
-            // Fade in effect
-            setTimeout(() => {
-              if (placeholder.parentNode) {
-                placeholder.remove();
-              }
-            }, 100);
-          } else {
-            placeholder.className = 'avatar-placeholder error';
-            placeholder.textContent = '?';
-            placeholder.setAttribute('aria-label', 'Image failed to load');
-          }
-        });
-      }
-      element.appendChild(imgContainer);
+      appendProgressiveImage(avatarContainer, item.avatar, `${item.name} portrait`, {
+        placeholderClass: 'avatar-placeholder'
+      });
     } else {
-      const placeholder = document.createElement('div');
-      placeholder.className = 'avatar-placeholder';
-      placeholder.textContent = '?';
-      placeholder.setAttribute('aria-label', 'No image available');
-      element.appendChild(placeholder);
+      const placeholder = document.createElement('span');
+      placeholder.className = 'avatar-placeholder error';
+      placeholder.setAttribute('aria-hidden', 'true');
+      avatarContainer.appendChild(placeholder);
     }
 
-    // Add pin button (show in all categories including Favorites)
-    let isPinned;
-    if (state.currentCategory === -1) {
-      // In Favorites, all items are pinned by definition
-      isPinned = true;
-    } else {
-      // In other categories, check if item exists in favorites
-      isPinned = state.favorites.some(fav =>
-        fav.categoryIndex === state.currentCategory &&
-        fav.subcategoryIndex === state.currentSubcategory &&
-        fav.itemIndex === index
-      );
-    }
-    
+    const name = document.createElement('span');
+    name.className = 'name';
+    name.textContent = item.name;
+    selectButton.append(avatarContainer, name);
+    selectButton.addEventListener('click', () => selectItem(itemIndex));
+
+    const pinned = state.currentCategory === -1 || findFavoriteIndex(state.currentCategory, state.currentSubcategory, itemIndex) >= 0;
     const pinButton = document.createElement('button');
-    pinButton.className = isPinned ? 'pin-icon pinned' : 'pin-icon';
-    pinButton.setAttribute('aria-label', isPinned ? 'Unpin from favorites' : 'Pin to favorites');
-    pinButton.title = isPinned ? 'Remove from favorites' : 'Add to favorites';
-    
-    const icon = document.createElement('i');
-    icon.className = 'fas fa-thumbtack';
-    pinButton.appendChild(icon);
-    
-    pinButton.addEventListener('click', (e) => {
-      e.stopPropagation(); // Prevent item selection when clicking pin
-      togglePinByIndex(index);
-    });
-    
-    element.appendChild(pinButton);
+    pinButton.type = 'button';
+    pinButton.className = `pin-icon${pinned ? ' pinned' : ''}`;
+    pinButton.dataset.index = String(itemIndex);
+    pinButton.setAttribute('aria-label', pinned ? `Remove ${item.name} from favorites` : `Add ${item.name} to favorites`);
+    pinButton.title = pinned ? 'Remove from favorites' : 'Add to favorites';
+    pinButton.textContent = '📌';
+    pinButton.addEventListener('click', () => togglePinByIndex(itemIndex));
 
-    // Add item name
-    const nameDiv = document.createElement('div');
-    nameDiv.className = 'name';
-    nameDiv.textContent = item.name;
-    element.appendChild(nameDiv);
-
-    element.addEventListener('click', () => selectItem(index));
-    element.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        selectItem(index);
-      }
-    });
-
-    elements.itemsGrid.appendChild(element);
+    card.append(selectButton, pinButton);
+    fragment.appendChild(card);
   });
+  elements.itemsGrid.replaceChildren(fragment);
 }
 
-/**
- * Render info panel with character information
- */
 function renderInfoPanel() {
-  elements.infoPanel.innerHTML = '';
-
   const item = getCurrentItem();
-
   if (!item) {
+    elements.infoPanel.replaceChildren();
     showEmptyState(elements.infoPanel, 'Select an item to view details.');
     return;
   }
 
-  // Add character name as heading
   const heading = document.createElement('h2');
   heading.textContent = item.name;
-  elements.infoPanel.appendChild(heading);
-
-  // Add character info
-  if (item.info) {
-    const paragraph = document.createElement('p');
-    paragraph.textContent = item.info;
-    elements.infoPanel.appendChild(paragraph);
-  } else {
-    showEmptyState(elements.infoPanel, 'No information available for this character.');
+  if (!item.info) {
+    elements.infoPanel.replaceChildren(heading);
+    showEmptyState(elements.infoPanel, 'No information is available for this item.');
+    return;
   }
+
+  const information = document.createElement('p');
+  information.textContent = item.info;
+  elements.infoPanel.replaceChildren(heading, information);
 }
 
-/**
- * Render image panel with character image
- */
 function renderImagePanel() {
-  elements.imagePanel.innerHTML = '';
-
   const item = getCurrentItem();
-
-  if (!item || !item.image) {
-    showEmptyState(elements.imagePanel, 'No image available.');
+  elements.imagePanel.replaceChildren();
+  if (!item?.image) {
+    showEmptyState(elements.imagePanel, 'No image is available.');
     return;
   }
 
-  if (state.imageCache.has(item.image)) {
-    const img = state.imageCache.get(item.image).cloneNode();
-    img.alt = `${item.name} full image`;
-    elements.imagePanel.appendChild(img);
-  } else {
-    // Show loading state while image loads
-    const loadingDiv = document.createElement('div');
-    loadingDiv.className = 'image-loading';
-    loadingDiv.innerHTML = '<div class="spinner">⏳</div><p>Loading image...</p>';
-    elements.imagePanel.appendChild(loadingDiv);
-    
-    // Load image asynchronously
-    loadImage(item.image).then(loadedImg => {
-      if (loadedImg && getCurrentItem() === item) {
-        // Only update if still viewing the same item
-        elements.imagePanel.innerHTML = '';
-        const img = loadedImg.cloneNode();
-        img.alt = `${item.name} full image`;
-        elements.imagePanel.appendChild(img);
-      } else if (getCurrentItem() === item) {
-        elements.imagePanel.innerHTML = '';
-        showEmptyState(elements.imagePanel, 'Image failed to load.');
-      }
-    });
+  const requestedSource = item.image;
+  const cachedImage = state.imageCache.get(requestedSource);
+  if (cachedImage) {
+    elements.imagePanel.appendChild(cloneImage(cachedImage, item.name, 'detail-image', 'eager'));
+    return;
   }
+  if (state.imageCache.has(requestedSource)) {
+    showEmptyState(elements.imagePanel, 'The image could not be loaded.');
+    return;
+  }
+
+  const loading = document.createElement('div');
+  loading.className = 'image-loading';
+  loading.setAttribute('role', 'status');
+  const spinner = document.createElement('span');
+  spinner.className = 'spinner';
+  spinner.setAttribute('aria-hidden', 'true');
+  const loadingText = document.createElement('span');
+  loadingText.textContent = 'Loading image…';
+  loading.append(spinner, loadingText);
+  elements.imagePanel.appendChild(loading);
+
+  loadImage(requestedSource).then(image => {
+    if (getCurrentItem()?.image !== requestedSource) return;
+    elements.imagePanel.replaceChildren();
+    if (image) elements.imagePanel.appendChild(cloneImage(image, item.name, 'detail-image', 'eager'));
+    else showEmptyState(elements.imagePanel, 'The image could not be loaded.');
+  });
 }
 
-// ===== SELECTION HANDLERS =====
+// ===== SELECTION AND ROUTING =====
 
-/**
- * Select a category
- * @param {number} index - Category index
- */
-function selectCategory(index) {
-  if (index === state.currentCategory) return;
-
-  state.currentCategory = index;
-  
-  // Handle Favorites category
-  if (index === -1) {
-    state.currentSubcategory = state.favorites.length > 0 ? 0 : -1;
+function selectCategory(categoryIndex) {
+  if (categoryIndex === state.currentCategory) return;
+  state.currentCategory = categoryIndex;
+  if (categoryIndex === -1) {
     state.currentItem = state.favorites.length > 0 ? 0 : -1;
-    updateUI();
+    state.currentSubcategory = state.currentItem;
+  } else {
+    const category = state.manifest.categories[categoryIndex];
+    state.currentSubcategory = category?.subcategories?.length ? 0 : -1;
+    state.currentItem = category?.subcategories?.[0]?.items?.length ? 0 : -1;
+  }
+  updateUI();
+}
+
+function selectSubcategory(subcategoryIndex) {
+  if (subcategoryIndex === state.currentSubcategory) return;
+  const subcategory = state.manifest.categories[state.currentCategory]?.subcategories?.[subcategoryIndex];
+  if (!subcategory) return;
+  state.currentSubcategory = subcategoryIndex;
+  state.currentItem = subcategory.items.length > 0 ? 0 : -1;
+  updateUI();
+}
+
+function selectItem(itemIndex) {
+  const items = getCurrentItems();
+  if (!Number.isInteger(itemIndex) || itemIndex < 0 || itemIndex >= items.length) return;
+  state.currentItem = itemIndex;
+  if (state.currentCategory === -1) state.currentSubcategory = itemIndex;
+  updateUI();
+}
+
+function normalizeSelection() {
+  if (state.currentCategory === -1) {
+    state.currentItem = state.favorites.length > 0
+      ? Math.min(Math.max(state.currentItem, 0), state.favorites.length - 1)
+      : -1;
+    state.currentSubcategory = state.currentItem;
     return;
   }
-  
-  // Reset subcategory and item - but check if subcategories exist
-  const category = state.manifest.categories[index];
-  if (category && category.subcategories && category.subcategories.length > 0) {
-    state.currentSubcategory = 0;
-    state.currentItem = 0;
-  } else {
-    // No subcategories - reset to -1 to indicate none selected
+
+  if (!Number.isInteger(state.currentCategory) || state.currentCategory < 0 || state.currentCategory >= state.manifest.categories.length) {
+    state.currentCategory = 0;
+  }
+  const category = state.manifest.categories[state.currentCategory];
+  if (!category?.subcategories?.length) {
     state.currentSubcategory = -1;
     state.currentItem = -1;
+    return;
   }
 
-  updateUI();
+  state.currentSubcategory = Math.min(Math.max(state.currentSubcategory, 0), category.subcategories.length - 1);
+  const items = category.subcategories[state.currentSubcategory].items;
+  state.currentItem = items.length > 0 ? Math.min(Math.max(state.currentItem, 0), items.length - 1) : -1;
 }
 
-/**
- * Select a subcategory
- * @param {number} index - Subcategory index
- */
-function selectSubcategory(index) {
-  if (index === state.currentSubcategory) return;
-
-  state.currentSubcategory = index;
-  
-  // Check if subcategory has items
-  const category = state.manifest.categories[state.currentCategory];
-  const subcategory = category?.subcategories?.[index];
-  if (subcategory?.items && subcategory.items.length > 0) {
-    state.currentItem = 0;
-  } else {
-    state.currentItem = -1; // No items available
-  }
-
-  updateUI();
-}
-
-/**
- * Select an item
- * @param {number} index - Item index
- */
-function selectItem(index) {
-  if (index === state.currentItem) return;
-
-  state.currentItem = index;
-
-  updateUI();
-}
-
-// ===== HELPER FUNCTIONS =====
-
-/**
- * Get current subcategory items
- * @returns {Array} Current items array
- */
 function getCurrentItems() {
-  // Handle Favorites category
-  if (state.currentCategory === -1) {
-    return state.favorites.map(fav => fav.item);
-  }
-  
-  const category = state.manifest.categories[state.currentCategory];
-  if (!category || !category.subcategories || !Array.isArray(category.subcategories)) {
-    return [];
-  }
-  
-  // Handle case where no subcategory is selected
-  if (state.currentSubcategory < 0 || state.currentSubcategory >= category.subcategories.length) {
-    return [];
-  }
-  
-  const subcategory = category.subcategories[state.currentSubcategory];
-  if (!subcategory || !subcategory.items || !Array.isArray(subcategory.items)) {
-    return [];
-  }
-  
-  return subcategory.items;
+  if (state.currentCategory === -1) return state.favorites.map(favorite => favorite.item);
+  return state.manifest.categories[state.currentCategory]?.subcategories?.[state.currentSubcategory]?.items || [];
 }
 
-/**
- * Get current item
- * @returns {Object|null} Current item object
- */
 function getCurrentItem() {
-  const items = getCurrentItems();
-  return items[state.currentItem] || null;
+  return getCurrentItems()[state.currentItem] || null;
 }
 
-/**
- * Show loading state
- */
-function showLoading() {
-  state.isLoading = true;
-  document.body.classList.add('loading');
-  
-  // Could add a loading spinner to main content
-  if (elements.mainContent) {
-    const loader = document.createElement('div');
-    loader.className = 'loading';
-    loader.innerHTML = '<div class="spinner" role="status" aria-label="Loading"></div>';
-    elements.mainContent.appendChild(loader);
+function parseUrlHash() {
+  const hash = window.location.hash.slice(1);
+  if (!hash) return;
+  const segments = hash.split('/');
+  if (segments[0] === 'favorites') {
+    state.currentCategory = -1;
+    state.currentItem = Number.parseInt(segments[1], 10);
+    state.currentSubcategory = state.currentItem;
+    normalizeSelection();
+    return;
+  }
+
+  const values = segments.map(segment => Number.parseInt(segment, 10));
+  if (values.length === 3 && values.every(Number.isInteger)) {
+    [state.currentCategory, state.currentSubcategory, state.currentItem] = values;
+    normalizeSelection();
   }
 }
 
-/**
- * Hide loading state
- */
-function hideLoading() {
-  state.isLoading = false;
-  document.body.classList.remove('loading');
-  
-  const loader = document.querySelector('.loading');
-  if (loader) {
-    loader.remove();
-  }
+function updateUrlHash() {
+  const hash = state.currentCategory === -1
+    ? `#favorites/${state.currentItem}`
+    : `#${state.currentCategory}/${state.currentSubcategory}/${state.currentItem}`;
+  if (window.location.hash !== hash) history.replaceState(null, '', hash);
 }
 
-/**
- * Show error message
- * @param {string} message - Error message to display
- */
-/**
- * Show toast notification
- * @param {string} message - Message to display
- * @param {string} type - Type of toast: 'error', 'success', 'warning', 'info'
- * @param {number} duration - Duration in ms (0 = manual close only)
- */
-function showToast(message, type = 'info', duration = 5000) {
-  const container = document.getElementById('toast-container');
-  if (!container) return;
-  
-  const toast = document.createElement('div');
-  toast.className = `toast toast-${type}`;
-  toast.setAttribute('role', 'alert');
-  
-  // Add icon based on type
-  const icon = document.createElement('span');
-  icon.className = 'toast-icon';
-  icon.setAttribute('aria-hidden', 'true');
-  
-  switch(type) {
-    case 'error':
-      icon.textContent = '✕';
-      break;
-    case 'success':
-      icon.textContent = '✓';
-      break;
-    case 'warning':
-      icon.textContent = '⚠';
-      break;
-    case 'info':
-    default:
-      icon.textContent = 'ℹ';
-      break;
-  }
-  
-  // Add message
-  const messageEl = document.createElement('div');
-  messageEl.className = 'toast-message';
-  messageEl.textContent = message;
-  
-  // Add close button
-  const closeBtn = document.createElement('button');
-  closeBtn.className = 'toast-close';
-  closeBtn.setAttribute('aria-label', 'Close notification');
-  closeBtn.textContent = '×';
-  closeBtn.addEventListener('click', () => dismissToast(toast));
-  
-  toast.appendChild(icon);
-  toast.appendChild(messageEl);
-  toast.appendChild(closeBtn);
-  
-  container.appendChild(toast);
-  
-  // Auto-dismiss after duration (if duration > 0)
-  if (duration > 0) {
-    setTimeout(() => dismissToast(toast), duration);
-  }
-  
-  return toast;
-}
+// ===== SEARCH =====
 
-/**
- * Dismiss a toast notification
- * @param {HTMLElement} toast - Toast element to dismiss
- */
-function dismissToast(toast) {
-  if (!toast || !toast.parentElement) return;
-  
-  toast.classList.add('hiding');
-  setTimeout(() => {
-    if (toast.parentElement) {
-      toast.parentElement.removeChild(toast);
-    }
-  }, 300); // Match animation duration
-}
-
-/**
- * Show error message (deprecated - use showToast instead)
- * @deprecated Use showToast(message, 'error') instead
- */
-function showError(message) {
-  showToast(message, 'error', 0); // No auto-dismiss for errors
-}
-
-/**
- * Show empty state in a container
- * @param {HTMLElement} container - Container element
- * @param {string} message - Message to display
- */
-function showEmptyState(container, message) {
-  const emptyDiv = document.createElement('div');
-  emptyDiv.className = 'empty-state';
-  emptyDiv.textContent = message;
-  container.appendChild(emptyDiv);
-}
-
-/**
- * Announce selection to screen readers
- */
-function announceSelection() {
-  try {
-    const item = getCurrentItem();
-    const category = state.manifest.categories[state.currentCategory];
-    
-    if (!category) return;
-    
-    const categoryName = category.name;
-    let subcategoryName = '';
-    
-    // Safely get subcategory name
-    if (category.subcategories && 
-        category.subcategories[state.currentSubcategory]) {
-      subcategoryName = category.subcategories[state.currentSubcategory].name;
-    }
-
-    const announcement = item
-      ? `Selected ${item.name} in ${categoryName}${subcategoryName ? ', ' + subcategoryName : ''}`
-      : `Viewing ${categoryName}${subcategoryName ? ', ' + subcategoryName : ''}`;
-
-    // Update or create live region
-    let liveRegion = document.getElementById('live-region');
-    if (!liveRegion) {
-      liveRegion = document.createElement('div');
-      liveRegion.id = 'live-region';
-      liveRegion.setAttribute('role', 'status');
-      liveRegion.setAttribute('aria-live', 'polite');
-      liveRegion.setAttribute('aria-atomic', 'true');
-      liveRegion.style.cssText = 'position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;';
-      document.body.appendChild(liveRegion);
-    }
-
-    liveRegion.textContent = announcement;
-  } catch (error) {
-    console.warn('Announce selection failed:', error);
-    // Don't propagate error - this is non-critical
-  }
-}
-
-// ===== SEARCH FUNCTIONALITY =====
-
-/**
- * Search across entire database
- * @param {string} query - Search query
- */
 function searchAllDatabase(query) {
-  const searchTerm = query.toLowerCase().trim();
-  
+  const searchTerm = query.trim().toLocaleLowerCase();
   if (!searchTerm) {
     state.searchResults = [];
+    state.searchSelectedIndex = -1;
     state.showSearchDropdown = false;
     renderSearchResults();
     return;
   }
-  
+
   const results = [];
-  
-  try {
-    // Search through all categories and subcategories
-    state.manifest.categories.forEach((category, catIndex) => {
-      // Skip categories without subcategories
-      if (!category.subcategories || !Array.isArray(category.subcategories)) {
-        return;
-      }
-      
-      category.subcategories.forEach((subcategory, subIndex) => {
-        // Check if subcategory name matches
-        const subcatMatches = subcategory.name.toLowerCase().includes(searchTerm);
-        
-        // Skip subcategories without items
-        if (!subcategory.items || !Array.isArray(subcategory.items) || subcategory.items.length === 0) {
-          // Still add subcategory to results if it matches search (even if empty)
-          if (subcatMatches) {
-            results.push({
-              type: 'subcategory',
-              category: category.name,
-              categoryIndex: catIndex,
-              subcategory: subcategory.name,
-              subcategoryIndex: subIndex,
-              thumbnail: subcategory.thumbnail,
-              path: `${category.name} › ${subcategory.name}`,
-              itemCount: 0
-            });
-          }
-          return;
-        }
-        
-        // Track if we've added this subcategory already
-        let subcategoryAdded = false;
-        
-        // Search through items
-        subcategory.items.forEach((item, itemIndex) => {
-          const searchableText = [
-            item.name,
-            subcategory.name,
-            category.name,
-            item.info || ''
-          ].join(' ').toLowerCase();
-          
-          const itemMatches = searchableText.includes(searchTerm);
-          
-          if (itemMatches) {
-            results.push({
-              type: 'item',
-              category: category.name,
-              categoryIndex: catIndex,
-              subcategory: subcategory.name,
-              subcategoryIndex: subIndex,
-              item: item,
-              itemIndex: itemIndex,
-              path: `${category.name} › ${subcategory.name}`,
-              matchedSubcategory: subcatMatches
-            });
-            
-            // If subcategory matches and we haven't added it yet, add it once
-            if (subcatMatches && !subcategoryAdded) {
-              results.push({
-                type: 'subcategory',
-                category: category.name,
-                categoryIndex: catIndex,
-                subcategory: subcategory.name,
-                subcategoryIndex: subIndex,
-                thumbnail: subcategory.thumbnail,
-                path: `${category.name}`,
-                itemCount: subcategory.items.length
-              });
-              subcategoryAdded = true;
-            }
-          }
+  for (let categoryIndex = 0; categoryIndex < state.manifest.categories.length; categoryIndex += 1) {
+    const category = state.manifest.categories[categoryIndex];
+    for (let subcategoryIndex = 0; subcategoryIndex < category.subcategories.length; subcategoryIndex += 1) {
+      const subcategory = category.subcategories[subcategoryIndex];
+      if (subcategory.name.toLocaleLowerCase().includes(searchTerm)) {
+        results.push({
+          type: 'subcategory', categoryIndex, subcategoryIndex, name: subcategory.name,
+          path: category.name, thumbnail: subcategory.thumbnail, itemCount: subcategory.items.length
         });
+      }
+
+      subcategory.items.forEach((item, itemIndex) => {
+        const searchableText = `${item.name} ${category.name} ${subcategory.name} ${item.info || ''}`.toLocaleLowerCase();
+        if (searchableText.includes(searchTerm)) {
+          results.push({
+            type: 'item', categoryIndex, subcategoryIndex, itemIndex, name: item.name,
+            path: `${category.name} › ${subcategory.name}`, thumbnail: item.avatar, item
+          });
+        }
       });
-    });
-  } catch (error) {
-    console.error('Search error:', error);
-    showToast('Search failed. Please try again.', 'error', 3000);
-    return;
+    }
   }
-  
-  state.searchResults = results;
-  state.searchSelectedIndex = results.length > 0 ? 0 : -1;
+
+  state.searchResults = results.slice(0, CONFIG.maxSearchResults);
+  state.searchSelectedIndex = state.searchResults.length > 0 ? 0 : -1;
   state.showSearchDropdown = true;
-  
   renderSearchResults();
 }
 
-/**
- * Render search results dropdown
- */
 function renderSearchResults() {
-  if (!elements.searchResults) return;
-  
-  if (!state.showSearchDropdown || state.searchResults.length === 0) {
-    elements.searchResults.classList.remove('show');
-    
-    if (state.searchQuery && state.searchResults.length === 0) {
-      elements.searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
-      elements.searchResults.classList.add('show');
-    } else {
-      elements.searchResults.innerHTML = '';
-    }
-    return;
+  const hasQuery = state.searchQuery.trim().length > 0;
+  const showDropdown = state.showSearchDropdown && hasQuery;
+  const fragment = document.createDocumentFragment();
+
+  if (showDropdown && state.searchResults.length === 0) {
+    const noResults = document.createElement('div');
+    noResults.className = 'search-no-results';
+    noResults.textContent = 'No results found';
+    fragment.appendChild(noResults);
+  } else if (showDropdown) {
+    state.searchResults.forEach((result, index) => {
+      const option = document.createElement('div');
+      option.id = `search-result-${index}`;
+      option.className = 'search-result-item';
+      option.setAttribute('role', 'option');
+      option.setAttribute('aria-selected', index === state.searchSelectedIndex ? 'true' : 'false');
+      if (index === state.searchSelectedIndex) option.classList.add('selected');
+
+      const avatar = document.createElement('span');
+      avatar.className = 'search-result-avatar';
+      const cachedImage = state.imageCache.get(result.thumbnail);
+      if (cachedImage) avatar.appendChild(cloneImage(cachedImage, '', '', 'lazy'));
+
+      const information = document.createElement('span');
+      information.className = 'search-result-info';
+      const name = document.createElement('span');
+      name.className = 'search-result-name';
+      name.textContent = result.name;
+      const path = document.createElement('span');
+      path.className = 'search-result-path';
+      path.textContent = result.type === 'subcategory' ? `${result.path} (${result.itemCount} items)` : result.path;
+      information.append(name, path);
+      option.append(avatar, information);
+      option.addEventListener('pointerdown', event => event.preventDefault());
+      option.addEventListener('click', () => selectSearchResult(index));
+      fragment.appendChild(option);
+    });
   }
-  
-  elements.searchResults.innerHTML = '';
-  
-  state.searchResults.forEach((result, index) => {
-    const item = document.createElement('div');
-    item.className = 'search-result-item';
-    item.setAttribute('role', 'option');
-    item.setAttribute('data-index', index);
-    
-    if (index === state.searchSelectedIndex) {
-      item.classList.add('selected');
-      item.setAttribute('aria-selected', 'true');
-    } else {
-      item.setAttribute('aria-selected', 'false');
-    }
-    
-    // Avatar/thumbnail
-    const avatar = document.createElement('img');
-    avatar.className = 'search-result-avatar';
-    
-    if (result.type === 'item' && result.item.avatar && state.imageCache.has(result.item.avatar)) {
-      avatar.src = result.item.avatar;
-      avatar.alt = '';
-    } else if (result.type === 'subcategory' && result.thumbnail && state.imageCache.has(result.thumbnail)) {
-      avatar.src = result.thumbnail;
-      avatar.alt = '';
-    } else {
-      avatar.style.background = 'var(--bg-secondary)';
-    }
-    
-    item.appendChild(avatar);
-    
-    // Info
-    const info = document.createElement('div');
-    info.className = 'search-result-info';
-    
-    const name = document.createElement('div');
-    name.className = 'search-result-name';
-    name.textContent = result.type === 'item' ? result.item.name : result.subcategory;
-    
-    const path = document.createElement('div');
-    path.className = 'search-result-path';
-    path.textContent = result.path + (result.type === 'subcategory' ? ` (${result.itemCount} items)` : '');
-    
-    info.appendChild(name);
-    info.appendChild(path);
-    item.appendChild(info);
-    
-    // Click handler
-    item.addEventListener('click', () => selectSearchResult(index));
-    
-    elements.searchResults.appendChild(item);
-  });
-  
-  elements.searchResults.classList.add('show');
+
+  elements.searchResults.replaceChildren(fragment);
+  elements.searchResults.classList.toggle('show', showDropdown);
+  elements.searchInput.setAttribute('aria-expanded', String(showDropdown));
+  if (showDropdown && state.searchSelectedIndex >= 0) {
+    elements.searchInput.setAttribute('aria-activedescendant', `search-result-${state.searchSelectedIndex}`);
+  } else {
+    elements.searchInput.removeAttribute('aria-activedescendant');
+  }
 }
 
-/**
- * Select a search result
- * @param {number} index - Result index
- */
 function selectSearchResult(index) {
   const result = state.searchResults[index];
-  
   if (!result) return;
-  
-  // Navigate to the result
-  if (result.type === 'item') {
-    state.currentCategory = result.categoryIndex;
-    state.currentSubcategory = result.subcategoryIndex;
-    state.currentItem = result.itemIndex;
-  } else if (result.type === 'subcategory') {
-    state.currentCategory = result.categoryIndex;
-    state.currentSubcategory = result.subcategoryIndex;
-    // Check if subcategory has items
-    const category = state.manifest.categories[result.categoryIndex];
-    const subcategory = category?.subcategories?.[result.subcategoryIndex];
-    if (subcategory?.items && subcategory.items.length > 0) {
-      state.currentItem = 0;
-    } else {
-      state.currentItem = -1; // No items available
-    }
-  }
-  
-  // Clear search
-  state.searchQuery = '';
-  state.searchResults = [];
-  state.showSearchDropdown = false;
-  elements.searchInput.value = '';
-  
-  // Update UI
+  state.currentCategory = result.categoryIndex;
+  state.currentSubcategory = result.subcategoryIndex;
+  state.currentItem = result.type === 'item'
+    ? result.itemIndex
+    : (state.manifest.categories[result.categoryIndex].subcategories[result.subcategoryIndex].items.length ? 0 : -1);
+  clearSearch();
   updateUI();
-  renderSearchResults();
-  
-  // Scroll to top
-  if (elements.mainContent) {
-    document.getElementById('main').scrollTop = 0;
-  }
+  elements.mainContent.scrollIntoView({ block: 'start' });
 }
 
-/**
- * Handle search input
- * @param {string} query - Search query
- */
-function handleSearch(query) {
-  state.searchQuery = query;
-  searchAllDatabase(query);
-}
-
-/**
- * Navigate search results with keyboard
- * @param {number} direction - -1 for up, 1 for down
- */
 function navigateSearchResults(direction) {
   if (state.searchResults.length === 0) return;
-  
-  state.searchSelectedIndex += direction;
-  
-  if (state.searchSelectedIndex < 0) {
-    state.searchSelectedIndex = state.searchResults.length - 1;
-  } else if (state.searchSelectedIndex >= state.searchResults.length) {
-    state.searchSelectedIndex = 0;
-  }
-  
+  state.searchSelectedIndex = (state.searchSelectedIndex + direction + state.searchResults.length) % state.searchResults.length;
   renderSearchResults();
-  
-  // Scroll selected item into view
-  const selected = elements.searchResults.querySelector('.search-result-item.selected');
-  if (selected) {
-    selected.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-  }
+  document.getElementById(`search-result-${state.searchSelectedIndex}`)?.scrollIntoView({ block: 'nearest' });
 }
 
-/**
- * Show search results count (DEPRECATED)
- */
-function showSearchResults(found, total) {
-  // Search now uses dropdown, this is no longer needed
-  return;
+function clearSearch() {
+  state.searchQuery = '';
+  state.searchResults = [];
+  state.searchSelectedIndex = -1;
+  state.showSearchDropdown = false;
+  elements.searchInput.value = '';
+  renderSearchResults();
 }
 
-// ===== BREADCRUMB NAVIGATION (DEPRECATED) =====
+// ===== FEEDBACK AND ACCESSIBILITY =====
 
-/**
- * Render breadcrumb navigation (DEPRECATED - hidden)
- */
-function renderBreadcrumb() {
-  // Breadcrumbs are hidden for now
-  return;
+function showLoading() {
+  const loader = document.createElement('div');
+  loader.className = 'app-loading';
+  loader.setAttribute('role', 'status');
+  loader.textContent = 'Loading character database…';
+  elements.itemsGrid.replaceChildren(loader);
+  document.body.setAttribute('aria-busy', 'true');
 }
 
-// ===== SHARE FUNCTIONALITY =====
+function hideLoading() {
+  document.body.removeAttribute('aria-busy');
+  elements.itemsGrid.querySelector('.app-loading')?.remove();
+}
 
-/**
- * Share current character
- */
-function shareCharacter() {
+function showEmptyState(container, message) {
+  const emptyState = document.createElement('p');
+  emptyState.className = 'empty-state';
+  emptyState.textContent = message;
+  container.appendChild(emptyState);
+}
+
+function showToast(message, type = 'info', duration = 5000) {
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+  const messageElement = document.createElement('span');
+  messageElement.className = 'toast-message';
+  messageElement.textContent = message;
+  const closeButton = document.createElement('button');
+  closeButton.type = 'button';
+  closeButton.className = 'toast-close';
+  closeButton.setAttribute('aria-label', 'Close notification');
+  closeButton.textContent = '×';
+  closeButton.addEventListener('click', () => dismissToast(toast));
+  toast.append(messageElement, closeButton);
+  elements.toastContainer.appendChild(toast);
+  if (duration > 0) setTimeout(() => dismissToast(toast), duration);
+  return toast;
+}
+
+function dismissToast(toast) {
+  if (!toast?.isConnected) return;
+  toast.classList.add('hiding');
+  toast.addEventListener('animationend', () => toast.remove(), { once: true });
+  setTimeout(() => toast.remove(), 500);
+}
+
+function announceSelection() {
   const item = getCurrentItem();
-  if (!item) return;
-  
-  const category = state.manifest.categories[state.currentCategory].name;
-  const subcategory = state.manifest.categories[state.currentCategory]
-    .subcategories[state.currentSubcategory].name;
-  
-  const url = window.location.href;
-  const title = `${item.name} - ${category}`;
-  const text = `Check out ${item.name} from ${subcategory} in the Academy of Heroes database!`;
-  
-  // Try native share API first (mobile)
-  if (navigator.share) {
-    navigator.share({
-      title: title,
-      text: text,
-      url: url
-    }).catch(err => console.log('Share cancelled', err));
-  } else {
-    // Fallback: copy to clipboard
-    copyToClipboard(url);
-    showShareTooltip('Link copied to clipboard!');
+  let liveRegion = document.getElementById('live-region');
+  if (!liveRegion) {
+    liveRegion = document.createElement('div');
+    liveRegion.id = 'live-region';
+    liveRegion.className = 'visually-hidden';
+    liveRegion.setAttribute('role', 'status');
+    liveRegion.setAttribute('aria-live', 'polite');
+    document.body.appendChild(liveRegion);
   }
-}
 
-/**
- * Copy text to clipboard
- * @param {string} text - Text to copy
- */
-function copyToClipboard(text) {
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text);
-  } else {
-    // Fallback for older browsers
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
+  if (state.currentCategory === -1) {
+    liveRegion.textContent = item ? `Selected favorite ${item.name}` : 'Favorites is empty';
+    return;
   }
+  const category = state.manifest.categories[state.currentCategory];
+  const subcategory = category?.subcategories?.[state.currentSubcategory];
+  liveRegion.textContent = item
+    ? `Selected ${item.name} in ${category.name}, ${subcategory.name}`
+    : `Viewing ${category?.name || 'the database'}`;
 }
 
-/**
- * Show share tooltip (deprecated - use showToast instead)
- * @deprecated Use showToast(message, 'success') instead
- * @param {string} message - Message to display
- */
-function showShareTooltip(message) {
-  showToast(message, 'success', 2000);
-}
+// ===== EVENTS =====
 
-// ===== URL ROUTING (HASH-BASED) =====
-
-/**
- * Parse URL hash and update state
- */
-function parseUrlHash() {
-  const hash = window.location.hash.slice(1); // Remove '#'
-  if (!hash) return;
-
-  const [cat, subcat, item] = hash.split('/').map(Number);
-
-  try {
-    if (!isNaN(cat) && cat >= 0 && cat < state.manifest.categories.length) {
-      state.currentCategory = cat;
-
-      const category = state.manifest.categories[cat];
-      const subcategories = category.subcategories;
-      
-      if (subcategories && Array.isArray(subcategories) &&
-          !isNaN(subcat) && subcat >= 0 && subcat < subcategories.length) {
-        state.currentSubcategory = subcat;
-
-        const items = subcategories[subcat].items;
-        if (items && Array.isArray(items) &&
-            !isNaN(item) && item >= 0 && item < items.length) {
-          state.currentItem = item;
-        } else {
-          // No items or invalid item index
-          state.currentItem = -1;
-        }
-      } else {
-        // No subcategories or invalid subcategory index
-        state.currentSubcategory = -1;
-        state.currentItem = -1;
-      }
-    }
-  } catch (error) {
-    console.warn('Failed to parse URL hash:', error);
-    // Reset to defaults
-    state.currentCategory = 0;
-    state.currentSubcategory = 0;
-    state.currentItem = 0;
-  }
-}
-
-/**
- * Update URL hash based on current state
- */
-function updateUrlHash() {
-  const hash = `#${state.currentCategory}/${state.currentSubcategory}/${state.currentItem}`;
-  if (window.location.hash !== hash) {
-    history.replaceState(null, '', hash);
-  }
-}
-
-// ===== EVENT LISTENERS =====
-
-/**
- * Setup global event listeners
- */
 function setupEventListeners() {
-  // Keyboard navigation
-  if (CONFIG.enableKeyboardNav) {
-    document.addEventListener('keydown', handleKeyboardNavigation);
-  }
+  let searchTimer;
 
-  // URL hash changes
+  elements.searchInput.addEventListener('input', event => {
+    clearTimeout(searchTimer);
+    state.searchQuery = event.target.value;
+    searchTimer = setTimeout(() => searchAllDatabase(state.searchQuery), CONFIG.searchDelayMs);
+  });
+  elements.searchInput.addEventListener('focus', () => {
+    if (state.searchQuery && state.searchResults.length > 0) {
+      state.showSearchDropdown = true;
+      renderSearchResults();
+    }
+  });
+  elements.searchInput.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      clearTimeout(searchTimer);
+      clearSearch();
+      event.currentTarget.blur();
+    } else if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      navigateSearchResults(1);
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      navigateSearchResults(-1);
+    } else if (event.key === 'Enter' && state.searchSelectedIndex >= 0) {
+      event.preventDefault();
+      selectSearchResult(state.searchSelectedIndex);
+    }
+  });
+
+  elements.itemsGrid.addEventListener('keydown', handleGridKeydown);
+  document.addEventListener('click', event => {
+    if (!elements.searchContainer.contains(event.target)) {
+      state.showSearchDropdown = false;
+      renderSearchResults();
+    }
+  });
+
   if (CONFIG.enableUrlRouting) {
     window.addEventListener('hashchange', () => {
       parseUrlHash();
       updateUI();
     });
   }
-  
-  // Search input
-  if (elements.searchInput) {
-    let searchTimeout;
-    
-    elements.searchInput.addEventListener('input', (e) => {
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(() => {
-        handleSearch(e.target.value);
-      }, 300); // Debounce 300ms
-    });
-    
-    // Keyboard navigation in search
-    elements.searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        e.target.value = '';
-        state.searchQuery = '';
-        state.searchResults = [];
-        state.showSearchDropdown = false;
-        renderSearchResults();
-        e.target.blur();
-      } else if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (state.showSearchDropdown) {
-          navigateSearchResults(1);
-        }
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (state.showSearchDropdown) {
-          navigateSearchResults(-1);
-        }
-      } else if (e.key === 'Enter') {
-        e.preventDefault();
-        if (state.showSearchDropdown && state.searchSelectedIndex >= 0) {
-          selectSearchResult(state.searchSelectedIndex);
-        }
-      }
-    });
-  }
-  
-  // Hash change for URL routing
-  if (CONFIG.enableUrlRouting) {
-    window.addEventListener('hashchange', parseUrlHash);
-  }
-  
-  // Click outside to close search dropdown
-  document.addEventListener('click', (e) => {
-    if (elements.searchResults && 
-        !elements.searchContainer.contains(e.target) && 
-        !elements.searchResults.contains(e.target)) {
-      state.showSearchDropdown = false;
-      renderSearchResults();
-    }
-  });
 }
 
-/**
- * Handle keyboard navigation
- * @param {KeyboardEvent} event - Keyboard event
- */
-function handleKeyboardNavigation(event) {
-  // Don't interfere with form inputs
-  if (event.target.matches('input, textarea, select')) {
-    return;
-  }
+function handleGridKeydown(event) {
+  const selectButton = event.target.closest('.item-select');
+  if (!selectButton) return;
+  const currentIndex = Number(selectButton.dataset.index);
+  const itemCount = getCurrentItems().length;
+  const columnCount = Math.max(1, getComputedStyle(elements.itemsGrid).gridTemplateColumns.split(' ').length);
+  let nextIndex = currentIndex;
+  if (event.key === 'ArrowLeft') nextIndex -= 1;
+  if (event.key === 'ArrowRight') nextIndex += 1;
+  if (event.key === 'ArrowUp') nextIndex -= columnCount;
+  if (event.key === 'ArrowDown') nextIndex += columnCount;
+  if (nextIndex === currentIndex || nextIndex < 0 || nextIndex >= itemCount) return;
 
-  const items = getCurrentItems();
-
-  switch (event.key) {
-    case 'ArrowLeft':
-      if (state.currentItem > 0) {
-        event.preventDefault();
-        selectItem(state.currentItem - 1);
-        focusItem(state.currentItem);
-      }
-      break;
-
-    case 'ArrowRight':
-      if (state.currentItem < items.length - 1) {
-        event.preventDefault();
-        selectItem(state.currentItem + 1);
-        focusItem(state.currentItem);
-      }
-      break;
-
-    case 'ArrowUp':
-      if (state.currentItem >= 5) {
-        event.preventDefault();
-        selectItem(state.currentItem - 5);
-        focusItem(state.currentItem);
-      }
-      break;
-
-    case 'ArrowDown':
-      if (state.currentItem + 5 < items.length) {
-        event.preventDefault();
-        selectItem(state.currentItem + 5);
-        focusItem(state.currentItem);
-      }
-      break;
-  }
+  event.preventDefault();
+  selectItem(nextIndex);
+  elements.itemsGrid.querySelector(`.item-select[data-index="${nextIndex}"]`)?.focus();
 }
 
-/**
- * Focus an item in the grid
- * @param {number} index - Item index to focus
- */
-function focusItem(index) {
-  const items = elements.itemsGrid.querySelectorAll('.item');
-  if (items[index]) {
-    items[index].focus();
-  }
-}
-
-// ===== START APPLICATION =====
-
-// Initialize when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', init, { once: true });
 } else {
   init();
 }

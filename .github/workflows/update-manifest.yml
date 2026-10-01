@@ -15,19 +15,19 @@ jobs:
 
     steps:
       # 1. Check out the code (with write creds)
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           persist-credentials: true
 
-      # 2. (Still need Node to run your script)
+      # 2. Set up the supported Node.js runtime
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
 
-      # 3. Run your manifest-generator script directly
-      - name: Generate manifest.json
-        run: node scripts/generate_manifest.js
+      # 3. Regenerate the manifest and validate the site
+      - name: Generate and validate the site
+        run: npm run check
 
       # 4. Commit and push the updated manifest
       - name: Commit manifest.json

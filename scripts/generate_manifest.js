@@ -31,17 +31,21 @@
  * }
  */
 
-const fs   = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
+
+const projectRoot = path.resolve(__dirname, '..');
+const supportedImageExtensions = new Set(['.avif', '.gif', '.jpeg', '.jpg', '.png', '.svg', '.webp']);
+const nameCollator = new Intl.Collator('en', { numeric: true, sensitivity: 'base' });
 
 async function main() {
-  const rootDir    = path.resolve(process.cwd(), 'database');
+  const rootDir = path.join(projectRoot, 'database');
   // ensure database/ exists (Git won’t track empty dirs)
   if (!fs.existsSync(rootDir)) {
     await fs.promises.mkdir(rootDir, { recursive: true });
   }
-  const outPath    = path.join(rootDir, 'manifest.json');
-  const manifest   = { categories: [] };
+  const outPath = path.join(rootDir, 'manifest.json');
+  const manifest = { categories: [] };
 
   // helper to list only directories, sorted alphabetically
   async function listDirs(dir) {
@@ -49,13 +53,23 @@ async function main() {
     return entries
       .filter(e => e.isDirectory())
       .map(e => e.name)
-      .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+      .sort(nameCollator.compare);
   }
 
   // helper to list only files
   async function listFiles(dir) {
     const entries = await fs.promises.readdir(dir, { withFileTypes: true });
-    return entries.filter(e => e.isFile()).map(e => e.name);
+    return entries
+      .filter(entry => entry.isFile())
+      .map(entry => entry.name)
+      .sort(nameCollator.compare);
+  }
+
+  function findImage(files, baseName) {
+    return files.find(file =>
+      path.parse(file).name.toLowerCase() === baseName &&
+      supportedImageExtensions.has(path.extname(file).toLowerCase())
+    ) || null;
   }
 
   // scan top‐level categories
@@ -70,7 +84,7 @@ async function main() {
       const files   = await listFiles(subPath);
 
       // find optional thumbnail.*
-      const thumb = files.find(fn => /^thumbnail\.[^.]+$/i.test(fn)) || null;
+      const thumb = findImage(files, 'thumbnail');
       const thumbnail = thumb
         ? ['database', cat, sub, thumb].join('/')
         : null;
@@ -82,17 +96,15 @@ async function main() {
         const itemPath = path.join(subPath, item);
         const itemFiles = await listFiles(itemPath);
 
-        const avatarFile = itemFiles.find(fn => /^avatar\.[^.]+$/i.test(fn)) || null;
-        const imageFile  = itemFiles.find(fn => /^image\.[^.]+$/i.test(fn))  || null;
-        const infoFile   = itemFiles.find(fn => /^info\.[^.]+$/i.test(fn))   || null;
+        const avatarFile = findImage(itemFiles, 'avatar');
+        const imageFile = findImage(itemFiles, 'image');
+        const infoFile = itemFiles.find(file => file.toLowerCase() === 'info.txt') || null;
 
         // read info text if present
         let info = null;
         if (infoFile) {
-          info = await fs.promises.readFile(
-            path.join(itemPath, infoFile),
-            'utf8'
-          );
+          info = (await fs.promises.readFile(path.join(itemPath, infoFile), 'utf8'))
+            .replace(/\r\n?/g, '\n');
         }
 
         items.push({
@@ -120,9 +132,16 @@ async function main() {
     });
   }
 
-  // write out pretty‐printed JSON
-  await fs.promises.writeFile(outPath, JSON.stringify(manifest, null, 2), 'utf8');
-  console.log(`✅  Generated manifest at ${outPath}`);
+  // Match the host's working-tree convention while keeping embedded info text normalized.
+  const json = JSON.stringify(manifest, null, 2);
+  const output = process.platform === 'win32' ? json.replace(/\n/g, '\r\n') : json;
+  const existingOutput = await fs.promises.readFile(outPath, 'utf8').catch(() => null);
+  if (existingOutput !== output) {
+    await fs.promises.writeFile(outPath, output, 'utf8');
+    console.log(`✅  Generated manifest at ${outPath}`);
+  } else {
+    console.log(`✅  Manifest is already up to date at ${outPath}`);
+  }
 }
 
 // run

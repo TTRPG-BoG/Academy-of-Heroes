@@ -4,7 +4,7 @@
     Starts a local development server for the Academy of Heroes website.
 
 .DESCRIPTION
-    This script starts a Python HTTP server on port 8080 and optionally opens
+    This script starts the project's Node.js development server and optionally opens
     the website in your default browser.
 
 .PARAMETER Port
@@ -51,13 +51,13 @@ Write-Host ""
 Write-Host "Starting Academy of Heroes Development Server..." -ForegroundColor Cyan
 Write-Host ""
 
-# Check if Python is installed
+# Check if Node.js is installed
 try {
-    $pythonVersion = python --version 2>&1
-    Write-Host "[OK] Python found: $pythonVersion" -ForegroundColor Green
+    $nodeVersion = node --version 2>&1
+    Write-Host "[OK] Node.js found: $nodeVersion" -ForegroundColor Green
 } catch {
-    Write-Host "[ERROR] Python not found. Please install Python 3.x" -ForegroundColor Red
-    Write-Host "        Download from: https://www.python.org/downloads/" -ForegroundColor Yellow
+    Write-Host "[ERROR] Node.js 20 or newer was not found." -ForegroundColor Red
+    Write-Host "        Download from: https://nodejs.org/" -ForegroundColor Yellow
     exit 1
 }
 
@@ -85,9 +85,9 @@ if (-not $NoBrowser) {
     Write-Host ""
 }
 
-# Start the Python HTTP server
+# Start the project development server
 try {
-    python -m http.server $Port
+    node scripts\dev-server.js --port $Port
 } catch {
     Write-Host ""
     Write-Host "[INFO] Server stopped" -ForegroundColor Yellow
