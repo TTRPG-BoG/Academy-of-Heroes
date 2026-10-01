@@ -1,47 +1,6 @@
 {
   "categories": [
     {
-      "name": "Academy",
-      "subcategories": [
-        {
-          "name": "Academy of Heroes",
-          "thumbnail": null,
-          "items": [
-            {
-              "name": "Admissions",
-              "avatar": null,
-              "image": null,
-              "info": "Přijímací řízení:\n●\tPět náročných vstupních zkoušek\n\nTermín zahájení:\n●\tJednou ročně, na konci léta po žních\n\nPrvní zkouška:\n●\tMěření magického potenciálu v athénském Parthenónu\n\nPopis:\n●\tUchazeči putují se svými blízkými do Athén, kde chrám přesně změří jejich potenciál ve všech osmi magických disciplínách: Alteration, Creation, Energy, Entropy, Influence, Movement, Prescience a Protection.\n●\tPrvní zkouška nehodnotí, kolik kouzel už uchazeč umí. Rozlišuje vrozený potenciál daný božskou krví od dovednosti získané výcvikem.\n●\tPokud chrám označí potenciál za nedostačující, uchazeč nemůže pokračovat. Pro mnohé rodiny je tento rozsudek koncem dlouho budovaných nadějí.\n●\tPodoba zbývajících čtyř zkoušek není v obecných informacích zveřejněna. Jisté je pouze to, že samotná magie nestačí: Akademie hledá také sílu, důvtip a odhodlání.\n"
-            },
-            {
-              "name": "Magic and Bloodlines",
-              "avatar": null,
-              "image": null,
-              "info": "Základ magie:\n●\tBožská krev předávaná lidskými pokrevními liniemi\n\nPočet disciplín:\n●\tOsm\n\nDisciplíny a bohové:\n●\tDémétér – Alteration\n●\tHéra – Creation\n●\tZeus – Energy\n●\tHádés – Entropy\n●\tAfrodita – Influence\n●\tHermés – Movement\n●\tApollón – Prescience\n●\tAthéna – Protection\n\nPopis:\n●\tTéměř každý člověk nese alespoň stopu magického potenciálu, ale většina se nikdy nenaučí skutečně čarovat. Potenciál určuje krev; schopnost vzniká až výcvikem.\n●\tVysoký potenciál hodný budoucího hrdiny je vzácný. Akademie proto netestuje pouze jednu nejsilnější oblast, ale profil uchazeče ve všech osmi disciplínách.\n●\tBohové jako Arés nebo Artemis jsou uctíváni, ale nevytvářejí další druh magie. Náboženská oddanost tedy nemusí odpovídat magické pokrevní linii člověka.\n"
-            },
-            {
-              "name": "Overview",
-              "avatar": null,
-              "image": null,
-              "info": "Název:\n●\tAkademie hrdinů\n\nPoloha:\n●\tSkrytá v okolí hory Olymp\n\nPostavení:\n●\tNejprestižnější škola v Řecku\n\nPopis:\n●\tAkademie vyhledává mladé lidi s mimořádným magickým potenciálem a schopnostmi, které mohou rozhodovat o budoucnosti federace. Každý rok se hlásí stovky uchazečů, ale přijato je pouze přibližně padesát.\n●\tStudium není zaručenou cestou ke slávě. Studenti musejí obstát v tvrdém výcviku, zkouškách a soupeření s ostatními talentovanými lidmi z celého Řecka.\n●\tAkademie stojí mimo každodenní život velkých měst, ale není mimo politiku. Přijímá dědice vlivných rodů i nadané uchazeče z chudých poměrů a jejich budoucí loajalita má pro provincie velkou cenu.\n\nPověst:\n●\tKdo uspěje, může vstoupit mezi elitu společnosti. Kdo selže, riskuje, že po něm nezůstane nic než zapomenuté jméno.\n"
-            },
-            {
-              "name": "Paths after Graduation",
-              "avatar": null,
-              "image": null,
-              "info": "Postavení absolventů:\n●\tElita řecké společnosti\n\nMožné cesty:\n●\tVelení armádě\n●\tSlužba jako pravá ruka šlechtice nebo politika\n●\tLov nestvůr za odměnu\n●\tPrůzkum zapomenutých ruin\n\nPopis:\n●\tAbsolvent Akademie nezíská jediné pevně dané povolání. Výcvik ho připravuje na role, v nichž se běžná autorita, vojsko nebo znalosti ukážou jako nedostatečné.\n●\tProvincie, armáda, šlechtické rody i soukromí zadavatelé mají o schopné absolventy zájem. Nabídka prestižní služby může být poctou, ale také pokusem zavázat si nového hrdinu.\n●\tSvět za hranicemi bezpečných měst je plný monster, konfliktů a ruin se zapomenutými tajemstvími. Právě tam mohou absolventi získat slávu, bohatství a vliv – nebo zmizet beze stopy.\n●\tTitul absolventa otevírá dveře, ale legenda vzniká až skutky. Akademie poskytuje příležitost; nezaručuje bezpečí ani nesmrtelnost.\n"
-            },
-            {
-              "name": "Training and Student Life",
-              "avatar": null,
-              "image": null,
-              "info": "Hlavní cíl:\n●\tProměnit vrozený potenciál ve skutečnou schopnost obstát v nebezpečném světě\n\nPopis:\n●\tStudenti přicházejí z provincií s odlišnými tradicemi, politickými zájmy a představami o hrdinství. Společný výcvik je nutí spolupracovat s budoucími spojenci i soupeři.\n●\tAkademie musí rozvíjet více než magii. Budoucí hrdina potřebuje tělesnou zdatnost, odolnost, úsudek, znalosti, schopnost jednat s lidmi a ochotu rozhodovat se pod tlakem.\n●\tRozdíly v bohatství, původu a rodovém vlivu po přijetí nezmizí. Na jednom místě se setkávají potomci generálů a obchodníků s uchazeči, jejichž rodiny obětovaly vše, aby jim cestu umožnily.\n●\tNeúspěch má váhu. Přijetí je pouze začátek a ani talentovaný student nemá jistotu, že projde všemi zkouškami studia.\n\nKaždodenní napětí:\n●\tPřátelství, rivalita, provinční politika, rodinná očekávání a strach ze zapomnění.\n"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Characters",
       "subcategories": [
         {
@@ -678,6 +637,42 @@
     {
       "name": "Locations",
       "subcategories": [
+        {
+          "name": "Academy of Heroes",
+          "thumbnail": null,
+          "items": [
+            {
+              "name": "Admissions",
+              "avatar": null,
+              "image": null,
+              "info": "Přijímací řízení:\n●\tPět náročných vstupních zkoušek\n\nTermín zahájení:\n●\tJednou ročně, na konci léta po žních\n\nPrvní zkouška:\n●\tMěření magického potenciálu v athénském Parthenónu\n\nPopis:\n●\tUchazeči putují se svými blízkými do Athén, kde chrám přesně změří jejich potenciál ve všech osmi magických disciplínách: Alteration, Creation, Energy, Entropy, Influence, Movement, Prescience a Protection.\n●\tPrvní zkouška nehodnotí, kolik kouzel už uchazeč umí. Rozlišuje vrozený potenciál daný božskou krví od dovednosti získané výcvikem.\n●\tPokud chrám označí potenciál za nedostačující, uchazeč nemůže pokračovat. Pro mnohé rodiny je tento rozsudek koncem dlouho budovaných nadějí.\n●\tPodoba zbývajících čtyř zkoušek není v obecných informacích zveřejněna. Jisté je pouze to, že samotná magie nestačí: Akademie hledá také sílu, důvtip a odhodlání.\n"
+            },
+            {
+              "name": "Magic and Bloodlines",
+              "avatar": null,
+              "image": null,
+              "info": "Základ magie:\n●\tBožská krev předávaná lidskými pokrevními liniemi\n\nPočet disciplín:\n●\tOsm\n\nDisciplíny a bohové:\n●\tDémétér – Alteration\n●\tHéra – Creation\n●\tZeus – Energy\n●\tHádés – Entropy\n●\tAfrodita – Influence\n●\tHermés – Movement\n●\tApollón – Prescience\n●\tAthéna – Protection\n\nPopis:\n●\tTéměř každý člověk nese alespoň stopu magického potenciálu, ale většina se nikdy nenaučí skutečně čarovat. Potenciál určuje krev; schopnost vzniká až výcvikem.\n●\tVysoký potenciál hodný budoucího hrdiny je vzácný. Akademie proto netestuje pouze jednu nejsilnější oblast, ale profil uchazeče ve všech osmi disciplínách.\n●\tBohové jako Arés nebo Artemis jsou uctíváni, ale nevytvářejí další druh magie. Náboženská oddanost tedy nemusí odpovídat magické pokrevní linii člověka.\n"
+            },
+            {
+              "name": "Overview",
+              "avatar": null,
+              "image": null,
+              "info": "Název:\n●\tAkademie hrdinů\n\nPoloha:\n●\tSkrytá v okolí hory Olymp\n\nPostavení:\n●\tNejprestižnější škola v Řecku\n\nPopis:\n●\tAkademie vyhledává mladé lidi s mimořádným magickým potenciálem a schopnostmi, které mohou rozhodovat o budoucnosti federace. Každý rok se hlásí stovky uchazečů, ale přijato je pouze přibližně padesát.\n●\tStudium není zaručenou cestou ke slávě. Studenti musejí obstát v tvrdém výcviku, zkouškách a soupeření s ostatními talentovanými lidmi z celého Řecka.\n●\tAkademie stojí mimo každodenní život velkých měst, ale není mimo politiku. Přijímá dědice vlivných rodů i nadané uchazeče z chudých poměrů a jejich budoucí loajalita má pro provincie velkou cenu.\n\nPověst:\n●\tKdo uspěje, může vstoupit mezi elitu společnosti. Kdo selže, riskuje, že po něm nezůstane nic než zapomenuté jméno.\n"
+            },
+            {
+              "name": "Paths after Graduation",
+              "avatar": null,
+              "image": null,
+              "info": "Postavení absolventů:\n●\tElita řecké společnosti\n\nMožné cesty:\n●\tVelení armádě\n●\tSlužba jako pravá ruka šlechtice nebo politika\n●\tLov nestvůr za odměnu\n●\tPrůzkum zapomenutých ruin\n\nPopis:\n●\tAbsolvent Akademie nezíská jediné pevně dané povolání. Výcvik ho připravuje na role, v nichž se běžná autorita, vojsko nebo znalosti ukážou jako nedostatečné.\n●\tProvincie, armáda, šlechtické rody i soukromí zadavatelé mají o schopné absolventy zájem. Nabídka prestižní služby může být poctou, ale také pokusem zavázat si nového hrdinu.\n●\tSvět za hranicemi bezpečných měst je plný monster, konfliktů a ruin se zapomenutými tajemstvími. Právě tam mohou absolventi získat slávu, bohatství a vliv – nebo zmizet beze stopy.\n●\tTitul absolventa otevírá dveře, ale legenda vzniká až skutky. Akademie poskytuje příležitost; nezaručuje bezpečí ani nesmrtelnost.\n"
+            },
+            {
+              "name": "Training and Student Life",
+              "avatar": null,
+              "image": null,
+              "info": "Hlavní cíl:\n●\tProměnit vrozený potenciál ve skutečnou schopnost obstát v nebezpečném světě\n\nPopis:\n●\tStudenti přicházejí z provincií s odlišnými tradicemi, politickými zájmy a představami o hrdinství. Společný výcvik je nutí spolupracovat s budoucími spojenci i soupeři.\n●\tAkademie musí rozvíjet více než magii. Budoucí hrdina potřebuje tělesnou zdatnost, odolnost, úsudek, znalosti, schopnost jednat s lidmi a ochotu rozhodovat se pod tlakem.\n●\tRozdíly v bohatství, původu a rodovém vlivu po přijetí nezmizí. Na jednom místě se setkávají potomci generálů a obchodníků s uchazeči, jejichž rodiny obětovaly vše, aby jim cestu umožnily.\n●\tNeúspěch má váhu. Přijetí je pouze začátek a ani talentovaný student nemá jistotu, že projde všemi zkouškami studia.\n\nKaždodenní napětí:\n●\tPřátelství, rivalita, provinční politika, rodinná očekávání a strach ze zapomnění.\n"
+            }
+          ]
+        },
         {
           "name": "Greek Cities",
           "thumbnail": null,
